@@ -147,7 +147,9 @@ body {
 .report-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.11); }
 
 /* 썸네일 공통 */
-.ct {
+.ct,
+.card-thumb,
+.featured-thumb {
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -156,7 +158,10 @@ body {
   position: relative;
   overflow: hidden;
 }
-.ct::before {
+.card-thumb { min-height: 160px; }
+.featured-thumb { min-height: 180px; padding: 20px; }
+
+.ct::before, .card-thumb::before, .featured-thumb::before {
   content: '';
   position: absolute;
   right: -15px; top: -15px;
@@ -164,10 +169,34 @@ body {
   border-radius: 50%;
   background: rgba(255,255,255,.06);
 }
-.ct.up-bg  { background: linear-gradient(135deg,#052e16,#166534); }
-.ct.dn-bg  { background: linear-gradient(135deg,#1c1917,#7f1d1d); }
-.ct.mix-bg { background: linear-gradient(135deg,#0f172a,#1e3a5f); }
-.ct.wk-bg  { background: linear-gradient(135deg,#1e1b4b,#312e81); }
+
+/* 배경 색상 클래스 — ct / card-thumb / featured-thumb 모두 적용 */
+.ct.up-bg, .card-thumb.up-bg, .featured-thumb.up-bg
+  { background: linear-gradient(135deg,#052e16,#166534); }
+.ct.dn-bg, .card-thumb.dn-bg, .featured-thumb.dn-bg
+  { background: linear-gradient(135deg,#1c1917,#7f1d1d); }
+.ct.mix-bg, .card-thumb.mix-bg, .featured-thumb.mix-bg,
+.card-thumb.daily-mix
+  { background: linear-gradient(135deg,#0f172a,#1e3a5f); }
+.ct.wk-bg, .card-thumb.wk-bg, .featured-thumb.wk-bg,
+.card-thumb.weekly
+  { background: linear-gradient(135deg,#1e1b4b,#312e81); }
+/* 기존 daily-up / daily-dn 클래스도 유지 */
+.card-thumb.daily-up  { background: linear-gradient(135deg,#052e16,#166534); }
+.card-thumb.daily-dn  { background: linear-gradient(135deg,#1c1917,#7f1d1d); }
+
+/* 썸네일 내부 공통 텍스트 */
+.thumb-type, .ct-type {
+  font-size: 9px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px;
+}
+.num { font-size: 26px; font-weight: 800; line-height: 1; letter-spacing: -.03em; display: block; margin-bottom: 8px; }
+.num.up { color: #6ee7b7; } .num.dn { color: #fca5a5; }
+.thumb-headline { margin-bottom: 4px; }
+.thumb-metrics { display: flex; gap: 10px; flex-wrap: wrap; }
+.thumb-metric { font-size: 10px; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 3px; }
+.thumb-metric .val { font-weight: 700; }
+.thumb-metric .val.up { color: #6ee7b7; } .thumb-metric .val.dn { color: #fca5a5; }
 
 .ct-type { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:4px; }
 .ct-hero-label { font-size:9px; color:rgba(255,255,255,.5); margin-bottom:2px; }
