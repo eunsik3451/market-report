@@ -657,41 +657,49 @@ function switchMarket(el, market) {
   el.classList.add('active');
   if (market !== 'all') el.classList.add(market);
 
-  // 카드별 데이터 교체
+  const m = (market === 'all') ? 'all' : market;
+
   document.querySelectorAll('.featured-card, .report-card').forEach(card => {
     const href = card.getAttribute('href') || '';
     const d = CARD_DATA[href];
     if (!d) return;
-
-    const m = (market === 'all') ? 'all' : market;
     const info = d[m] || d['all'];
     if (!info) return;
 
-    // 썸네일 배경
-    const thumb = card.querySelector('.ft, .ct');
-    if (thumb) {
-      thumb.className = thumb.className.replace(/\b(up-bg|dn-bg|mix-bg|wk-bg|co-up|co-dn|kr-up|kr-dn|us-up|us-dn)\b/g,'').trim()
-        + ' ' + info.thumb;
+    // 썸네일 배경 (.featured-thumb 또는 .card-thumb)
+    const thumb = card.querySelector('.featured-thumb, .card-thumb, .ft, .ct');
+    if (thumb && info.thumb) {
+      const base = thumb.classList.contains('featured-thumb') ? 'featured-thumb'
+                 : thumb.classList.contains('card-thumb')    ? 'card-thumb'
+                 : thumb.classList.contains('ft')            ? 'ft' : 'ct';
+      // 배경 클래스만 교체
+      const bgMap = {
+        'up-bg':  'linear-gradient(135deg,#052e16,#166534)',
+        'dn-bg':  'linear-gradient(135deg,#1c1917,#7f1d1d)',
+        'mix-bg': 'linear-gradient(135deg,#0f172a,#1e3a5f)',
+        'wk-bg':  'linear-gradient(135deg,#1e1b4b,#312e81)',
+      };
+      if (bgMap[info.thumb]) thumb.style.background = bgMap[info.thumb];
     }
 
-    // 큰 수치
-    const bigEl = card.querySelector('.ft-big, .ct-big');
+    // 큰 수치 (.num 또는 .ft-big / .ct-big)
+    const bigEl = card.querySelector('.num, .ft-big, .ct-big, .ct-hero-val');
     if (bigEl && info.big) {
       const cls = info.big.includes('+') ? 'up' : (info.big.includes('-') ? 'dn' : '');
-      bigEl.className = (bigEl.classList.contains('ft-big') ? 'ft-big' : 'ct-big') + ' ' + cls;
+      bigEl.className = 'num ' + cls;
       bigEl.textContent = info.big;
     }
 
-    // 라벨 (피처드만)
-    const labelEl = card.querySelector('.fb-label');
+    // 라벨 (.featured-label 또는 .fb-label)
+    const labelEl = card.querySelector('.featured-label, .fb-label');
     if (labelEl && info.label) {
-      const lCls = {all:'', kr:'kr', us:'us', co:'co'}[m] || '';
-      labelEl.className = 'fb-label ' + lCls;
+      const lCls = {'all':'','kr':'kr','us':'us','co':'co'}[m] || '';
+      labelEl.className = (labelEl.classList.contains('featured-label') ? 'featured-label' : 'fb-label') + ' ' + lCls;
       labelEl.textContent = info.label;
     }
 
-    // trio
-    const trioEl = card.querySelector('.ft-trio, .ct-trio');
+    // 지표 trio (.thumb-metrics 또는 .ft-trio / .ct-trio)
+    const trioEl = card.querySelector('.thumb-metrics, .ft-trio, .ct-trio, .ct-pair');
     if (trioEl && info.trio) trioEl.innerHTML = info.trio;
   });
 }
