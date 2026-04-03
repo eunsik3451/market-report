@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글로벌 마켓 데일리</title>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f6fa;
+  --surface: #ffffff;
+  --border: #e8eaf0;
+  --text: #111827;
+  --sub: #6b7280;
+  --accent: #2563eb;
+  --green: #16a34a;
+  --red: #dc2626;
+  --radius: 16px;
+  --shadow: 0 2px 16px rgba(0,0,0,.07);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── GNB ── */
+.gnb {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.gnb-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -.03em;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo em { color: var(--accent); font-style: normal; }
+.gnb-right { font-size: 12px; color: var(--sub); }
+
+/* ── 탭 ── */
+.tab-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+}
+.tab-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  gap: 0;
+}
+.tab {
+  padding: 12px 18px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--sub);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .15s;
+}
+.tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ── 본문 ── */
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px 20px 80px;
+}
+
+/* ── 섹션 헤더 ── */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -.02em;
+}
+.section-sub {
+  font-size: 12px;
+  color: var(--sub);
+}
+
+/* ── 카드 그리드 ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+/* ── 리포트 카드 ── */
+.report-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform .15s, box-shadow .15s;
+}
+.report-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.11);
+}
+
+/* 썸네일 */
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.card-thumb.daily-up {
+  background: linear-gradient(135deg, #052e16 0%, #166534 60%, #15803d 100%);
+}
+.card-thumb.daily-dn {
+  background: linear-gradient(135deg, #1c1917 0%, #7f1d1d 60%, #991b1b 100%);
+}
+.card-thumb.daily-mix {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 60%, #1d4ed8 100%);
+}
+.card-thumb.weekly {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 60%, #4338ca 100%);
+}
+
+/* 썸네일 배경 장식 */
+.card-thumb::before {
+  content: '';
+  position: absolute;
+  right: -20px; top: -20px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.card-thumb::after {
+  content: '';
+  position: absolute;
+  right: 20px; top: 20px;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+}
+
+.thumb-type {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  margin-bottom: 6px;
+}
+.thumb-headline {
+  font-size: 15px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.3;
+  letter-spacing: -.02em;
+}
+.thumb-headline .num {
+  font-size: 28px;
+  letter-spacing: -.04em;
+}
+.thumb-headline .num.up { color: #6ee7b7; }
+.thumb-headline .num.dn { color: #fca5a5; }
+
+/* 미니 지표 바 */
+.thumb-metrics {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.thumb-metric {
+  font-size: 10px;
+  color: rgba(255,255,255,.7);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+.thumb-metric .val { font-weight: 700; }
+.thumb-metric .val.up { color: #6ee7b7; }
+.thumb-metric .val.dn { color: #fca5a5; }
+
+/* 카드 바디 */
+.card-body {
+  padding: 16px 18px 18px;
+}
+.card-date {
+  font-size: 11px;
+  color: var(--sub);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.card-title {
+  font-size: 14.5px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -.01em;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.card-summary {
+  font-size: 12.5px;
+  color: #6b7280;
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.card-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--sub);
+}
+.card-tag.up { background: #f0fdf4; color: var(--green); }
+.card-tag.dn { background: #fff1f2; color: var(--red); }
+
+/* ── 피처드 카드 (가로형) ── */
+.featured-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  margin-bottom: 16px;
+  transition: transform .15s, box-shadow .15s;
+}
+.featured-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(0,0,0,.11);
+}
+.featured-thumb {
+  background: linear-gradient(135deg, #052e16 0%, #14532d 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+.featured-thumb::before {
+  content: '';
+  position: absolute;
+  right: -30px; top: -30px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.05);
+}
+.featured-body {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.featured-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.featured-title {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -.02em;
+  margin-bottom: 10px;
+}
+.featured-summary {
+  font-size: 13px;
+  color: #6b7280;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── 시황 요약 스트립 ── */
+.market-strip {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 32px;
+  overflow-x: auto;
+}
+.strip-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--sub);
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  border-right: 1px solid var(--border);
+  padding-right: 20px;
+}
+.strip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  white-space: nowrap;
+  gap: 2px;
+}
+.strip-name { font-size: 10px; color: var(--sub); font-weight: 500; }
+.strip-val { font-size: 14px; font-weight: 800; }
+.strip-val.up { color: var(--green); }
+.strip-val.dn { color: var(--red); }
+.strip-chg { font-size: 10px; font-weight: 600; }
+.strip-chg.up { color: var(--green); }
+.strip-chg.dn { color: var(--red); }
+.flag { font-family: 'Noto Color Emoji', sans-serif; }
+
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr 1fr; }
+  .featured-card { grid-template-columns: 1fr; }
+  .featured-thumb { min-height: 140px; }
+}
+@media (max-width: 480px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<nav class="gnb">
+  <div class="gnb-inner">
+    <div class="logo">📊 <span>글로벌 <em>마켓</em> 데일리</span></div>
+    <div class="gnb-right">매일 아침 업데이트</div>
+  </div>
+</nav>
+
+<!-- 탭 -->
+<div class="tab-bar">
+  <div class="tab-inner">
+    <div class="tab active">전체</div>
+    <div class="tab">일일 시황</div>
+    <div class="tab">주간 시황</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 최신 지표 스트립 -->
+  <div class="market-strip">
+    <div class="strip-label">최신 종가<br><!-- UPDATE_DATE -->2026.04.02 기준<!-- /UPDATE_DATE --></div>
+    <div class="strip-item">
+      <div class="strip-name"><span class="flag">🇺🇸</span> S&P 500</div>
+      <div class="strip-val up">6,575</div>
+      <div class="strip-chg up">+0.72%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-name"><span class="flag">🇺🇸</span> 나스닥</div>
+      <div class="strip-val up">21,840</div>
+      <div class="strip-chg up">+1.16%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-name"><span class="flag">🇰🇷</span> KOSPI</div>
+      <div class="strip-val up">5,478</div>
+      <div class="strip-chg up">+8.44%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-name"><span class="flag">🇰🇷</span> KOSDAQ</div>
+      <div class="strip-val up">1,116</div>
+      <div class="strip-chg up">+6.06%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-name">🛢️ WTI</div>
+      <div class="strip-val dn">$100.1</div>
+      <div class="strip-chg dn">-1.24%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-name">🥇 금</div>
+      <div class="strip-val up">$4,783</div>
+      <div class="strip-chg up">+2.92%</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-name">💵 원/달러</div>
+      <div class="strip-val up">1,503</div>
+      <div class="strip-chg up">-0.84%</div>
+    </div>
+  </div>
+
+  <!-- 최신 리포트 (피처드) -->
+  <div class="section-header">
+    <div class="section-title">최신 리포트</div>
+  </div>
+
+  <!-- FEATURED_START -->
+  <a href="daily_market_20260402.html" class="featured-card">
+    <div class="featured-thumb daily-dn">
+      <div class="thumb-type">일일 시황 · 2026.04.02</div>
+      <div class="thumb-headline">
+        <span class="num dn">-4.47%</span>
+      </div>
+      <div class="thumb-metrics">
+        <div class="thumb-metric"><span class="flag">🇰🇷</span> KOSPI <span class="val dn">-4.47%</span></div>
+        <div class="thumb-metric"><span class="flag">🇺🇸</span> S&amp;P <span class="val">+0.11%</span></div>
+        <div class="thumb-metric">🛢️ WTI <span class="val">+11.41%</span></div>
+      </div>
+    </div>
+    <div class="featured-body">
+      <div class="featured-label">📅 일일 시황 · 2026년 04월 02일 목요일</div>
+      <div class="featured-title">KOSPI -4.47%(5,234) · KOSDAQ -5.36%(1,05</div>
+      <div class="featured-summary">KOSPI -4.47%(5,234) · KOSDAQ -5.36%(1,056) — 장 초반 +2% 출발했으나 전날 밤 트럼프 연설 충격 반영되며 </div>
+    </div>
+  </a><!-- FEATURED_END -->
+
+  <!-- 이전 리포트 카드 그리드 -->
+  <div class="section-header" style="margin-top:32px;">
+    <div class="section-title">이전 리포트</div>
+    <div class="section-sub">총 4개</div>
+  </div>
+
+  <div class="card-grid">
+  <!-- GRID_START -->
+
+  <!-- GRID_END -->
+  </div>
+</div>
+
+</body>
+</html>
