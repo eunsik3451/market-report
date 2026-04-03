@@ -76,37 +76,27 @@ def parse_report_meta(filepath):
     rtype       = "weekly" if is_weekly else "daily"
     rtype_label = "주간 시황" if is_weekly else "일일 시황"
 
-    # 등락률 파싱 — chg 클래스 우선 (가장 정확), 없으면 텍스트 패턴
-    def get_chg(ticker_patterns, chg_index=None):
-        """chg 클래스에서 순서대로 추출 (chg_index: S&P=0, 나스닥=1, 다우=2, KOSPI=3 ...)"""
-        chg_vals = re.findall(r'class="[^"]*\bchg\b[^"]*">([\+\-]\d+\.?\d*)%', html)
-        if chg_index is not None and chg_index < len(chg_vals):
-            return chg_vals[chg_index] + '%'
-        for pat in ticker_patterns:
-            v = _extract(html, pat)
-            if v:
-                return _pct(v)
+    # 등락률 파싱 — <tr> 단위로 종목명과 chg 수치 매핑
+    def get_market_chg(names):
+        for name in names:
+            # tr 단위 파싱 (신버전/구버전 모두 대응)
+            tr_pattern = rf'<tr[^>]*>(?:(?!<tr).)*?{re.escape(name)}(?:(?!<tr).)*?class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%'
+            v = _extract(html, tr_pattern)
+            if v and ('+' in v or '-' in v):
+                return v + '%'
+            # 역방향 (chg가 먼저 나오는 경우)
+            tr_pattern2 = rf'<tr[^>]*>(?:(?!<tr).)*?class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%(?:(?!<tr).)*?{re.escape(name)}'
+            v = _extract(html, tr_pattern2)
+            if v and ('+' in v or '-' in v):
+                return v + '%'
         return None
 
-    # chg 클래스 순서: S&P(0), 나스닥(1), 다우(2), KOSPI(3), KOSDAQ(4)
-    chg_vals = re.findall(r'class="[^"]*\bchg\b[^"]*">([\+\-]\d+\.?\d*)%', html)
-
-    def by_chg(idx, fallback_patterns):
-        if idx < len(chg_vals):
-            return chg_vals[idx] + '%'
-        for pat in fallback_patterns:
-            v = _extract(html, pat)
-            if v: return _pct(v)
-        return None
-
-    kospi_chg  = by_chg(3, [r'KOSPI[^<\d]*([\+\-]\d+\.?\d*)%',
-                              r'코스피[^<\d]*([\+\-]\d+\.?\d*)%'])
-    nasdaq_chg = by_chg(1, [r'나스닥[^<\d)（]{0,5}([\+\-]\d+\.?\d*)%'])
-    sp_chg     = by_chg(0, [r'S&amp;P 500[^<\d]*([\+\-]\d+\.?\d*)%',
-                              r'S&P 500[^<\d]*([\+\-]\d+\.?\d*)%'])
-    wti_chg    = _pct(_extract(html, r'WTI[^\d<]*([\+\-]\d+\.?\d*)%'))
-    gold_chg   = _pct(_extract(html, r'금[^<\d]*([\+\-]\d+\.?\d*)%'))
-    copper_chg = _pct(_extract(html, r'구리[^<\d]*([\+\-]\d+\.?\d*)%'))
+    kospi_chg  = get_market_chg(['KOSPI'])
+    nasdaq_chg = get_market_chg(['나스닥'])
+    sp_chg     = get_market_chg(['S&amp;P 500', 'S&P 500'])
+    wti_chg    = get_market_chg(['WTI 원유', '🛢️ WTI', 'WTI'])
+    gold_chg   = get_market_chg(['🥇 금', '금 (USD'])
+    copper_chg = get_market_chg(['구리'])
 
     # 최대 변동 계산
     candidates = {"KOSPI": kospi_chg, "나스닥": nasdaq_chg,
