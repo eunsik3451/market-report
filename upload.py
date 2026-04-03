@@ -383,9 +383,9 @@ def rebuild_index():
                  idx)
     # CARD_DATA 주입
     idx = re.sub(
-        r'// <!-- CARD_DATA_START -->.*?// <!-- CARD_DATA_END -->',
+        r'// <!-- CARD_DATA_START -->[\s\S]*?// <!-- CARD_DATA_END -->',
         f'// <!-- CARD_DATA_START -->\n{card_data_js}\n// <!-- CARD_DATA_END -->',
-        idx, flags=re.DOTALL
+        idx
     )
 
     # 스트립 지표 업데이트
