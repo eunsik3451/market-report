@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글로벌 시장 일일 시황 | 2026년 3월 27일 (금)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Color+Emoji&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#f4f6fb; --surface:#ffffff; --surface2:#eef1f8; --border:#dde2ef;
+  --text:#1a1f36; --muted:#7a85a3; --accent:#2563eb;
+  --green:#16a34a; --red:#dc2626; --gold:#d97706; --orange:#ea580c; --teal:#0d9488;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.7;}
+.flag{font-family:'Noto Color Emoji',sans-serif;font-size:1.15rem;margin-right:5px;vertical-align:middle;}
+.wrap{max-width:960px;margin:0 auto;padding:36px 24px 72px;}
+
+/* 헤더 */
+.masthead{border-top:2px solid var(--accent);padding-top:20px;margin-bottom:20px;
+  display:grid;grid-template-columns:1fr auto;align-items:start;gap:20px;}
+.masthead h1{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.06em;line-height:1;}
+.masthead h1 span{color:var(--accent);}
+.masthead .sub{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:6px;}
+.masthead-r{text-align:right;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);line-height:2;letter-spacing:.06em;}
+
+/* 경고 배너 */
+.alert-bar{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);border-radius:8px;padding:10px 16px;margin-bottom:20px;font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--red);letter-spacing:.04em;display:flex;align-items:center;gap:8px;}
+
+/* 배지 */
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.badge{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:4px 10px;border-radius:4px;border:1px solid;}
+.badge.p{border-color:rgba(22,163,74,.4);color:var(--green);background:rgba(22,163,74,.06);}
+.badge.n{border-color:rgba(37,99,235,.4);color:var(--accent);background:rgba(37,99,235,.06);}
+
+/* 섹션 타이틀 */
+.stitle{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
+.stitle::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* OHLC 테이블 */
+.gh{font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:8px 0 6px;border-bottom:1px solid var(--border);}
+table.ot{width:100%;border-collapse:collapse;margin-bottom:18px;font-family:'JetBrains Mono',monospace;}
+table.ot th{font-size:.58rem;font-weight:500;letter-spacing:.08em;color:var(--muted);text-align:right;padding:7px 10px 5px;border-bottom:1px solid var(--border);white-space:nowrap;}
+table.ot th:first-child{text-align:left;}
+table.ot td{padding:6px 10px;text-align:right;font-size:.76rem;border-bottom:1px solid rgba(221,226,239,.6);white-space:nowrap;}
+table.ot td:first-child{text-align:left;font-family:'Noto Serif KR',serif;font-size:.8rem;font-weight:600;color:var(--text);}
+table.ot tr.prev td{font-size:.65rem;color:var(--muted);padding-top:1px;padding-bottom:7px;border-bottom:1px solid var(--border);}
+table.ot tr.prev td:first-child{font-family:'JetBrains Mono',monospace;padding-left:20px;font-weight:400;}
+td.chg{font-weight:700;font-size:.84rem!important;}
+td.rng{font-size:.72rem!important;color:var(--muted);}
+td.na{color:var(--muted);font-size:.72rem!important;}
+.up{color:var(--green);} .dn{color:var(--red);} .nt{color:var(--muted);}
+.dsrc{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);text-align:right;margin-top:-12px;margin-bottom:24px;}
+
+/* 분석 카드 */
+.cards{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s;}
+.card:hover{border-color:rgba(37,99,235,.25);}
+.card-head{background:var(--surface2);padding:11px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+.cnum{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);}
+.ct{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+.ct.us{color:#1d6fa5;} .ct.kr{color:#16a34a;} .ct.co{color:var(--gold);} .ct.ma{color:var(--teal);} .ct.fw{color:var(--orange);}
+.card-body{padding:16px 18px;}
+.card-body ul{list-style:none;}
+.card-body ul li{position:relative;padding:7px 0 7px 16px;border-bottom:1px solid rgba(221,226,239,.8);font-size:.92rem;line-height:1.85;color:#2d3a5a;}
+.card-body ul li:last-child{border-bottom:none;}
+.card-body ul li::before{content:'—';position:absolute;left:0;color:var(--border);}
+.card-body ul li strong{color:var(--text);font-weight:700;}
+/* 본문 수익률 색상 */
+.card-body ul li strong.r-up{color:var(--green);font-weight:700;}
+.card-body ul li strong.r-dn{color:var(--red);font-weight:700;}
+.src{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);}
+
+/* 내일 전망 */
+.outlook{background:linear-gradient(135deg,#eef2ff 0%,#f0f4ff 100%);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:24px 26px 22px;margin-bottom:28px;position:relative;overflow:hidden;}
+.outlook::before{content:'"';position:absolute;top:-20px;left:16px;font-family:'Bebas Neue',sans-serif;font-size:10rem;color:rgba(37,99,235,.06);line-height:1;pointer-events:none;}
+.olabel{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
+.outlook p{font-size:.95rem;line-height:1.95;color:#2d3a5a;margin-bottom:12px;}
+.outlook p:last-child{margin-bottom:0;}
+.outlook p strong{color:var(--text);font-weight:700;}
+
+/* 키워드 섹션 */
+.kpoints{margin-top:20px;padding-top:16px;border-top:1px solid rgba(37,99,235,.15);}
+.kpoints-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.kpoints-label::after{content:'';flex:1;height:1px;background:rgba(37,99,235,.15);}
+.kpoints-tags{display:flex;flex-wrap:wrap;gap:8px;}
+.kp{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.04em;
+  padding:6px 14px;
+  border:1.5px solid var(--accent);
+  border-radius:20px;
+  color:var(--accent);
+  background:#fff;
+  box-shadow:0 2px 6px rgba(37,99,235,.1);
+}
+
+/* 푸터 */
+.footer{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.05em;text-align:center;padding:14px 0;border-top:1px solid var(--border);line-height:1.9;}
+
+@media(max-width:640px){.masthead{grid-template-columns:1fr;}.masthead-r{text-align:left;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- 헤더 -->
+<div class="masthead">
+  <div>
+    <h1>DAILY<br><span>MARKET</span></h1>
+    <div class="sub">Daily Intelligence Report · 2026년 3월 27일 금요일</div>
+  </div>
+  <div class="masthead-r">
+    2026.03.27 (금)<br>
+    미국 5주 연속 하락<br>
+    다우 조정구간 진입
+  </div>
+</div>
+
+<!-- 경고 배너 -->
+<div class="alert-bar">
+  🚨 &nbsp;S&amp;P 500 7개월 최저 · 나스닥 조정구간(-12.5%) · 다우 조정구간(-10%) · WTI $99.64 — 2022년 이후 최고
+</div>
+
+<div class="badges">
+  <span class="badge p">✅ 가격 데이터: Yahoo Finance yfinance 실측값</span>
+  <span class="badge n">🔍 뉴스: CNBC · CNN · TheStreet · Schwab · Edward Jones · Trading Economics</span>
+</div>
+
+<!-- OHLC 테이블 -->
+<div class="stitle">📊 일일 시가 · 고가 · 저가 · 종가</div>
+
+<div class="gh">🇺🇸 미국 증시</div>
+<table class="ot">
+  <thead><tr>
+    <th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>S&amp;P 500</td>
+      <td>6,453.89</td><td class="up">6,453.89</td><td class="dn">6,356.08</td><td>6,368.85</td>
+      <td class="dn chg">-1.67%</td><td class="rng">1.54%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>6,477.16</td><td></td><td></td></tr>
+    <tr>
+      <td>나스닥</td>
+      <td>21,287.19</td><td class="up">21,293.50</td><td class="dn">20,909.93</td><td>20,948.36</td>
+      <td class="dn chg">-2.15%</td><td class="rng">1.83%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>21,408.08</td><td></td><td></td></tr>
+    <tr>
+      <td>다우존스</td>
+      <td>45,904.25</td><td class="up">45,904.25</td><td class="dn">45,063.33</td><td>45,166.64</td>
+      <td class="dn chg">-1.73%</td><td class="rng">1.87%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>45,960.11</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="gh">🇰🇷 국내 증시</div>
+<table class="ot">
+  <thead><tr>
+    <th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>KOSPI</td>
+      <td>5,300.61</td><td class="up">5,462.51</td><td class="dn">5,220.10</td><td>5,438.87</td>
+      <td class="dn chg">-0.40%</td><td class="rng">4.64%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>5,460.46</td><td></td><td></td></tr>
+    <tr>
+      <td>KOSDAQ</td>
+      <td>1,119.77</td><td class="up">1,146.07</td><td class="dn">1,101.93</td><td>1,141.51</td>
+      <td class="up chg">+0.43%</td><td class="rng">4.01%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>1,136.64</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="gh">🪨 원자재</div>
+<table class="ot">
+  <thead><tr>
+    <th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>금 (USD/oz)</td>
+      <td class="na">—</td><td class="na">—</td><td class="na">—</td><td>4,492.00</td>
+      <td class="up chg">+2.66%</td><td class="rng">※</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>4,375.50</td><td></td><td></td></tr>
+    <tr>
+      <td>구리 (USD/lb)</td>
+      <td class="na">—</td><td class="na">—</td><td class="na">—</td><td>5.467</td>
+      <td class="up chg">+0.38%</td><td class="rng">※</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>5.446</td><td></td><td></td></tr>
+    <tr>
+      <td>WTI 원유 (USD/bbl)</td>
+      <td>93.31</td><td class="up">101.24</td><td class="dn">92.08</td><td>99.64</td>
+      <td class="up chg">+5.46%</td><td class="rng">9.95%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>94.48</td><td></td><td></td></tr>
+  </tbody>
+</table>
+
+<div class="gh">💱 환율</div>
+<table class="ot">
+  <thead><tr>
+    <th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th>
+  </tr></thead>
+  <tbody>
+    <tr>
+      <td>원/달러 (KRW)</td>
+      <td>1,508.1</td><td class="up">1,512.0</td><td class="dn">1,503.2</td><td>1,508.4</td>
+      <td class="up chg">+0.49%</td><td class="rng">0.59%</td>
+    </tr>
+    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>1,501.0</td><td></td><td></td></tr>
+  </tbody>
+</table>
+<div class="dsrc">✅ 출처: Yahoo Finance (yfinance 실측값) · 등락률: 전일 종가 대비 · 변동폭: 당일 고가 대비 저가<br>※ 금·구리 시가/고가/저가: 주말 선물 시장 미체결로 종가만 확인 가능</div>
+
+<!-- 분석 -->
+<div class="stitle">🔍 오늘의 시황 분석</div>
+<div class="cards">
+
+  <!-- 미국 증시 -->
+  <div class="card">
+    <div class="card-head"><span class="cnum">01</span><span class="ct us">🇺🇸 미국 증시 동향</span></div>
+    <div class="card-body"><ul>
+      <li><span class="flag">🇺🇸</span>S&amp;P 500 <strong class="r-dn">-1.67%</strong>(6,368.85), 나스닥 <strong class="r-dn">-2.15%</strong>(20,948.36), 다우 <strong class="r-dn">-1.73%</strong>(45,166.64)으로 7개월 만의 최저치를 기록했다. 다우는 장중 저가 45,063을 터치하며 고점 대비 10% 이상 하락해 기술적 조정 구간에 진입했으며, 나스닥은 고점 대비 <strong class="r-dn">12.5%</strong> 하락으로 조정이 심화됐다. 이로써 S&amp;P 500과 다우는 <strong>5주 연속 하락</strong>으로 러시아-우크라이나 전쟁 이후 최장 하락 행진을 기록했다. <span class="src">(CNBC, CNN)</span></li>
+      <li>주요 하락 종목은 <strong class="r-dn">Amazon -3.85%, Salesforce -3.41%, Visa -3.38%, Nvidia -2.2%, Microsoft -2.5%, Alphabet -2.5%, Meta -4%</strong>였다. Meta는 수요일 이후 누적 <strong class="r-dn">-12%</strong>로, 법원의 SNS 중독 판결과 감원 뉴스가 겹쳤다. 반면 <strong>에너지 섹터</strong>는 유가 급등의 수혜로 유일하게 강세를 보였으며, Clear Secure는 TSA 급여 재개 행정명령 소식에 급락(<strong class="r-dn">-11%</strong>)했다. 장중 변동폭은 S&amp;P 500 기준 시가 6,453에서 저가 6,356으로 1.54%에 달했다. <span class="src">(CNBC, Trading Economics)</span></li>
+      <li>필라델피아 연준 총재 Anna Paulson은 "현재 인플레이션이 2% 목표를 상회하는 상황에서 정책에 더욱 신중해야 한다"고 발언했다. 10년물 국채금리는 <strong>4.43%</strong>(장중 4.48%까지 상승, 9개월 최고)로 마감했으며, 30년물은 <strong>5%</strong>를 일시 돌파했다. VIX는 <strong class="r-dn">31.05(+13.16%)</strong>로 급등하며 극도의 공포 국면을 나타냈다. S&amp;P 500의 200일 이동평균(6,633) 대비 크게 하락한 상태이며, 다음 기술적 지지선은 6,200 구간으로 분석됐다. <span class="src">(Schwab, CNBC)</span></li>
+    </ul></div>
+  </div>
+
+  <!-- 국내 증시 -->
+  <div class="card">
+    <div class="card-head"><span class="cnum">02</span><span class="ct kr">🇰🇷 국내 증시 동향</span></div>
+    <div class="card-body"><ul>
+      <li><span class="flag">🇰🇷</span>KOSPI <strong class="r-dn">-0.40%</strong>(5,438.87), KOSDAQ <strong class="r-up">+0.43%</strong>(1,141.51)로 혼조 마감했다. 장 초반 KOSPI는 5,220.10까지 밀리며 낙폭이 컸으나(변동폭 4.64%), 오후 들어 낙폭을 대부분 만회했다. 미국 증시의 큰 낙폭(<strong class="r-dn">-1.67~-2.15%</strong>)에 비해 상대적으로 선방한 것은 전날(<strong class="r-dn">-3.22%</strong>) 이미 큰 폭으로 하락했던 데 따른 기저 효과와 저가 매수세 유입 덕분이다. <span class="src">(Yahoo Finance)</span></li>
+      <li>KOSDAQ은 장중 1,101.93까지 하락(변동폭 4.01%)했다가 1,141.51로 플러스 전환에 성공했다. 바이오·2차전지 업종에서 저가 매수세가 유입됐으며, SK하이닉스의 미국 ADR 상장 검토 보도가 반도체 업종 투자심리를 지지했다. 원/달러 환율은 장중 <strong>1,512원</strong>까지 상승했다가 1,508.4원으로 마감, 고환율 부담이 지속되고 있으나 외국인 매도 압력은 다소 완화됐다. <span class="src">(Trading Economics)</span></li>
+    </ul></div>
+  </div>
+
+  <!-- 원자재 & 환율 -->
+  <div class="card">
+    <div class="card-head"><span class="cnum">03</span><span class="ct co">🪨 원자재 & 환율</span></div>
+    <div class="card-body"><ul>
+      <li>🛢️ WTI 원유 <strong class="r-up">+5.46%</strong>로 <strong>$99.64</strong>에 마감했으며, 장중 <strong>$100.04</strong>를 돌파해 2022년 7월 이후 처음으로 심리적 저항선을 상향 돌파했다. Brent유는 <strong class="r-up">$112.57(+4.22%)</strong>로 3년 만의 최고치를 기록했다. 이란이 중국 소유 컨테이너선 2척을 호르무즈 해협에서 추가 차단한 것이 직접적 촉발 요인이었으며, Goldman Sachs의 Brent 목표 $110 달성과 함께 2차 초크포인트(바브엘만데브 해협) 리스크까지 가격에 반영되기 시작했다. <span class="src">(CNBC, Middle East Insider)</span></li>
+      <li>🥇 금 <strong class="r-up">+2.66%</strong>($4,492/oz)로 반등했다. 전날 급락 이후 저가 매수세와 인플레이션 헤지 수요가 재유입됐다. 다만 주말 선물 시장 특성상 시가·고가·저가 데이터는 미수집됐다. 🟤 구리도 <strong class="r-up">+0.38%</strong>($5.467) 소폭 강세로 마감했다. <span style="font-size:1rem;">💵</span> 원/달러 환율은 <strong class="r-dn">+0.49%</strong>(1,508.4원)로, 장중 고가 1,512.0원까지 상승했다가 소폭 하락 마감했다. <span class="src">(Schwab, Yahoo Finance)</span></li>
+    </ul></div>
+  </div>
+
+  <!-- 핵심 이슈 -->
+  <div class="card">
+    <div class="card-head"><span class="cnum">04</span><span class="ct ma">🌐 오늘의 핵심 이슈</span></div>
+    <div class="card-body"><ul>
+      <li><strong>이란, 협상 전면 거부:</strong> 이란 외무장관은 "지금까지 적과 어떠한 협상도 없었으며, 앞으로도 협상할 계획이 없다"고 공식 선언했다. 트럼프는 이란 에너지 인프라 공격 기한을 4월 6일까지 10일 연장했으나 시장은 실효성을 의심하며 유가를 끌어올렸다. 이란은 호르무즈 해협에서 위안화 기반의 통행료 시스템을 운영 중이며, 이를 통해 일일 $1.5~2.5억의 수익을 거두고 있다. <span class="src">(CNN, Middle East Insider)</span></li>
+      <li><strong>스태그플레이션 공포 심화:</strong> 미국 소비자심리지수(3월)가 <strong>55.3</strong>으로 2026년 최저치를 기록했으며, 1년 기대인플레이션은 3.8%로 상승했다. 연내 금리 인상 가능성은 50% 이상으로 상승했고, CNN 공포탐욕지수는 2024년 11월 이후 최저 수준인 '극도의 공포'에 진입했다. S&amp;P 500 전체 회원사의 평균 하락폭은 17%, 나스닥 회원사는 31%로 지수 수치보다 실제 충격이 훨씬 크다. <span class="src">(CNN, Schwab)</span></li>
+      <li><strong>중국 무역 보복 조사 개시:</strong> 미국의 대중 관세에 대한 보복으로 중국이 미국산 제품에 대한 무역 조사를 시작했다. 지정학 리스크에 무역 갈등까지 더해지며 글로벌 공급망 교란 우려가 심화되고 있다. 기술섹터 P/E는 20.2배로 3년 만의 최저 수준까지 하락(5개월 전 31.7배 대비)했으며, 에너지 섹터(연초 이후 +35%)가 시장 유일 강세 섹터 지위를 유지하고 있다. <span class="src">(Trading Economics, Schwab)</span></li>
+    </ul></div>
+  </div>
+
+  <!-- 다음 거래일 주요 일정 -->
+  <div class="card">
+    <div class="card-head"><span class="cnum">05</span><span class="ct fw">📅 다음 거래일 주요 일정 (3/30 월)</span></div>
+    <div class="card-body"><ul>
+      <li><strong>분기말 윈도드레싱:</strong> 3월 30일(월)·31일(화)은 1분기 마지막 거래일로, 기관 투자자의 포트폴리오 재조정(윈도드레싱) 수요가 단기 변동성을 키울 수 있다. 에너지·가치주 강세 흐름이 이 과정에서 강화될 가능성이 있다.</li>
+      <li><strong>이란 협상 진전 여부:</strong> 트럼프가 연장한 공격 유예 기한(4/6) 내 협상 타결 시 유가 급락·증시 급반등 가능성이 있다. 반대로 협상 결렬 시 WTI $100 안착·추가 하락이 예상된다. 주말 사이 외교 동향이 월요일 시초가에 직접 반영될 전망이다.</li>
+      <li><strong>주요 경제지표:</strong> 댈러스 Fed 제조업지수(3/30) 발표 예정. 이번 주 가장 중요한 이벤트는 <strong>4월 3일(금) 미국 3월 NFP 고용</strong>으로, 2월 -92K 쇼크 이후 추가 부진 여부가 스태그플레이션 공포 심화의 핵심 분기점이 될 전망이다.</li>
+    </ul></div>
+  </div>
+
+</div>
+
+<!-- 내일 전망 -->
+<div class="outlook">
+  <div class="olabel">🔭 종합 평가 & 다음 거래일 관전 포인트</div>
+  <p>오늘 시장은 <strong>이란의 협상 전면 거부 + WTI $100 돌파 + VIX 31 급등</strong>이라는 삼중 충격을 동시에 맞았다. S&amp;P 500은 7개월 만의 최저치(6,368.85)로 마감했으며, 다우와 나스닥이 모두 조정 구간에 진입했다. 5주 연속 하락은 2022년 러시아-우크라이나 전쟁 이후 최장 기록이다.</p>
+  <p>주목할 점은 하락이 지수 수치보다 내부적으로 훨씬 심각하다는 것이다. S&amp;P 500 회원사 평균 하락폭은 17%, 나스닥 회원사는 무려 31%로, 지수 분산 효과가 실제 손실을 크게 완화시키고 있다. 기술섹터 P/E는 20.2배로 3년 만에 최저 수준까지 내려왔지만, 스태그플레이션 우려 속에 밸류에이션 매력만으로 반등을 이끌기엔 역부족인 상황이다.</p>
+  <p>월요일(3/30) 최대 관심사는 <strong>주말 사이 미국-이란 외교 동향</strong>이다. 지난주 월요일(3/23)처럼 트럼프의 협상 진전 발표 시 유가 급락과 함께 지수 +1% 이상 반등이 가능하다. 반대로 추가 강경 발언 시 WTI $100 안착과 함께 지수 추가 하락이 예상된다.</p>
+  <div class="kpoints">
+    <div class="kpoints-label">🔑 핵심 키워드</div>
+    <div class="kpoints-tags">
+      <span class="kp">📌 주말 미-이란 외교 동향</span>
+      <span class="kp">📌 WTI $100 안착 여부</span>
+      <span class="kp">📌 S&amp;P 500 6,200 지지선</span>
+      <span class="kp">📌 분기말 윈도드레싱</span>
+      <span class="kp">📌 VIX 31 극도 공포 지속</span>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  ✅ 가격: Yahoo Finance (yfinance 실측값) · 🔍 뉴스: CNBC · CNN · TheStreet · Schwab · Edward Jones · Trading Economics<br>
+  본 리포트는 AI가 공개된 금융 데이터·뉴스를 수집·분석하여 생성합니다. 투자 판단의 참고 자료로만 활용하시고, 실제 투자 시 전문가 의견을 반드시 참조하세요.
+</div>
+
+</div>
+</body>
+</html>
