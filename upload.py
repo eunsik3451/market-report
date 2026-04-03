@@ -298,6 +298,54 @@ def build_card(meta, featured=False):
     </a>"""
 
 
+def _trio(a, b, c, ca, cb, cc):
+    return (f'🇰🇷 <span class="{ca}">{a}</span> &nbsp;'
+            f'🇺🇸 <span class="{cb}">{b}</span> &nbsp;'
+            f'🛢️ <span class="{cc}">{c}</span>')
+
+
+def build_card_data(meta):
+    """JS CARD_DATA 객체용 딕셔너리 생성"""
+    kr  = meta["kospi_chg"]
+    us  = meta["nasdaq_chg"]
+    sp  = meta["sp_chg"]
+    co  = meta["wti_chg"]
+    gld = meta["gold_chg"]
+    cop = meta["copper_chg"]
+    bb  = meta["best_name"] + " " + meta["best_val"]
+    dl  = meta["date_label"] + " " + meta["weekday"] + "요일"
+
+    def tc(v): return "up-bg" if v and "+" in v else ("dn-bg" if v and "-" in v else "mix-bg")
+    def sp2(v): return "up" if v and "+" in v else ("dn" if v and "-" in v else "nt")
+
+    return {
+        "all": {
+            "thumb": tc(meta["kospi_chg"]) if not meta["rtype"] == "weekly" else "wk-bg",
+            "big":   bb,
+            "label": f"📅 {meta['rtype_label']} · {dl}",
+            "trio":  _trio(kr, us, co, sp2(kr), sp2(us), sp2(co)),
+        },
+        "kr": {
+            "thumb": tc(kr),
+            "big":   f"KOSPI {kr}",
+            "label": f"🇰🇷 한국 시황 · {dl}",
+            "trio":  _trio(kr, us, sp, sp2(kr), sp2(us), sp2(sp)),
+        },
+        "us": {
+            "thumb": "up-bg" if us and "+" in us else "dn-bg",
+            "big":   f"나스닥 {us}",
+            "label": f"🇺🇸 미국 시황 · {dl}",
+            "trio":  _trio(us, sp, gld, sp2(us), sp2(sp), sp2(gld)),
+        },
+        "co": {
+            "thumb": "up-bg" if co and "+" in co else "dn-bg",
+            "big":   f"WTI {co}",
+            "label": f"🪨 원자재 시황 · {dl}",
+            "trio":  _trio(co, gld, cop, sp2(co), sp2(gld), sp2(cop)),
+        },
+    }
+
+
 def rebuild_index():
     def extract_date(f):
         m = re.search(r"(\d{8})", f.name)
@@ -316,6 +364,13 @@ def rebuild_index():
     grid_html     = "\n".join(build_card(m) for m in metas[1:])
     fm = metas[0]
 
+    # CARD_DATA JS 객체 생성
+    import json
+    card_data_js = "const CARD_DATA = " + json.dumps(
+        {m["fname"]: build_card_data(m) for m in metas},
+        ensure_ascii=False, indent=2
+    ) + ";"
+
     idx = INDEX_FILE.read_text(encoding="utf-8")
     idx = re.sub(r'<!-- FEATURED_START -->.*?<!-- FEATURED_END -->',
                  f'<!-- FEATURED_START -->{featured_html}\n  <!-- FEATURED_END -->',
@@ -326,6 +381,12 @@ def rebuild_index():
     idx = re.sub(r'<!-- UPDATE_DATE -->.*?<!-- /UPDATE_DATE -->',
                  f'<!-- UPDATE_DATE -->{fm["date_str"]} 기준<!-- /UPDATE_DATE -->',
                  idx)
+    # CARD_DATA 주입
+    idx = re.sub(
+        r'// <!-- CARD_DATA_START -->.*?// <!-- CARD_DATA_END -->',
+        f'// <!-- CARD_DATA_START -->\n{card_data_js}\n// <!-- CARD_DATA_END -->',
+        idx, flags=re.DOTALL
+    )
 
     # 스트립 지표 업데이트
     for key, val in [("STRIP_KOSPI", fm["kospi_chg"]),
