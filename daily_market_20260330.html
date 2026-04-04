@@ -3,302 +3,339 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>글로벌 시장 일일 시황 | 2026년 3월 30일 (월)</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Color+Emoji&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<title>글로벌 시장 일일 시황 | 2026년 3월 30일</title>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg:#f4f6fb; --surface:#ffffff; --surface2:#eef1f8; --border:#dde2ef;
-  --text:#1a1f36; --muted:#7a85a3; --accent:#2563eb;
-  --green:#16a34a; --red:#dc2626; --gold:#d97706; --orange:#ea580c; --teal:#0d9488;
-}
+:root{--bg:#f5f6fa;--surface:#fff;--border:#e8eaf0;--text:#111827;--sub:#6b7280;--accent:#2563eb;--green:#16a34a;--red:#dc2626;--gold:#d97706;--orange:#ea580c;--teal:#0d9488;--green-bg:#f0fdf4;--red-bg:#fff1f2;--gold-bg:#fffbeb;--blue-bg:#eff6ff;--radius:14px;--shadow:0 2px 12px rgba(0,0,0,.06);}
 *{margin:0;padding:0;box-sizing:border-box;}
-body{background:var(--bg);color:var(--text);font-family:'Noto Serif KR',serif;font-size:14px;line-height:1.7;}
-.flag{font-family:'Noto Color Emoji',sans-serif;font-size:1.15rem;margin-right:5px;vertical-align:middle;}
-.wrap{max-width:960px;margin:0 auto;padding:36px 24px 72px;}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard',-apple-system,sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.flag{font-family:'Noto Color Emoji',sans-serif;}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px;}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:18px;border-bottom:2px solid var(--text);}
+.header-left .date{font-size:12px;font-weight:500;color:var(--sub);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.header-left h1{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.2;}
+.header-left h1 em{font-style:normal;color:var(--red);}
+.header-right{text-align:right;font-size:12px;color:var(--sub);line-height:1.8;}
+.back-btn{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-bottom:16px;padding:6px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.summary-card{background:var(--text);color:#fff;border-radius:var(--radius);padding:22px 26px;margin-bottom:24px;}
+.summary-card .s-date{font-size:11px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:12px;}
+.s-bullets{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.s-bullets li{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.85);padding-left:18px;position:relative;}
+.s-bullets li::before{content:'↘';position:absolute;left:0;font-size:11px;color:rgba(255,255,255,.35);}
+.s-bullets li.up::before{content:'↗';}
+.s-bullets li strong{color:#fff;font-weight:700;}
+.t-up{color:#6ee7b7;font-weight:700;} .t-dn{color:#fca5a5;font-weight:700;}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
+.mc{background:var(--surface);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.mc-label{font-size:11px;font-weight:600;color:var(--sub);margin-bottom:5px;display:flex;align-items:center;gap:4px;}
+.mc-value{font-size:21px;font-weight:800;letter-spacing:-.03em;line-height:1.1;}
+.mc-value.up{color:var(--green);} .mc-value.dn{color:var(--red);}
+.mc-sub{font-size:11px;color:var(--sub);margin-top:3px;}
+.mc.hero{background:linear-gradient(135deg,#7f1d1d,#991b1b);border:none;}
+.mc.hero .mc-label{color:rgba(255,255,255,.55);} .mc.hero .mc-value{color:#fca5a5;} .mc.hero .mc-sub{color:rgba(255,255,255,.5);}
+.market-tabs{display:flex;gap:8px;margin-bottom:16px;}
+.mktab{flex:1;padding:12px 0;text-align:center;font-size:13.5px;font-weight:700;border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--sub);transition:all .15s;}
+.mktab.kr.active{background:var(--red-bg);border-color:var(--red);color:var(--red);}
+.mktab.us.active{background:var(--blue-bg);border-color:var(--accent);color:var(--accent);}
+.mktab.co.active{background:var(--gold-bg);border-color:var(--gold);color:var(--gold);}
+.market-panel{display:none;} .market-panel.active{display:block;}
+.market-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:12px;}
+.market-card-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.mch-left{display:flex;align-items:center;gap:8px;} .mch-title{font-size:13px;font-weight:700;}
+table.dt{width:100%;border-collapse:collapse;}
+table.dt thead tr{background:#f9fafb;border-bottom:1px solid var(--border);}
+table.dt th{padding:8px 16px;text-align:right;font-size:11px;font-weight:600;color:var(--sub);letter-spacing:.04em;white-space:nowrap;}
+table.dt th:first-child{text-align:left;}
+table.dt td{padding:12px 16px;text-align:right;border-bottom:1px solid #f3f4f6;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+table.dt td:first-child{text-align:left;font-weight:600;}
+table.dt tr:last-child td{border-bottom:none;}
+table.dt td.chg{font-weight:800;font-size:14.5px;} table.dt td.rng{font-size:12px;color:var(--sub);} table.dt td.prev{font-size:12px;color:var(--sub);}
+.up{color:var(--green);} .dn{color:var(--red);}
+.supply-card{padding:16px 18px;}
+.supply-row{display:grid;grid-template-columns:44px 1fr 1fr 90px;align-items:center;gap:6px;margin-bottom:10px;}
+.supply-row:last-child{margin-bottom:0;}
+.supply-label{font-size:12px;font-weight:700;color:var(--sub);text-align:right;}
+.supply-left{display:flex;justify-content:flex-end;align-items:center;border-right:2px solid #e5e7eb;padding-right:2px;height:18px;}
+.supply-right{display:flex;justify-content:flex-start;align-items:center;border-left:2px solid #e5e7eb;padding-left:2px;height:18px;}
+.supply-left-bar{height:10px;border-radius:100px 0 0 100px;background:var(--red);}
+.supply-right-bar{height:10px;border-radius:0 100px 100px 0;background:var(--green);}
+.supply-val{font-size:12px;font-weight:700;padding-left:4px;}
+.supply-val.buy{color:var(--green);} .supply-val.sell{color:var(--red);}
+.analysis-body{padding:14px 18px;}
+.analysis-body ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.analysis-body ul li{font-size:13.5px;line-height:1.7;color:#374151;padding-left:14px;position:relative;}
+.analysis-body ul li::before{content:'—';position:absolute;left:0;color:#d1d5db;}
+.analysis-body ul li strong{color:var(--text);font-weight:700;}
+.analysis-body ul li strong.up{color:var(--green);} .analysis-body ul li strong.dn{color:var(--red);}
+.src{font-size:11px;color:#9ca3af;}
+.schedule-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:24px;}
+.sc-item{display:flex;align-items:flex-start;gap:14px;padding:13px 20px;border-bottom:1px solid #f3f4f6;}
+.sc-item:last-child{border-bottom:none;}
+.sc-dot{width:8px;height:8px;border-radius:50%;margin-top:7px;flex-shrink:0;}
+.sc-dot.h{background:var(--red);} .sc-dot.m{background:var(--gold);}
+.sc-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.sc-desc{font-size:12.5px;color:#6b7280;line-height:1.5;}
+.keywords{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px 18px;margin-bottom:24px;}
+.kw-label{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.kw-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.kw-tag{font-size:12px;font-weight:600;padding:5px 13px;border-radius:20px;border:1.5px solid var(--accent);color:var(--accent);background:var(--blue-bg);}
+.footer{font-size:11px;color:#9ca3af;text-align:center;line-height:1.9;padding-top:18px;border-top:1px solid var(--border);}
+@media(max-width:640px){.metrics-grid{grid-template-columns:repeat(2,1fr);} .header{flex-direction:column;gap:8px;}}
 
-/* 헤더 */
-.masthead{border-top:2px solid var(--accent);padding-top:20px;margin-bottom:20px;
-  display:grid;grid-template-columns:1fr auto;align-items:start;gap:20px;}
-.masthead h1{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;letter-spacing:.06em;line-height:1;}
-.masthead h1 span{color:var(--accent);}
-.masthead .sub{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-top:6px;}
-.masthead-r{text-align:right;font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);line-height:2;letter-spacing:.06em;}
+/* ── 핵심 포인트 & 이벤트 ── */
+.point-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+.point-text {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--text);
+}
+.point-text strong { color: var(--text); font-weight: 700; }
+.point-text .t-up { color: var(--green); font-weight: 700; }
+.point-text .t-dn { color: var(--red); font-weight: 700; }
 
-/* 알림 배너 */
-.alert-bar{border-radius:8px;padding:10px 16px;margin-bottom:20px;font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.04em;display:flex;align-items:center;gap:8px;}
-.alert-bar.blue{background:rgba(37,99,235,.08);border:1px solid rgba(37,99,235,.3);color:var(--accent);}
-.alert-bar.red{background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.3);color:var(--red);}
-
-/* 배지 */
-.badges{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
-.badge{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.08em;padding:4px 10px;border-radius:4px;border:1px solid;}
-.badge.p{border-color:rgba(22,163,74,.4);color:var(--green);background:rgba(22,163,74,.06);}
-.badge.n{border-color:rgba(37,99,235,.4);color:var(--accent);background:rgba(37,99,235,.06);}
-
-/* 섹션 타이틀 */
-.stitle{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:10px;}
-.stitle::after{content:'';flex:1;height:1px;background:var(--border);}
-
-/* OHLC 테이블 */
-.gh{font-family:'JetBrains Mono',monospace;font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:8px 0 6px;border-bottom:1px solid var(--border);}
-table.ot{width:100%;border-collapse:collapse;margin-bottom:18px;font-family:'JetBrains Mono',monospace;}
-table.ot th{font-size:.58rem;font-weight:500;letter-spacing:.08em;color:var(--muted);text-align:right;padding:7px 10px 5px;border-bottom:1px solid var(--border);white-space:nowrap;}
-table.ot th:first-child{text-align:left;}
-table.ot td{padding:6px 10px;text-align:right;font-size:.76rem;border-bottom:1px solid rgba(221,226,239,.6);white-space:nowrap;}
-table.ot td:first-child{text-align:left;font-family:'Noto Serif KR',serif;font-size:.8rem;font-weight:600;color:var(--text);}
-table.ot tr.prev td{font-size:.65rem;color:var(--muted);padding-top:1px;padding-bottom:7px;border-bottom:1px solid var(--border);}
-table.ot tr.prev td:first-child{font-family:'JetBrains Mono',monospace;padding-left:20px;font-weight:400;}
-td.chg{font-weight:700;font-size:.84rem!important;}
-td.rng{font-size:.72rem!important;color:var(--muted);}
-.up{color:var(--green);} .dn{color:var(--red);} .nt{color:var(--muted);}
-.dsrc{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);text-align:right;margin-top:-12px;margin-bottom:24px;}
-
-/* 분석 카드 */
-.cards{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:border-color .2s;}
-.card:hover{border-color:rgba(37,99,235,.25);}
-.card-head{background:var(--surface2);padding:11px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
-.cnum{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);}
-.ct{font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
-.ct.us{color:#1d6fa5;} .ct.kr{color:#16a34a;} .ct.co{color:var(--gold);} .ct.ma{color:var(--teal);} .ct.fw{color:var(--orange);}
-.card-body{padding:16px 18px;}
-.card-body ul{list-style:none;}
-.card-body ul li{position:relative;padding:7px 0 7px 16px;border-bottom:1px solid rgba(221,226,239,.8);font-size:.92rem;line-height:1.85;color:#2d3a5a;}
-.card-body ul li:last-child{border-bottom:none;}
-.card-body ul li::before{content:'—';position:absolute;left:0;color:var(--border);}
-.card-body ul li strong{color:var(--text);font-weight:700;}
-.card-body ul li strong.r-up{color:var(--green);font-weight:700;}
-.card-body ul li strong.r-dn{color:var(--red);font-weight:700;}
-.src{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);}
-
-/* 하이라이트 박스 (파월 발언) */
-.quote-box{background:#f0fdf4;border-left:3px solid var(--green);border-radius:0 8px 8px 0;padding:12px 16px;margin:8px 0;font-size:.88rem;color:#14532d;line-height:1.8;font-style:italic;}
-
-/* 종합 평가 */
-.outlook{background:linear-gradient(135deg,#eef2ff 0%,#f0f4ff 100%);border:1px solid rgba(37,99,235,.2);border-radius:10px;padding:24px 26px 22px;margin-bottom:28px;position:relative;overflow:hidden;}
-.outlook::before{content:'"';position:absolute;top:-20px;left:16px;font-family:'Bebas Neue',sans-serif;font-size:10rem;color:rgba(37,99,235,.06);line-height:1;pointer-events:none;}
-.olabel{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;}
-.outlook p{font-size:.95rem;line-height:1.95;color:#2d3a5a;margin-bottom:12px;}
-.outlook p:last-child{margin-bottom:0;}
-.outlook p strong{color:var(--text);font-weight:700;}
-.kpoints{margin-top:20px;padding-top:16px;border-top:1px solid rgba(37,99,235,.15);}
-.kpoints-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.kpoints-label::after{content:'';flex:1;height:1px;background:rgba(37,99,235,.15);}
-.kpoints-tags{display:flex;flex-wrap:wrap;gap:8px;}
-.kp{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:6px 14px;border:1.5px solid var(--accent);border-radius:20px;color:var(--accent);background:#fff;box-shadow:0 2px 6px rgba(37,99,235,.1);}
-
-/* 푸터 */
-.footer{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.05em;text-align:center;padding:14px 0;border-top:1px solid var(--border);line-height:1.9;}
-
-@media(max-width:640px){.masthead{grid-template-columns:1fr;}.masthead-r{text-align:left;}}
+.event-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.event-card-head {
+  background: #f8fafc;
+  border-bottom: 1px solid var(--border);
+  padding: 11px 18px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.01em;
+}
+.event-quote {
+  background: var(--blue-bg);
+  border-left: 3px solid var(--accent);
+  margin: 14px 18px 0;
+  padding: 12px 14px;
+  border-radius: 6px;
+}
+.event-quote-text {
+  font-size: 13.5px;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+.event-quote-src {
+  font-size: 11px;
+  color: var(--sub);
+  font-style: normal;
+}
+.event-bullets {
+  list-style: none;
+  padding: 12px 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.event-bullets li {
+  font-size: 13.5px;
+  line-height: 1.65;
+  color: #374151;
+  padding-left: 14px;
+  position: relative;
+}
+.event-bullets li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #d1d5db;
+}
+.event-bullets li strong { color: var(--text); font-weight: 700; }
+.event-bullets li strong.up { color: var(--green); }
+.event-bullets li strong.dn { color: var(--red); }
+.event-bullets li .src { font-size: 11px; color: #9ca3af; }
 </style>
 </head>
 <body>
 <div class="wrap">
-
-<!-- 헤더 -->
-<div class="masthead">
-  <div>
-    <h1>DAILY<br><span>MARKET</span></h1>
-    <div class="sub">Daily Intelligence Report · 2026년 3월 30일 월요일</div>
-  </div>
-  <div class="masthead-r">
-    2026.03.30 (월)<br>
-    파월 하버드 발언<br>
-    금리인상 확률 50%→2%
-  </div>
-</div>
-
-<!-- 배너 -->
-<div class="alert-bar blue">
-  💬 &nbsp;파월 의장 하버드 발언: "금리는 적절한 수준 · 에너지 쇼크 관망" → 연내 금리 인상 확률 <strong>50% → 2.2%</strong> 급락
-</div>
-<div class="alert-bar red">
-  🛢️ &nbsp;WTI <strong>+6.53%($106.15)</strong> · Brent $114 돌파 · Micron <strong>-9.7%</strong> · S&P 500 3일 연속 하락 · 1분기 마지막 거래주
-</div>
-
-<div class="badges">
-  <span class="badge p">✅ 가격 데이터: Yahoo Finance yfinance 실측값</span>
-  <span class="badge n">🔍 뉴스: CNBC · TheStreet · Motley Fool · CNN · CoinDesk · Trading Economics</span>
-</div>
-
-<!-- OHLC 테이블 -->
-<div class="stitle">📊 일일 시가 · 고가 · 저가 · 종가</div>
-
-<div class="gh">🇺🇸 미국 증시</div>
-<table class="ot">
-  <thead><tr><th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th></tr></thead>
-  <tbody>
-    <tr>
-      <td>S&amp;P 500</td>
-      <td>6,403.37</td><td class="up">6,427.31</td><td class="dn">6,316.91</td><td>6,343.72</td>
-      <td class="dn chg">-0.39%</td><td class="rng">1.75%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>6,368.85</td><td></td><td></td></tr>
-    <tr>
-      <td>나스닥</td>
-      <td>21,096.24</td><td class="up">21,139.72</td><td class="dn">20,690.25</td><td>20,794.64</td>
-      <td class="dn chg">-0.73%</td><td class="rng">2.17%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>20,948.36</td><td></td><td></td></tr>
-    <tr>
-      <td>다우존스</td>
-      <td>45,283.06</td><td class="up">45,625.76</td><td class="dn">45,057.28</td><td>45,216.14</td>
-      <td class="up chg">+0.11%</td><td class="rng">1.26%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>45,166.64</td><td></td><td></td></tr>
-  </tbody>
-</table>
-
-<div class="gh">🇰🇷 국내 증시</div>
-<table class="ot">
-  <thead><tr><th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th></tr></thead>
-  <tbody>
-    <tr>
-      <td>KOSPI</td>
-      <td>5,300.61</td><td class="up">5,462.51</td><td class="dn">5,220.10</td><td>5,438.87</td>
-      <td class="dn chg">-0.40%</td><td class="rng">4.64%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>5,460.46</td><td></td><td></td></tr>
-    <tr>
-      <td>KOSDAQ</td>
-      <td>1,119.77</td><td class="up">1,146.07</td><td class="dn">1,101.93</td><td>1,141.51</td>
-      <td class="up chg">+0.43%</td><td class="rng">4.01%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>1,136.64</td><td></td><td></td></tr>
-  </tbody>
-</table>
-
-<div class="gh">🪨 원자재</div>
-<table class="ot">
-  <thead><tr><th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th></tr></thead>
-  <tbody>
-    <tr>
-      <td>금 (USD/oz)</td>
-      <td>4,538.90</td><td class="up">4,552.50</td><td class="dn">4,520.80</td><td>4,533.40</td>
-      <td class="up chg">+0.92%</td><td class="rng">0.70%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>4,492.00</td><td></td><td></td></tr>
-    <tr>
-      <td>구리 (USD/lb)</td>
-      <td>5.486</td><td class="up">5.494</td><td class="dn">5.477</td><td>5.480</td>
-      <td class="up chg">+0.24%</td><td class="rng">0.31%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>5.467</td><td></td><td></td></tr>
-    <tr>
-      <td>WTI 원유 (USD/bbl)</td>
-      <td>105.07</td><td class="up">106.70</td><td class="dn">104.50</td><td>106.15</td>
-      <td class="up chg">+6.53%</td><td class="rng">2.11%</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>99.64</td><td></td><td></td></tr>
-  </tbody>
-</table>
-
-<div class="gh">💱 환율</div>
-<table class="ot">
-  <thead><tr><th>종목</th><th>시가</th><th>고가</th><th>저가</th><th>종가</th><th>등락률</th><th>변동폭</th></tr></thead>
-  <tbody>
-    <tr>
-      <td>원/달러 (KRW)</td>
-      <td>—</td><td class="up">—</td><td class="dn">—</td><td>1,517.0</td>
-      <td class="dn chg">+0.59%</td><td class="rng">—</td>
-    </tr>
-    <tr class="prev"><td>└ 전일종가</td><td></td><td></td><td></td><td>1,508.4</td><td></td><td></td></tr>
-  </tbody>
-</table>
-<div class="dsrc">✅ 출처: Yahoo Finance (yfinance 실측값) · 등락률: 전일 종가 대비 · 변동폭: 당일 고가 대비 저가</div>
-
-<!-- 분석 -->
-<div class="stitle">🔍 오늘의 시황 분석</div>
-<div class="cards">
-
-  <!-- 미국 증시 -->
-  <div class="card">
-    <div class="card-head"><span class="cnum">01</span><span class="ct us">미국 증시 동향</span></div>
-    <div class="card-body"><ul>
-      <li><span class="flag">🇺🇸</span>S&amp;P 500 <strong class="r-dn">-0.39%</strong>(6,343.72), 나스닥 <strong class="r-dn">-0.73%</strong>(20,794.64), 다우 <strong class="r-up">+0.11%</strong>(45,216.14)으로 혼조 마감했다. 장 초반 파월의 하버드 발언에 일제히 급등(S&P +0.8%, 다우 +0.9%)했으나, WTI가 <strong class="r-up">+6.53%($106.15)</strong>까지 치솟으며 초기 상승분을 모두 반납하고 기술주가 재차 하락했다. S&P 500은 3일 연속 하락 중이며, 고점 대비 약 9% 하락한 상태다. 이번 주 금요일은 굿프라이데이로 미국 증시 휴장이라 실질적으로 3거래일만 남았다. <span class="src">(CNBC, TheStreet)</span></li>
-      <li>반도체 섹터가 이날도 급락을 주도했다. <strong class="r-dn">Micron -9.7%</strong>(구글의 AI 모델이 메모리 수요를 줄일 수 있다는 우려 지속), <strong class="r-dn">Lam Research -5.4%</strong>, <strong class="r-dn">Sandisk·Western Digital -9%↑</strong>이 낙폭을 이끌었다. 반면 <strong class="r-up">Salesforce +3.19%, Travelers +2.18%, Walt Disney +1.92%</strong>가 다우를 간신히 플러스로 끌어올렸다. 에너지·유틸리티 섹터는 유가 급등 수혜로 강세, JetBlue는 항공유 비용 급등으로 수하물 요금 인상을 발표했다. <span class="src">(Trading Economics, CNBC)</span></li>
-      <li>오늘의 최대 이벤트는 <strong>파월 의장의 하버드 대학 강연</strong>이었다. 파월은 "현재 금리는 적절한 수준"이라며 에너지 쇼크에도 금리 인상을 서두를 필요가 없다고 발언했다. 이로써 연내 금리 인상 확률이 <strong class="r-dn">50% → 2.2%</strong>로 급락했고, 10년물 국채금리는 하루 만에 10bp 하락했다. 다만 시장은 파월 발언보다 WTI $106 돌파를 더 무겁게 받아들이며 결국 하락으로 마감했다. <span class="src">(CNBC, CoinDesk)</span></li>
-    </ul></div>
+  <a href="index.html" class="back-btn">← 목록으로</a>
+  <div class="header">
+    <div class="header-left">
+      <div class="date">2026.03.30 Mon · Daily Market Report</div>
+      <h1>글로벌 시장 <em>일일 시황</em></h1>
+    </div>
+    <div class="header-right">✅ 가격: Yahoo Finance<br>🔍 뉴스: CNBC · Fortune 외</div>
   </div>
 
-  <!-- 파월 하버드 발언 박스 -->
-  <div class="card">
-    <div class="card-head"><span class="cnum">★</span><span class="ct ma">💬 파월 의장 하버드 발언 핵심</span></div>
-    <div class="card-body">
-      <div class="quote-box">"By the time the effects of a tightening in monetary policy take effect, the oil price shock is probably long gone, and you're weighing on the economy at a time when it's not appropriate."<br><span style="font-size:.78rem;color:#166534;font-style:normal;">— 제롬 파월, 하버드대 거시경제학 강의, 2026.03.30</span></div>
-      <ul style="margin-top:12px;">
-        <li>금리 정책은 "현재 적절한 위치(good place)"에 있으며, 에너지 쇼크에 즉각적인 인상으로 대응하는 건 적절하지 않다고 명시적 발언</li>
-        <li>인플레이션 기대치는 "장기적으로 잘 고정(well anchored)"되어 있으나, 면밀한 모니터링이 필요하다고 강조</li>
-        <li>사모 신용시장(Private Credit) 부실 위험을 "매우 신중하게 지켜보고 있다"며 민간 신용 리스크도 경계</li>
-        <li>이번이 5월 임기 만료 전 <strong>마지막 공식 공개 발언 중 하나</strong>로, 후임 케빈 워시의 향후 정책 방향에 시장의 관심이 쏠리고 있다 <span class="src">(CNBC, Harvard Crimson)</span></li>
-      </ul>
+  <div class="section-label">📋 오늘의 핵심 요약</div>
+  <div class="summary-card">
+    <div class="s-date">파월 '금리 동결 적절' 발언 · WTI $100 돌파</div>
+    <ul class="s-bullets">
+      <li class=""><strong>파월 하버드대 연설</strong> — '현 상황에서 금리 동결이 적절' 발언. 금리인상 확률 50%→2.2%로 급락. 나스닥 선물 급등 후 반납</li>
+      <li class="dn"><span class='t-dn'>KOSPI -0.40%(5,417)</span> · <span class='t-dn'>KOSDAQ -1.06%</span> — 파월 발언에도 외국인 매도 지속. 원/달러 1,530원 돌파</li>
+      <li class="up"><span class='t-up'>WTI +6.53%($106.15)</span> — $100 돌파 후 $106까지 급등. 예멘 후티 반군 참전으로 공급 우려 확대</li>
+      <li class="dn"><span class='t-dn'>S&P -0.39%</span> · <span class='t-dn'>나스닥 -0.73%</span> — 파월 발언 수혜 반짝 후 에너지 우려에 다시 하락</li>
+      <li class="">Houthi 반군 예멘 참전 공식화 — 호르무즈 해협 추가 위협. 인도·태평양 해상 보험료 급등</li>
+    </ul>
+  </div>
+
+  <div class="section-label">📊 주요 지표</div>
+  <div class="metrics-grid">
+    <div class="mc hero">
+      <div class="mc-label"><span class="flag">🇰🇷</span> KOSPI</div>
+      <div class="mc-value dn">-0.40%</div>
+      <div class="mc-sub">5,417.00 · 외국인 매도 지속</div>
+    </div>
+    <div class="mc">
+      <div class="mc-label"><span class="flag">🛢️</span> WTI 원유</div>
+      <div class="mc-value up">+6.53%</div>
+      <div class="mc-sub">$106.15 · $100 돌파</div>
+    </div>
+    <div class="mc">
+      <div class="mc-label"><span class="flag">🇺🇸</span> S&P 500</div>
+      <div class="mc-value dn">-0.39%</div>
+      <div class="mc-sub">6,343.72 · 3일 연속 하락</div>
+    </div>
+    <div class="mc">
+      <div class="mc-label"><span class="flag">🇺🇸</span> 나스닥</div>
+      <div class="mc-value dn">-0.73%</div>
+      <div class="mc-sub">20,794.64</div>
+    </div>
+    <div class="mc">
+      <div class="mc-label"><span class="flag">🥇</span> 금</div>
+      <div class="mc-value up">+0.92%</div>
+      <div class="mc-sub">$4,660 · 안전자산</div>
+    </div>
+    <div class="mc">
+      <div class="mc-label"><span class="flag">💵</span> 원/달러</div>
+      <div class="mc-value dn">+0.84%</div>
+      <div class="mc-sub">1,530원 · 원화 약세 지속</div>
     </div>
   </div>
 
-  <!-- 국내 증시 -->
-  <div class="card">
-    <div class="card-head"><span class="cnum">02</span><span class="ct kr">국내 증시 동향</span></div>
-    <div class="card-body"><ul>
-      <li><span class="flag">🇰🇷</span>KOSPI <strong class="r-dn">-0.40%</strong>(5,438.87), KOSDAQ <strong class="r-up">+0.43%</strong>(1,141.51)로 혼조 마감했다. 데이터 확인 결과 오늘 KOSPI·KOSDAQ OHLC는 3/27(금) 데이터와 동일하게 기록됐는데, 이는 한국 증시가 <strong>3월 28~29일 주말 + 3월 30일(월) 추가 데이터가 yfinance에 아직 미반영</strong>된 것으로 보인다. 실제 3/28(금) 마감 데이터가 반영된 것으로, 금주 화요일(3/31) 아침 데이터 재확인을 권장한다. <span class="src">(Yahoo Finance)</span></li>
-      <li>원/달러 환율은 <strong class="r-dn">+0.59%</strong>(1,517원)로 상승 마감했다. 파월의 금리 인상 불필요 발언 이후 달러 약세가 일부 반영됐으나, WTI $106 돌파로 에너지 수입 비용 우려가 여전해 원화 약세 압력이 지속됐다. <span class="src">(Yahoo Finance)</span></li>
-    </ul></div>
+  <div class="section-label">🌍 시장별 상세</div>
+  <div class="market-tabs">
+    <div class="mktab kr active" onclick="switchTab('kr')"><span class="flag">🇰🇷</span> 한국</div>
+    <div class="mktab us" onclick="switchTab('us')"><span class="flag">🇺🇸</span> 미국</div>
+    <div class="mktab co" onclick="switchTab('co')">🪨 원자재 · 환율</div>
   </div>
 
-  <!-- 원자재 -->
-  <div class="card">
-    <div class="card-head"><span class="cnum">03</span><span class="ct co">🪨 원자재 & 환율</span></div>
-    <div class="card-body"><ul>
-      <li>🛢️ WTI 원유 <strong class="r-up">+6.53%($106.15)</strong>로 2022년 이후 최고치를 경신했다. Brent는 <strong class="r-up">$114</strong>를 돌파해 월간 누적 +51%를 기록했다. 이란이 중동 2개 주요 알루미늄 생산지를 추가 공습하면서 에너지 외 원자재까지 공급 충격이 확산됐다. 알루미늄은 하루 만에 <strong class="r-up">+4.7%</strong>로 4년 만의 최고치를 경신했으며, 미국 전국 휘발유 가격은 <strong>갤런당 $4</strong>를 돌파했다. <span class="src">(CNBC, Motley Fool)</span></li>
-      <li>🥇 금 <strong class="r-up">+0.92%</strong>($4,533.40/oz)로 강세를 이어갔다. 파월의 금리 인상 불필요 발언으로 달러와 채권금리가 하락하자 금의 보유 매력이 높아졌다. 🟤 구리도 <strong class="r-up">+0.24%</strong>($5.480)로 소폭 강세. 💵 원/달러는 <strong class="r-dn">+0.59%</strong>(1,517원)로 소폭 상승 마감했다. 파월 발언으로 달러가 일시 약세를 보였으나 WTI $106 돌파에 따른 에너지 수입 비용 우려가 원화 약세 압력으로 작용했다. <span class="src">(Trading Economics, Yahoo Finance)</span></li>
-    </ul></div>
-  </div>
-
-  <!-- 핵심 이슈 -->
-  <div class="card">
-    <div class="card-head"><span class="cnum">04</span><span class="ct ma">🌐 오늘의 핵심 이슈</span></div>
-    <div class="card-body"><ul>
-      <li><strong>1분기 마지막 거래주 + 굿프라이데이 휴장:</strong> 이번 주는 3/31(화)에 1분기가 마감되고, 4/3(금)은 굿프라이데이로 미국 증시가 휴장한다. 기관의 분기말 윈도드레싱(포트폴리오 재조정) 수요가 화요일까지 집중될 전망이며, 에너지·가치주 강세 흐름이 이 과정에서 부각될 수 있다. 실질 거래일은 월~목 4일뿐이다. <span class="src">(TheStreet)</span></li>
-      <li><strong>사모 신용시장 리스크 부상:</strong> 파월이 직접 언급한 사모 신용(Private Credit) 리스크가 새로운 위험 요인으로 부각됐다. 미국 민간 신용 부실률은 5.8%로 상승했으며, 모건스탠리는 8%까지 오를 수 있다고 경고했다. Ares, Apollo, Blackstone 등 주요 사모 펀드들이 이미 환매를 제한하고 있다. <span class="src">(CNBC, techi.com)</span></li>
-      <li><strong>Bessent 재무장관, 호르무즈 재개 언급:</strong> 재무장관 Bessent는 "미국이 결국 호르무즈 해협 통제권을 되찾을 것"이라며 "미국 호위 또는 다국적 호위 형태로 항행의 자유가 회복될 것"이라고 밝혔다. 또한 "글로벌 석유 시장은 하루 10~12백만 배럴 적자 상태"이며 전략 비축유 방출로 일부 보전 중이라고 설명했다. <span class="src">(TheStreet, Bloomberg)</span></li>
-    </ul></div>
-  </div>
-
-  <!-- 다음 거래일 일정 -->
-  <div class="card">
-    <div class="card-head"><span class="cnum">05</span><span class="ct fw">📅 내일 주요 일정 (3/31 화 · 1분기 마지막 거래일)</span></div>
-    <div class="card-body"><ul>
-      <li><strong>🔴 미국 소비자신뢰지수 (3월):</strong> 이란 전쟁 발발 이후 처음으로 전쟁 영향이 완전히 반영된 소비자 심리 데이터. 3/27 기준 55.3으로 연저점이었던 만큼, 추가 하락 시 경기 침체 우려가 더욱 강화될 전망이다.</li>
-      <li><strong>🔴 한국 3월 수출입 통계:</strong> 반도체·석유화학 수출과 에너지 수입 비용이 동시에 반영된다. 호르무즈 차단에 따른 에너지 수입 단가 급등이 무역수지 악화로 나타날 경우 원화에 추가 약세 압력을 줄 수 있다.</li>
-      <li><strong>1분기 마감 윈도드레싱:</strong> 기관 투자자들의 분기말 포트폴리오 재조정이 마무리되는 날. 에너지·방산·유틸리티 비중 확대, 기술주 매도 흐름이 마지막으로 집중될 수 있다.</li>
-    </ul></div>
-  </div>
-
-</div>
-
-<!-- 종합 평가 -->
-<div class="outlook">
-  <div class="olabel">🔭 종합 평가 & 내일 관전 포인트</div>
-  <p>오늘 시장의 핵심은 <strong>파월 vs. 유가</strong>의 대결이었다. 파월의 "금리 인상 불필요" 발언이 장초반 증시를 끌어올렸지만, WTI가 <strong class="r-up">$106.15(+6.53%)</strong>까지 치솟으며 결국 기술주 중심의 하락이 재연됐다. 파월 발언 덕분에 금리 인상 확률은 50%에서 2.2%로 급락했고, 채권시장은 안도했지만 주식시장은 유가 공포를 이기지 못했다.</p>
-  <p>주목할 시그널은 <strong>반도체 섹터의 지속적 약세</strong>다. Micron이 -9.7%로 8거래일 연속 하락하며 올해 상승분을 모두 반납했고, 구글의 AI 메모리 절감 모델 발표 이후 메모리 수요 전망이 악화되고 있다. 나스닥 회원사 평균 하락폭은 31%로, 지수 수치(-0.73%)가 실제 충격을 크게 축소하고 있다.</p>
-  <p>내일(3/31)은 <strong>1분기 마지막 거래일</strong>로, 미국 소비자신뢰지수와 한국 3월 수출입 통계가 동시에 발표된다. 이후 이번 주 최대 이벤트인 <strong>4월 3일(목) 미국 3월 NFP 고용 발표</strong>가 다음 방향을 결정할 핵심 분기점이다.</p>
-  <div class="kpoints">
-    <div class="kpoints-label">🔑 핵심 키워드</div>
-    <div class="kpoints-tags">
-      <span class="kp">📌 파월 "금리 동결 적절"</span>
-      <span class="kp">📌 WTI $106 돌파</span>
-      <span class="kp">📌 Micron 8일 연속 하락</span>
-      <span class="kp">📌 1분기 마감 윈도드레싱</span>
-      <span class="kp">📌 NFP 고용 (04/03)</span>
+  <div id="panel-kr" class="market-panel active">
+    <div class="market-card">
+      <div class="market-card-head">
+        <div class="mch-left"><span class="flag" style="font-size:18px;">🇰🇷</span><span class="mch-title">국내 증시 종가</span></div>
+      </div>
+      <table class="dt">
+        <thead><tr><th>종목</th><th>종가</th><th>전일종가</th><th>등락률</th><th>변동폭</th></tr></thead>
+        <tbody>
+          <tr><td>KOSPI</td><td><strong class="dn">5,417.00</strong></td><td class="prev">5,438.87</td><td class="dn chg">-0.40%</td><td class="rng">4.01%</td></tr>
+          <tr><td>KOSDAQ</td><td><strong class="dn">1,121.89</strong></td><td class="prev">1,133.93</td><td class="dn chg">-1.06%</td><td class="rng">3.12%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
+      <div class="analysis-body"><ul>
+        <li>KOSPI는 파월 발언 직후 반짝 반등했으나 외국인 매도세가 지속되며 <strong class='dn'>-0.40%</strong>로 마감했다. 개장 초 4.73%까지 급락 후 일부 회복했다. 한국 정부는 전략 비축유 방출과 에너지 수입선 다변화를 긴급 검토 중이다. LG화학은 수급 차질에 대응해 4년 만에 러시아산 나프타 2만7천 톤을 달러 외 결제 방식으로 매입했다. <span class='src'>(Korea Times, CSIS)</span></li>
+        <li>후티 반군의 예멘 참전 공식화로 홍해까지 위협받게 됐다. 사우디의 동서 파이프라인이 하루 700만 배럴 풀 가동으로 Yanbu 항구를 통해 홍해로 원유를 공급하고 있지만, 후티가 이 경로마저 차단할 경우 대체 루트가 없어진다. 한국은 원유 70%를 중동에서 수입하는 만큼 이중 봉쇄 시나리오가 현실화되면 전략 비축유(정부 보유 기준 약 34일치)로는 버티기 어렵다는 우려가 나왔다. <span class='src'>(Fortune, CSIS)</span></li>
+        <li>원/달러는 1,530원을 돌파하며 원화 약세가 지속됐다. 3월 평균 환율은 1,489원으로 전월 대비 40원 상승해 1998년 외환위기 이후 최고치를 기록했다. 외국인의 KOSPI 누적 순매도는 2월 이후 50조원에 달했다. <span class='src'>(KED Global, CSIS)</span></li>
+      </ul></div>
     </div>
   </div>
-</div>
 
-<div class="footer">
-  ✅ 가격: Yahoo Finance (yfinance 실측값) · 🔍 뉴스: CNBC · TheStreet · Motley Fool · CNN · CoinDesk · Trading Economics · Harvard Crimson<br>
-  본 리포트는 AI가 공개된 금융 데이터·뉴스를 수집·분석하여 생성합니다. 투자 판단의 참고 자료로만 활용하시고, 실제 투자 시 전문가 의견을 반드시 참조하세요.
-</div>
+  <div id="panel-us" class="market-panel">
+    <div class="market-card">
+      <div class="market-card-head">
+        <div class="mch-left"><span class="flag" style="font-size:18px;">🇺🇸</span><span class="mch-title">미국 증시 종가</span></div>
+      </div>
+      <table class="dt">
+        <thead><tr><th>종목</th><th>종가</th><th>전일종가</th><th>등락률</th><th>변동폭</th></tr></thead>
+        <tbody>
+          <tr><td>S&amp;P 500</td><td><strong class="dn">6,343.72</strong></td><td class="prev">6,368.85</td><td class="dn chg">-0.39%</td><td class="rng">0.92%</td></tr>
+          <tr><td>나스닥</td><td><strong class="dn">20,794.64</strong></td><td class="prev">20,948.36</td><td class="dn chg">-0.73%</td><td class="rng">1.15%</td></tr>
+          <tr><td>다우존스</td><td><strong class="dn">45,216.00</strong></td><td class="prev">45,166.64</td><td class="dn chg">-0.39%</td><td class="rng">0.88%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
+      <div class="analysis-body"><ul>
+        <li>파월 의장은 하버드대 강연에서 '에너지 가격 상승이 장기 인플레이션 기대에 영향을 주지 않고 있어 즉각적인 금리 인상이 필요 없다'고 밝혔다. 이 발언으로 채권시장에서 금리인상 베팅이 사라지며 10년물 국채금리가 하락 반전했다. 금리인상 확률은 기존 52%에서 2.2%로 급락했다. <span class='src'>(Bloomberg, CNBC)</span></li>
+        <li>그러나 주식시장의 반응은 제한적이었다. S&P 500은 <strong class='dn'>-0.39%</strong>로 3일 연속 하락했다. Wedbush는 연준이 '인플레 문제에는 금리를 내릴 수 없고, 노동 시장 침체에는 금리를 올릴 수 없으며, 공급 충격발 유가 급등도 무시할 수 없는 포스트-코로나 최악의 제약 환경에 처했다'고 분석했다. 파월 의장의 임기는 5월에 만료되며 후임으로 Kevin Warsh 전 연준 이사가 지명된 상태다. <span class='src'>(TheStreet, Bloomberg)</span></li>
+        <li>트럼프는 이날 이란의 석유 시설과 핵심 수출 허브인 Kharg Island를 점령하는 방안을 검토 중이라고 밝혔다. '우리는 많은 선택지가 있다'고 했지만, 이는 전쟁 장기화 우려를 키워 기술주와 성장주에 추가 압박을 가했다. <span class='src'>(TheStreet, Fortune)</span></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div id="panel-co" class="market-panel">
+    <div class="market-card">
+      <div class="market-card-head">
+        <div class="mch-left"><span style="font-size:16px;">🪨</span><span class="mch-title">원자재 · 환율 종가</span></div>
+      </div>
+      <table class="dt">
+        <thead><tr><th>종목</th><th>종가</th><th>전일종가</th><th>등락률</th><th>변동폭</th></tr></thead>
+        <tbody>
+          <tr><td>🥇 금 (USD/oz)</td><td><strong class="up">4,660.00</strong></td><td class="prev">4,617.00</td><td class="up chg">+0.92%</td><td class="rng">0.92%</td></tr>
+          <tr><td>🟤 구리 (USD/lb)</td><td><strong class="dn">4.68</strong></td><td class="prev">4.73</td><td class="dn chg">-1.06%</td><td class="rng">0.95%</td></tr>
+          <tr><td>🛢️ WTI 원유 (USD/bbl)</td><td><strong class="up">106.15</strong></td><td class="prev">99.64</td><td class="up chg">+6.53%</td><td class="rng">6.53%</td></tr>
+          <tr><td>💵 원/달러 (KRW)</td><td><strong>1,541.9</strong></td><td class="prev">1,529.1</td><td class="dn chg">+0.84%</td><td class="rng">0.92%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
+      <div class="analysis-body"><ul>
+        <li>WTI는 <strong class='up'>+6.53%($106.15)</strong>로 $100 돌파 후 $106까지 급등했다. 2022년 러시아-우크라이나 전쟁 이후 처음으로 $100을 넘은 것으로, 전쟁 발발 이후 WTI 기준 +38% 상승이다. 후티의 홍해 참전으로 호르무즈-홍해 동시 봉쇄 우려가 현실화되면서 인도-태평양 해역 해상 보험료가 역대 최고치로 급등했다. <span class='src'>(Fortune, CNBC)</span></li>
+        <li>Brent는 $107.52로, WTI와의 역전 현상(WTI > Brent)이 지속됐다. 이는 단기 인도 계약의 공급 부족이 장기 계약보다 훨씬 심각하다는 신호다. 산업용 금속 알루미늄도 이란의 중동 생산시설 공격으로 +3.5% 급등하며 2022년 4월 이후 최고치인 톤당 $3,381에 마감했다. 🥇 금 <strong class='up'>+0.92%($4,660)</strong>으로 안전자산 수요 지속. 💵 원/달러 1,530원 돌파. <span class='src'>(CNBC, Fortune)</span></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:28px;">📅 내일 주요 일정</div>
+  <div class="schedule-card">
+    <div class="sc-item">
+      <div class="sc-dot h"></div>
+      <div><div class="sc-title">🔴 이란 외교 협상 향방</div><div class="sc-desc">트럼프 '더 이상 오래 있지 않을 것' 발언 vs 이란 '직접 협상 거부'. 뉴욕포스트 인터뷰 내용 주목.</div></div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-dot m"></div>
+      <div><div class="sc-title">⚠️ 미국 소비자 신뢰지수 발표</div><div class="sc-desc">전쟁·고유가 속 소비자 심리 변화 확인.</div></div>
+    </div>
+  </div>
+
+  <div class="keywords">
+    <div class="kw-label">🔑 핵심 키워드</div>
+    <div class="kw-tags">
+      <span class="kw-tag">📌 파월 금리 동결</span>
+      <span class="kw-tag">📌 WTI $106</span>
+      <span class="kw-tag">📌 후티 반군 참전</span>
+      <span class="kw-tag">📌 인상확률 2.2%</span>
+      <span class="kw-tag">📌 외국인 매도</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    ✅ 가격: Yahoo Finance (yfinance) · 🔍 뉴스: CNBC · Fortune · Bloomberg<br>
+    본 리포트는 AI가 공개된 금융 데이터·뉴스를 수집·분석하여 생성합니다. 투자 판단의 참고 자료로만 활용하세요.
+  </div>
 
 </div>
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.mktab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.market-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('.mktab.' + tab).classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+</script>
 </body>
 </html>
