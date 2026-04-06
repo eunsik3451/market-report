@@ -7,7 +7,7 @@ import sys, shutil, subprocess, re, json
 from datetime import datetime
 from pathlib import Path
 
-REPO_DIR   = Path(r"C:\Users\john\Desktop\market-report")
+REPO_DIR   = Path(r"C:\Users\hp\Desktop\market-report")
 INDEX_FILE = REPO_DIR / "index.html"
 SITE_URL   = "https://eunsik3451.github.io/market-report"
 
