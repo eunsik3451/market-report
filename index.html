@@ -323,6 +323,84 @@ body {
 @media (max-width: 480px) {
   .card-grid { grid-template-columns: 1fr; }
 }
+
+/* ── 피처드 카드 바디 ── */
+.featured-body {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+.featured-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.featured-label.kr { color: #dc2626; }
+.featured-label.us { color: #2563eb; }
+.featured-label.co { color: #d97706; }
+.featured-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+}
+.featured-summary {
+  font-size: 12.5px;
+  color: var(--sub);
+  line-height: 1.6;
+}
+
+/* ── 그리드 카드 바디 ── */
+.card-body { padding: 12px 14px 14px; }
+.card-date { font-size: 10px; color: var(--sub); margin-bottom: 4px; }
+.card-title { font-size: 13px; font-weight: 700; line-height: 1.4; color: var(--text); margin-bottom: 6px; }
+.card-summary { font-size: 12px; color: var(--sub); line-height: 1.5; }
+.card-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.card-tag { font-size: 10px; padding: 2px 7px; border-radius: 20px; background: #f3f4f6; color: var(--sub); }
+
+/* ── cb 클래스 (신버전 카드 바디) ── */
+.cb-date { font-size: 10px; color: var(--sub); margin-bottom: 3px; }
+.cb-title { font-size: 12.5px; font-weight: 700; line-height: 1.4; color: var(--text); margin-bottom: 6px; }
+
+/* ── thumb metrics ── */
+.thumb-metrics { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.thumb-metric { font-size: 10px; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: 3px; }
+.thumb-metric .val { font-weight: 700; }
+.thumb-metric .val.up { color: #6ee7b7; }
+.thumb-metric .val.dn { color: #fca5a5; }
+
+/* ── ft/ct trio ── */
+.ft-trio, .ct-trio { font-size: 10px; color: rgba(255,255,255,.7); margin-top: 6px; display: flex; gap: 8px; flex-wrap: wrap; }
+.ft-trio span, .ct-trio span { font-weight: 700; }
+.ft-trio span.up, .ct-trio span.up { color: #6ee7b7; }
+.ft-trio span.dn, .ct-trio span.dn { color: #fca5a5; }
+.ft-trio span.nt, .ct-trio span.nt { color: rgba(255,255,255,.5); }
+
+/* ── kw-row 태그 ── */
+.kw-row { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.fb-tag, .cb-tag { font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; background: #f3f4f6; color: var(--sub); border: 0.5px solid var(--border); }
+
+/* ── ct 클래스 (신버전 썸네일) ── */
+.ct-type { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+.ct-big { font-size: 20px; font-weight: 800; line-height: 1; letter-spacing: -.02em; margin-bottom: 4px; }
+.ct-big.up { color: #6ee7b7; } .ct-big.dn { color: #fca5a5; }
+
+/* ── ft 클래스 (신버전 피처드 썸네일) ── */
+.ft-type { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px; }
+.ft-big { font-size: 26px; font-weight: 800; line-height: 1; letter-spacing: -.03em; margin-bottom: 8px; }
+.ft-big.up { color: #6ee7b7; } .ft-big.dn { color: #fca5a5; }
+.ft-big-label { font-size: 10px; color: rgba(255,255,255,.45); margin-bottom: 2px; }
+
+/* ── fb 바디 ── */
+.fb-label { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 5px; }
+.fb-label.kr { color: #dc2626; } .fb-label.us { color: #2563eb; } .fb-label.co { color: #d97706; }
+.fb-title { font-size: 14px; font-weight: 700; line-height: 1.4; color: var(--text); margin-bottom: 5px; }
+.fb-desc { font-size: 12px; color: var(--sub); line-height: 1.55; }
+
 </style>
 </head>
 <body>
