@@ -124,6 +124,8 @@ def parse_report_meta(filepath):
     sm = (re.search(r'class="s-bullets".*?<li[^>]*>(.*?)</li>', html, re.DOTALL) or
           re.search(r'class="summary-bullets".*?<li[^>]*>(.*?)</li>', html, re.DOTALL))
     summary = re.sub(r"<[^>]+>", "", sm.group(1)).strip()[:80] if sm else date_label + " 시황"
+    tm      = re.search(r'class="s-date"[^>]*>(.*?)</div>', html, re.DOTALL)
+    title   = re.sub(r"<[^>]+>", "", tm.group(1)).strip() if tm else summary[:40]
 
     # 키워드
     kw_m = re.search(r'class="kw-tags"[^>]*>(.*?)</div>', html, re.DOTALL)
@@ -133,7 +135,7 @@ def parse_report_meta(filepath):
         keywords = [k.strip().lstrip('📌').strip() for k in keywords[:5]]
 
     return {
-        "fname": fname, "date_str": date_str, "date_label": date_label,
+        "fname": fname, "title": title, "date_str": date_str, "date_label": date_label,
         "weekday": weekday, "rtype": rtype, "rtype_label": rtype_label,
         "thumb_class": thumb_class, "best_name": best_name,
         "best_val": best_val, "best_class": best_class,
@@ -194,7 +196,7 @@ def build_card(meta, featured=False):
     </div>
     <div class="featured-body">
       <div class="featured-label">{lbl_all}</div>
-      <div class="featured-title">{meta['summary'][:50]}</div>
+      <div class="featured-title">{meta.get('title', meta['summary'][:40])}</div>
       <div class="featured-summary">{meta['summary']}</div>
       {kw_f}
     </div>
