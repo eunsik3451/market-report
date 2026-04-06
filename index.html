@@ -777,23 +777,14 @@ function switchMarket(el, market) {
     const info = d[m] || d['all'];
     if (!info) return;
 
-    // 썸네일 배경 (.featured-thumb 또는 .card-thumb)
+    // 썸네일 배경 클래스 교체
     const thumb = card.querySelector('.featured-thumb, .card-thumb, .ft, .ct');
     if (thumb && info.thumb) {
-      const base = thumb.classList.contains('featured-thumb') ? 'featured-thumb'
-                 : thumb.classList.contains('card-thumb')    ? 'card-thumb'
-                 : thumb.classList.contains('ft')            ? 'ft' : 'ct';
-      // 배경 클래스만 교체
-      const bgMap = {
-        'up-bg':  'linear-gradient(135deg,#052e16,#166534)',
-        'dn-bg':  'linear-gradient(135deg,#1c1917,#7f1d1d)',
-        'mix-bg': 'linear-gradient(135deg,#0f172a,#1e3a5f)',
-        'wk-bg':  'linear-gradient(135deg,#1e1b4b,#312e81)',
-      };
-      if (bgMap[info.thumb]) thumb.style.background = bgMap[info.thumb];
+      ['up-bg','dn-bg','mix-bg','wk-bg'].forEach(c => thumb.classList.remove(c));
+      thumb.classList.add(info.thumb);
     }
 
-    // 큰 수치 (.num 또는 .ft-big / .ct-big)
+    // 큰 수치
     const bigEl = card.querySelector('.num, .ft-big, .ct-big, .ct-hero-val');
     if (bigEl && info.big) {
       const cls = info.big.includes('+') ? 'up' : (info.big.includes('-') ? 'dn' : '');
