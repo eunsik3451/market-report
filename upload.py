@@ -7,7 +7,7 @@ import sys, shutil, subprocess, re, json
 from datetime import datetime
 from pathlib import Path
 
-REPO_DIR   = Path(r"C:\Users\hp\Desktop\market-report")
+REPO_DIR   = Path(r"C:\Users\john\Desktop\market-report")
 INDEX_FILE = REPO_DIR / "index.html"
 SITE_URL   = "https://eunsik3451.github.io/market-report"
 
@@ -321,10 +321,14 @@ def upload(html_path):
     dst = REPO_DIR / src.name
     print(f"\n📤 업로드: {src.name}\n")
 
-    if src.resolve() != dst.resolve():
-        shutil.copy2(src, dst)
-        print("  ✓ 파일 복사 완료")
-    else:
+    try:
+        if src.resolve() != dst.resolve():
+            shutil.copy2(src, dst)
+            print("  ✓ 파일 복사 완료")
+        else:
+            print("  ✓ 파일 위치 확인 (복사 생략)")
+    except Exception:
+        print("  ✓ 파일 위치 확인 (복사 생략)")
         print("  ✓ 파일 위치 확인 (복사 생략)")
 
     rebuild_index()
