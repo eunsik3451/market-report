@@ -147,7 +147,9 @@ body {
 .report-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(0,0,0,.11); }
 
 /* 썸네일 공통 */
-.ct {
+.ct,
+.card-thumb,
+.featured-thumb {
   padding: 16px;
   display: flex;
   flex-direction: column;
@@ -156,7 +158,10 @@ body {
   position: relative;
   overflow: hidden;
 }
-.ct::before {
+.card-thumb { min-height: 160px; }
+.featured-thumb { min-height: 180px; padding: 20px; }
+
+.ct::before, .card-thumb::before, .featured-thumb::before {
   content: '';
   position: absolute;
   right: -15px; top: -15px;
@@ -164,10 +169,34 @@ body {
   border-radius: 50%;
   background: rgba(255,255,255,.06);
 }
-.ct.up-bg  { background: linear-gradient(135deg,#052e16,#166534); }
-.ct.dn-bg  { background: linear-gradient(135deg,#1c1917,#7f1d1d); }
-.ct.mix-bg { background: linear-gradient(135deg,#0f172a,#1e3a5f); }
-.ct.wk-bg  { background: linear-gradient(135deg,#1e1b4b,#312e81); }
+
+/* 배경 색상 클래스 — ct / card-thumb / featured-thumb 모두 적용 */
+.ct.up-bg, .card-thumb.up-bg, .featured-thumb.up-bg
+  { background: linear-gradient(135deg,#052e16,#166534); }
+.ct.dn-bg, .card-thumb.dn-bg, .featured-thumb.dn-bg
+  { background: linear-gradient(135deg,#1c1917,#7f1d1d); }
+.ct.mix-bg, .card-thumb.mix-bg, .featured-thumb.mix-bg,
+.card-thumb.daily-mix
+  { background: linear-gradient(135deg,#0f172a,#1e3a5f); }
+.ct.wk-bg, .card-thumb.wk-bg, .featured-thumb.wk-bg,
+.card-thumb.weekly
+  { background: linear-gradient(135deg,#1e1b4b,#312e81); }
+/* 기존 daily-up / daily-dn 클래스도 유지 */
+.card-thumb.daily-up  { background: linear-gradient(135deg,#052e16,#166534); }
+.card-thumb.daily-dn  { background: linear-gradient(135deg,#1c1917,#7f1d1d); }
+
+/* 썸네일 내부 공통 텍스트 */
+.thumb-type, .ct-type {
+  font-size: 9px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px;
+}
+.num { font-size: 26px; font-weight: 800; line-height: 1; letter-spacing: -.03em; display: block; margin-bottom: 8px; }
+.num.up { color: #6ee7b7; } .num.dn { color: #fca5a5; }
+.thumb-headline { margin-bottom: 4px; }
+.thumb-metrics { display: flex; gap: 10px; flex-wrap: wrap; }
+.thumb-metric { font-size: 10px; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 3px; }
+.thumb-metric .val { font-weight: 700; }
+.thumb-metric .val.up { color: #6ee7b7; } .thumb-metric .val.dn { color: #fca5a5; }
 
 .ct-type { font-size:9px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.5); margin-bottom:4px; }
 .ct-hero-label { font-size:9px; color:rgba(255,255,255,.5); margin-bottom:2px; }
@@ -241,12 +270,13 @@ body {
   justify-content: space-between;
 }
 .fb-label { font-size:11px; font-weight:700; color:var(--accent); letter-spacing:.08em; text-transform:uppercase; margin-bottom:6px; }
+.fb-label.kr { color:#dc2626; }
+.fb-label.us { color:#2563eb; }
+.fb-label.co { color:#d97706; }
 .fb-title { font-size:15px; font-weight:700; line-height:1.35; color:var(--text); margin-bottom:6px; }
 .fb-summary { font-size:12.5px; color:var(--sub); line-height:1.55; }
 .fb-tag { font-size:11px; font-weight:600; padding:3px 10px; border-radius:20px; background:#f3f4f6; color:var(--sub); border:0.5px solid var(--border); }
-}
-.featured-title {
-  font-size: 17px;
+
 /* ── 시황 요약 스트립 ── */
 .market-strip {
   background: var(--surface);
@@ -319,7 +349,7 @@ body {
 
   <!-- 최신 지표 스트립 -->
   <div class="market-strip">
-    <div class="strip-label">최신 종가<br><!-- UPDATE_DATE -->2026.04.02 기준<!-- /UPDATE_DATE --></div>
+    <div class="strip-label">최신 종가<br><!-- UPDATE_DATE -->2026.04.03 기준<!-- /UPDATE_DATE --></div>
     <div class="strip-item">
       <div class="strip-name"><span class="flag">🇺🇸</span> S&P 500</div>
       <div class="strip-val up">6,575</div>
@@ -363,29 +393,23 @@ body {
   </div>
 
   <!-- FEATURED_START -->
-  <a href="daily_market_20260402.html" class="featured-card" data-type="daily">
-    <div class="ft dn-bg">
-      <div class="ft-type">일일 시황 · 2026.04.02</div>
-      <div class="ft-hero-label">최대 변동</div>
-      <div class="ft-hero-val up">WTI +11.41%</div>
-      <div class="ft-pair">
-        <div class="ft-pair-item">
-          <div class="ft-pair-label">🇰🇷 KOSPI</div>
-          <div class="ft-pair-val dn">-4.47%</div>
-        </div>
-        <div class="ft-pair-item">
-          <div class="ft-pair-label">🇺🇸 나스닥</div>
-          <div class="ft-pair-val up">+0.18%</div>
-        </div>
+  <a href="daily_market_20260403.html" class="featured-card" data-type="daily">
+    <div class="featured-thumb up-bg">
+      <div class="thumb-type">일일 시황 · 2026.04.03</div>
+      <div class="thumb-headline">
+        <span class="num up">WTI +11.93%</span>
+      </div>
+      <div class="thumb-metrics">
+        <div class="thumb-metric">🇰🇷 KOSPI <span class="val up">+2.74%</span></div>
+        <div class="thumb-metric">🇺🇸 나스닥 <span class="val nt">—</span></div>
+        <div class="thumb-metric">🛢️ WTI <span class="val up">+11.93%</span></div>
       </div>
     </div>
-    <div class="fb">
-      <div>
-        <div class="fb-label">📅 일일 시황 · 2026년 04월 02일 목요일</div>
-        <div class="fb-title">KOSPI -4.47%(5,234) · KOSDAQ -5.36%(1,056) — 장 초반 </div>
-        <div class="fb-summary">KOSPI -4.47%(5,234) · KOSDAQ -5.36%(1,056) — 장 초반 +2% 출발했으나 전날 밤 트럼프 연설 충격 반영되며 </div>
-      </div>
-      <div class="kw-row"><span class="fb-tag">트럼프 "2~3주 더 강타"</span><span class="fb-tag">WTI $111 폭등</span><span class="fb-tag">NFP 고용 (04/03)</span><span class="fb-tag">이란-오만 호르무즈 합의</span><span class="fb-tag">한국 26.2조 추경</span></div>
+    <div class="featured-body">
+      <div class="featured-label">📅 일일 시황 · 2026년 04월 03일 금요일</div>
+      <div class="featured-title">3월 NFP +178,000명(예상 +60,000 대폭 상회) — 실업률 4.3%(4.4%</div>
+      <div class="featured-summary">3월 NFP +178,000명(예상 +60,000 대폭 상회) — 실업률 4.3%(4.4%→4.3%). 전월 2월(-133,000명) 급반등. </div>
+      <div class="kw-row"><span class="fb-tag">NFP +17.8만 서프라이즈</span><span class="fb-tag">굿 프라이데이 휴장</span><span class="fb-tag">WTI $112 최고치</span><span class="fb-tag">금리동결 77.5%</span><span class="fb-tag">삼성E&A +15.5%</span></div>
     </div>
   </a>
   <!-- FEATURED_END -->
@@ -399,88 +423,98 @@ body {
   <div class="card-grid">
   <!-- GRID_START -->
 
-    <a href="daily_market_20260401.html" class="report-card" data-type="daily">
-      <div class="ct up-bg">
-        <div class="ct-type">일일 시황 · 2026.04.01</div>
-        <div class="ct-hero-label">최대 변동</div>
-        <div class="ct-hero-val up">KOSPI +8.44%</div>
-        <div class="ct-pair">
-          <div class="ct-pair-item"><span class="ct-pl">🇰🇷</span><span class="ct-pv up">+8.44%</span></div>
-          <div class="ct-pair-item"><span class="ct-pl">🇺🇸</span><span class="ct-pv up">+3.83%</span></div>
+    <a href="daily_market_20260402.html" class="report-card" data-type="daily">
+      <div class="card-thumb dn-bg">
+        <div class="thumb-type">일일 시황 · 2026.04.02</div>
+        <div class="thumb-headline">
+          <span class="num dn">KOSPI -4.47%</span>
+        </div>
+        <div class="thumb-metrics">
+          <div class="thumb-metric">🇰🇷 <span class="val dn">-4.47%</span></div>
+          <div class="thumb-metric">🇺🇸 <span class="val up">+0.18%</span></div>
+          <div class="thumb-metric">🛢️ <span class="val nt">—</span></div>
         </div>
       </div>
-      <div class="cb">
-        <div class="cb-date">2026년 04월 01일 수요일</div>
-        <div class="cb-title">KOSPI +8.44%(역대 2위) — 전날 밤 미국 +3% 급등이 한국 장에 집</div>
+      <div class="card-body">
+        <div class="card-date">2026년 04월 02일 목요일</div>
+        <div class="card-title">KOSPI -4.47%(5,234) · KOSDAQ -5.36%(1,056) — </div>
+        <div class="kw-row"><span class="cb-tag">트럼프 "2~3주 더 강타"</span><span class="cb-tag">WTI $111 폭등</span><span class="cb-tag">NFP 고용 (04/03)</span><span class="cb-tag">이란-오만 호르무즈 합의</span><span class="cb-tag">한국 26.2조 추경</span></div>
+      </div>
+    </a>
+
+    <a href="daily_market_20260401.html" class="report-card" data-type="daily">
+      <div class="card-thumb up-bg">
+        <div class="thumb-type">일일 시황 · 2026.04.01</div>
+        <div class="thumb-headline">
+          <span class="num up">KOSPI +8.44%</span>
+        </div>
+        <div class="thumb-metrics">
+          <div class="thumb-metric">🇰🇷 <span class="val up">+8.44%</span></div>
+          <div class="thumb-metric">🇺🇸 <span class="val up">+1.16%</span></div>
+          <div class="thumb-metric">🛢️ <span class="val dn">-1.24%</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-date">2026년 04월 01일 수요일</div>
+        <div class="card-title">KOSPI +8.44%(역대 2위) — 전날 밤 미국 +3% 급등이 한국 장에 집</div>
         <div class="kw-row"><span class="cb-tag">트럼프 대국민 연설 (04/02)</span><span class="cb-tag">호르무즈 실제 통행 재개</span><span class="cb-tag">NFP 고용 (04/03)</span><span class="cb-tag">이란 유예 만료 D-4</span><span class="cb-tag">외국인 순매도 지속</span></div>
       </div>
     </a>
 
     <a href="daily_market_20260331.html" class="report-card" data-type="daily">
-      <div class="ct dn-bg">
-        <div class="ct-type">일일 시황 · 2026.03.31</div>
-        <div class="ct-hero-label">최대 변동</div>
-        <div class="ct-hero-val dn">KOSPI -4.26%</div>
-        <div class="ct-pair">
-          <div class="ct-pair-item"><span class="ct-pl">🇰🇷</span><span class="ct-pv dn">-4.26%</span></div>
-          <div class="ct-pair-item"><span class="ct-pl">🇺🇸</span><span class="ct-pv dn">—</span></div>
+      <div class="card-thumb dn-bg">
+        <div class="thumb-type">일일 시황 · 2026.03.31</div>
+        <div class="thumb-headline">
+          <span class="num dn">KOSPI -4.26%</span>
+        </div>
+        <div class="thumb-metrics">
+          <div class="thumb-metric">🇰🇷 <span class="val dn">-4.26%</span></div>
+          <div class="thumb-metric">🇺🇸 <span class="val up">+3.83%</span></div>
+          <div class="thumb-metric">🛢️ <span class="val dn">-1.46%</span></div>
         </div>
       </div>
-      <div class="cb">
-        <div class="cb-date">2026년 03월 31일 화요일</div>
-        <div class="cb-title">2026년 03월 31일 시황</div>
-        
+      <div class="card-body">
+        <div class="card-date">2026년 03월 31일 화요일</div>
+        <div class="card-title">S&P +2.91%(6,528) · 나스닥 +3.83%(21,590) — 이란 대</div>
+        <div class="kw-row"><span class="cb-tag">이란 종전 의지</span><span class="cb-tag">셀코리아 3.8조</span><span class="cb-tag">삼성전자 -5%</span><span class="cb-tag">S&P 5월 이후 최대</span><span class="cb-tag">시간대 미스매치</span></div>
       </div>
     </a>
 
     <a href="daily_market_20260330.html" class="report-card" data-type="daily">
-      <div class="ct mix-bg">
-        <div class="ct-type">일일 시황 · 2026.03.30</div>
-        <div class="ct-hero-label">최대 변동</div>
-        <div class="ct-hero-val dn">KOSPI —</div>
-        <div class="ct-pair">
-          <div class="ct-pair-item"><span class="ct-pl">🇰🇷</span><span class="ct-pv dn">—</span></div>
-          <div class="ct-pair-item"><span class="ct-pl">🇺🇸</span><span class="ct-pv dn">—</span></div>
+      <div class="card-thumb dn-bg">
+        <div class="thumb-type">일일 시황 · 2026.03.30</div>
+        <div class="thumb-headline">
+          <span class="num up">WTI +6.53%</span>
+        </div>
+        <div class="thumb-metrics">
+          <div class="thumb-metric">🇰🇷 <span class="val dn">-0.40%</span></div>
+          <div class="thumb-metric">🇺🇸 <span class="val dn">-0.73%</span></div>
+          <div class="thumb-metric">🛢️ <span class="val up">+6.53%</span></div>
         </div>
       </div>
-      <div class="cb">
-        <div class="cb-date">2026년 03월 30일 월요일</div>
-        <div class="cb-title">2026년 03월 30일 시황</div>
-        
+      <div class="card-body">
+        <div class="card-date">2026년 03월 30일 월요일</div>
+        <div class="card-title">파월 하버드대 연설 — '현 상황에서 금리 동결이 적절' 발언. 금리인상 확률 5</div>
+        <div class="kw-row"><span class="cb-tag">파월 금리 동결</span><span class="cb-tag">WTI $106</span><span class="cb-tag">후티 반군 참전</span><span class="cb-tag">인상확률 2.2%</span><span class="cb-tag">외국인 매도</span></div>
       </div>
     </a>
 
     <a href="daily_market_20260327.html" class="report-card" data-type="daily">
-      <div class="ct mix-bg">
-        <div class="ct-type">일일 시황 · 2026.03.27</div>
-        <div class="ct-hero-label">최대 변동</div>
-        <div class="ct-hero-val dn">나스닥 -12.5%</div>
-        <div class="ct-pair">
-          <div class="ct-pair-item"><span class="ct-pl">🇰🇷</span><span class="ct-pv dn">—</span></div>
-          <div class="ct-pair-item"><span class="ct-pl">🇺🇸</span><span class="ct-pv dn">-12.5%</span></div>
+      <div class="card-thumb dn-bg">
+        <div class="thumb-type">일일 시황 · 2026.03.27</div>
+        <div class="thumb-headline">
+          <span class="num up">WTI +5.46%</span>
+        </div>
+        <div class="thumb-metrics">
+          <div class="thumb-metric">🇰🇷 <span class="val dn">-0.40%</span></div>
+          <div class="thumb-metric">🇺🇸 <span class="val dn">-2.15%</span></div>
+          <div class="thumb-metric">🛢️ <span class="val up">+5.46%</span></div>
         </div>
       </div>
-      <div class="cb">
-        <div class="cb-date">2026년 03월 27일 금요일</div>
-        <div class="cb-title">2026년 03월 27일 시황</div>
-        
-      </div>
-    </a>
-
-    <a href="global_market_20260327.html" class="report-card" data-type="weekly">
-      <div class="ct wk-bg">
-        <div class="ct-type">주간 시황 · 2026.03.27</div>
-        <div class="ct-hero-label">최대 변동</div>
-        <div class="ct-hero-val up">S&P +35%</div>
-        <div class="ct-pair">
-          <div class="ct-pair-item"><span class="ct-pl">🇰🇷</span><span class="ct-pv dn">-5.92%</span></div>
-          <div class="ct-pair-item"><span class="ct-pl">🇺🇸</span><span class="ct-pv dn">-3.23%</span></div>
-        </div>
-      </div>
-      <div class="cb">
-        <div class="cb-date">2026년 03월 27일 금요일</div>
-        <div class="cb-title">2026년 03월 27일 시황</div>
-        
+      <div class="card-body">
+        <div class="card-date">2026년 03월 27일 금요일</div>
+        <div class="card-title">S&P -1.67%(6,368) · 나스닥 -2.15%(20,948) · 다우 -</div>
+        <div class="kw-row"><span class="cb-tag">S&P 5주 연속 하락</span><span class="cb-tag">나스닥 조정구간</span><span class="cb-tag">WTI $100 터치</span><span class="cb-tag">VIX 31</span><span class="cb-tag">금리인상 50%</span></div>
       </div>
     </a>
   <!-- GRID_END -->
@@ -491,12 +525,38 @@ body {
 // 카드별 시장 데이터 — upload.py가 rebuild_index() 시 자동 주입
 // <!-- CARD_DATA_START -->
 const CARD_DATA = {
+  "daily_market_20260403.html": {
+    "all": {
+      "thumb": "up-bg",
+      "big": "WTI +11.93%",
+      "label": "📅 일일 시황 · 2026년 04월 03일 금요일",
+      "trio": "🇰🇷 <span class=\"up\">+2.74%</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"up\">+11.93%</span>"
+    },
+    "kr": {
+      "thumb": "up-bg",
+      "big": "KOSPI +2.74%",
+      "label": "🇰🇷 한국 시황 · 2026년 04월 03일 금요일",
+      "trio": "🇰🇷 <span class=\"up\">+2.74%</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+    },
+    "us": {
+      "thumb": "mix-bg",
+      "big": "나스닥 —",
+      "label": "🇺🇸 미국 시황 · 2026년 04월 03일 금요일",
+      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"dn\">-1.68%</span>"
+    },
+    "co": {
+      "thumb": "up-bg",
+      "big": "WTI +11.93%",
+      "label": "🪨 원자재 시황 · 2026년 04월 03일 금요일",
+      "trio": "🇰🇷 <span class=\"up\">+11.93%</span> &nbsp;🇺🇸 <span class=\"dn\">-1.68%</span> &nbsp;🛢️ <span class=\"up\">+1.02%</span>"
+    }
+  },
   "daily_market_20260402.html": {
     "all": {
       "thumb": "dn-bg",
-      "big": "WTI +11.41%",
+      "big": "KOSPI -4.47%",
       "label": "📅 일일 시황 · 2026년 04월 02일 목요일",
-      "trio": "🇰🇷 <span class=\"dn\">-4.47%</span> &nbsp;🇺🇸 <span class=\"up\">+0.18%</span> &nbsp;🛢️ <span class=\"up\">+11.41%</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-4.47%</span> &nbsp;🇺🇸 <span class=\"up\">+0.18%</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
     },
     "kr": {
       "thumb": "dn-bg",
@@ -508,13 +568,13 @@ const CARD_DATA = {
       "thumb": "up-bg",
       "big": "나스닥 +0.18%",
       "label": "🇺🇸 미국 시황 · 2026년 04월 02일 목요일",
-      "trio": "🇰🇷 <span class=\"up\">+0.18%</span> &nbsp;🇺🇸 <span class=\"up\">+0.11%</span> &nbsp;🛢️ <span class=\"dn\">-0.5%</span>"
+      "trio": "🇰🇷 <span class=\"up\">+0.18%</span> &nbsp;🇺🇸 <span class=\"up\">+0.11%</span> &nbsp;🛢️ <span class=\"dn\">-2.75%</span>"
     },
     "co": {
-      "thumb": "up-bg",
-      "big": "WTI +11.41%",
+      "thumb": "mix-bg",
+      "big": "WTI —",
       "label": "🪨 원자재 시황 · 2026년 04월 02일 목요일",
-      "trio": "🇰🇷 <span class=\"up\">+11.41%</span> &nbsp;🇺🇸 <span class=\"dn\">-0.5%</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"dn\">-2.75%</span> &nbsp;🛢️ <span class=\"dn\">-1.08%</span>"
     }
   },
   "daily_market_20260401.html": {
@@ -522,25 +582,25 @@ const CARD_DATA = {
       "thumb": "up-bg",
       "big": "KOSPI +8.44%",
       "label": "📅 일일 시황 · 2026년 04월 01일 수요일",
-      "trio": "🇰🇷 <span class=\"up\">+8.44%</span> &nbsp;🇺🇸 <span class=\"up\">+3.83%</span> &nbsp;🛢️ <span class=\"dn\">-1.24%</span>"
+      "trio": "🇰🇷 <span class=\"up\">+8.44%</span> &nbsp;🇺🇸 <span class=\"up\">+1.16%</span> &nbsp;🛢️ <span class=\"dn\">-1.24%</span>"
     },
     "kr": {
       "thumb": "up-bg",
       "big": "KOSPI +8.44%",
       "label": "🇰🇷 한국 시황 · 2026년 04월 01일 수요일",
-      "trio": "🇰🇷 <span class=\"up\">+8.44%</span> &nbsp;🇺🇸 <span class=\"up\">+3.83%</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"up\">+8.44%</span> &nbsp;🇺🇸 <span class=\"up\">+1.16%</span> &nbsp;🛢️ <span class=\"up\">+0.72%</span>"
     },
     "us": {
       "thumb": "up-bg",
-      "big": "나스닥 +3.83%",
+      "big": "나스닥 +1.16%",
       "label": "🇺🇸 미국 시황 · 2026년 04월 01일 수요일",
-      "trio": "🇰🇷 <span class=\"up\">+3.83%</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"up\">+2.92%</span>"
+      "trio": "🇰🇷 <span class=\"up\">+1.16%</span> &nbsp;🇺🇸 <span class=\"up\">+0.72%</span> &nbsp;🛢️ <span class=\"up\">+2.92%</span>"
     },
     "co": {
       "thumb": "dn-bg",
       "big": "WTI -1.24%",
       "label": "🪨 원자재 시황 · 2026년 04월 01일 수요일",
-      "trio": "🇰🇷 <span class=\"dn\">-1.24%</span> &nbsp;🇺🇸 <span class=\"up\">+2.92%</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-1.24%</span> &nbsp;🇺🇸 <span class=\"up\">+2.92%</span> &nbsp;🛢️ <span class=\"up\">+0.65%</span>"
     }
   },
   "daily_market_20260331.html": {
@@ -548,103 +608,77 @@ const CARD_DATA = {
       "thumb": "dn-bg",
       "big": "KOSPI -4.26%",
       "label": "📅 일일 시황 · 2026년 03월 31일 화요일",
-      "trio": "🇰🇷 <span class=\"dn\">-4.26%</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-4.26%</span> &nbsp;🇺🇸 <span class=\"up\">+3.83%</span> &nbsp;🛢️ <span class=\"dn\">-1.46%</span>"
     },
     "kr": {
       "thumb": "dn-bg",
       "big": "KOSPI -4.26%",
       "label": "🇰🇷 한국 시황 · 2026년 03월 31일 화요일",
-      "trio": "🇰🇷 <span class=\"dn\">-4.26%</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-4.26%</span> &nbsp;🇺🇸 <span class=\"up\">+3.83%</span> &nbsp;🛢️ <span class=\"up\">+2.91%</span>"
     },
     "us": {
-      "thumb": "dn-bg",
-      "big": "나스닥 —",
+      "thumb": "up-bg",
+      "big": "나스닥 +3.83%",
       "label": "🇺🇸 미국 시황 · 2026년 03월 31일 화요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"up\">+3.83%</span> &nbsp;🇺🇸 <span class=\"up\">+2.91%</span> &nbsp;🛢️ <span class=\"up\">+2.69%</span>"
     },
     "co": {
       "thumb": "dn-bg",
-      "big": "WTI —",
+      "big": "WTI -1.46%",
       "label": "🪨 원자재 시황 · 2026년 03월 31일 화요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-1.46%</span> &nbsp;🇺🇸 <span class=\"up\">+2.69%</span> &nbsp;🛢️ <span class=\"up\">+0.64%</span>"
     }
   },
   "daily_market_20260330.html": {
     "all": {
-      "thumb": "mix-bg",
-      "big": "KOSPI —",
+      "thumb": "dn-bg",
+      "big": "WTI +6.53%",
       "label": "📅 일일 시황 · 2026년 03월 30일 월요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-0.40%</span> &nbsp;🇺🇸 <span class=\"dn\">-0.73%</span> &nbsp;🛢️ <span class=\"up\">+6.53%</span>"
     },
     "kr": {
-      "thumb": "mix-bg",
-      "big": "KOSPI —",
+      "thumb": "dn-bg",
+      "big": "KOSPI -0.40%",
       "label": "🇰🇷 한국 시황 · 2026년 03월 30일 월요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-0.40%</span> &nbsp;🇺🇸 <span class=\"dn\">-0.73%</span> &nbsp;🛢️ <span class=\"dn\">-0.39%</span>"
     },
     "us": {
       "thumb": "dn-bg",
-      "big": "나스닥 —",
+      "big": "나스닥 -0.73%",
       "label": "🇺🇸 미국 시황 · 2026년 03월 30일 월요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-0.73%</span> &nbsp;🇺🇸 <span class=\"dn\">-0.39%</span> &nbsp;🛢️ <span class=\"up\">+0.92%</span>"
     },
     "co": {
-      "thumb": "dn-bg",
-      "big": "WTI —",
+      "thumb": "up-bg",
+      "big": "WTI +6.53%",
       "label": "🪨 원자재 시황 · 2026년 03월 30일 월요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
+      "trio": "🇰🇷 <span class=\"up\">+6.53%</span> &nbsp;🇺🇸 <span class=\"up\">+0.92%</span> &nbsp;🛢️ <span class=\"dn\">-1.06%</span>"
     }
   },
   "daily_market_20260327.html": {
     "all": {
-      "thumb": "mix-bg",
-      "big": "나스닥 -12.5%",
+      "thumb": "dn-bg",
+      "big": "WTI +5.46%",
       "label": "📅 일일 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"dn\">-12.5%</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
-    },
-    "kr": {
-      "thumb": "mix-bg",
-      "big": "KOSPI —",
-      "label": "🇰🇷 한국 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"dn\">-12.5%</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
-    },
-    "us": {
-      "thumb": "dn-bg",
-      "big": "나스닥 -12.5%",
-      "label": "🇺🇸 미국 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"dn\">-12.5%</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
-    },
-    "co": {
-      "thumb": "dn-bg",
-      "big": "WTI —",
-      "label": "🪨 원자재 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"nt\">—</span> &nbsp;🇺🇸 <span class=\"nt\">—</span> &nbsp;🛢️ <span class=\"nt\">—</span>"
-    }
-  },
-  "global_market_20260327.html": {
-    "all": {
-      "thumb": "wk-bg",
-      "big": "S&P +35%",
-      "label": "📅 주간 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"dn\">-5.92%</span> &nbsp;🇺🇸 <span class=\"dn\">-3.23%</span> &nbsp;🛢️ <span class=\"up\">+1.34%</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-0.40%</span> &nbsp;🇺🇸 <span class=\"dn\">-2.15%</span> &nbsp;🛢️ <span class=\"up\">+5.46%</span>"
     },
     "kr": {
       "thumb": "dn-bg",
-      "big": "KOSPI -5.92%",
+      "big": "KOSPI -0.40%",
       "label": "🇰🇷 한국 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"dn\">-5.92%</span> &nbsp;🇺🇸 <span class=\"dn\">-3.23%</span> &nbsp;🛢️ <span class=\"up\">+35%</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-0.40%</span> &nbsp;🇺🇸 <span class=\"dn\">-2.15%</span> &nbsp;🛢️ <span class=\"dn\">-1.67%</span>"
     },
     "us": {
       "thumb": "dn-bg",
-      "big": "나스닥 -3.23%",
+      "big": "나스닥 -2.15%",
       "label": "🇺🇸 미국 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"dn\">-3.23%</span> &nbsp;🇺🇸 <span class=\"up\">+35%</span> &nbsp;🛢️ <span class=\"dn\">-3.22%</span>"
+      "trio": "🇰🇷 <span class=\"dn\">-2.15%</span> &nbsp;🇺🇸 <span class=\"dn\">-1.67%</span> &nbsp;🛢️ <span class=\"up\">+2.66%</span>"
     },
     "co": {
       "thumb": "up-bg",
-      "big": "WTI +1.34%",
+      "big": "WTI +5.46%",
       "label": "🪨 원자재 시황 · 2026년 03월 27일 금요일",
-      "trio": "🇰🇷 <span class=\"up\">+1.34%</span> &nbsp;🇺🇸 <span class=\"dn\">-3.22%</span> &nbsp;🛢️ <span class=\"up\">+2.33%</span>"
+      "trio": "🇰🇷 <span class=\"up\">+5.46%</span> &nbsp;🇺🇸 <span class=\"up\">+2.66%</span> &nbsp;🛢️ <span class=\"dn\">-2.47%</span>"
     }
   }
 };
@@ -656,41 +690,49 @@ function switchMarket(el, market) {
   el.classList.add('active');
   if (market !== 'all') el.classList.add(market);
 
-  // 카드별 데이터 교체
+  const m = (market === 'all') ? 'all' : market;
+
   document.querySelectorAll('.featured-card, .report-card').forEach(card => {
     const href = card.getAttribute('href') || '';
     const d = CARD_DATA[href];
     if (!d) return;
-
-    const m = (market === 'all') ? 'all' : market;
     const info = d[m] || d['all'];
     if (!info) return;
 
-    // 썸네일 배경
-    const thumb = card.querySelector('.ft, .ct');
-    if (thumb) {
-      thumb.className = thumb.className.replace(/\b(up-bg|dn-bg|mix-bg|wk-bg|co-up|co-dn|kr-up|kr-dn|us-up|us-dn)\b/g,'').trim()
-        + ' ' + info.thumb;
+    // 썸네일 배경 (.featured-thumb 또는 .card-thumb)
+    const thumb = card.querySelector('.featured-thumb, .card-thumb, .ft, .ct');
+    if (thumb && info.thumb) {
+      const base = thumb.classList.contains('featured-thumb') ? 'featured-thumb'
+                 : thumb.classList.contains('card-thumb')    ? 'card-thumb'
+                 : thumb.classList.contains('ft')            ? 'ft' : 'ct';
+      // 배경 클래스만 교체
+      const bgMap = {
+        'up-bg':  'linear-gradient(135deg,#052e16,#166534)',
+        'dn-bg':  'linear-gradient(135deg,#1c1917,#7f1d1d)',
+        'mix-bg': 'linear-gradient(135deg,#0f172a,#1e3a5f)',
+        'wk-bg':  'linear-gradient(135deg,#1e1b4b,#312e81)',
+      };
+      if (bgMap[info.thumb]) thumb.style.background = bgMap[info.thumb];
     }
 
-    // 큰 수치
-    const bigEl = card.querySelector('.ft-big, .ct-big');
+    // 큰 수치 (.num 또는 .ft-big / .ct-big)
+    const bigEl = card.querySelector('.num, .ft-big, .ct-big, .ct-hero-val');
     if (bigEl && info.big) {
       const cls = info.big.includes('+') ? 'up' : (info.big.includes('-') ? 'dn' : '');
-      bigEl.className = (bigEl.classList.contains('ft-big') ? 'ft-big' : 'ct-big') + ' ' + cls;
+      bigEl.className = 'num ' + cls;
       bigEl.textContent = info.big;
     }
 
-    // 라벨 (피처드만)
-    const labelEl = card.querySelector('.fb-label');
+    // 라벨 (.featured-label 또는 .fb-label)
+    const labelEl = card.querySelector('.featured-label, .fb-label');
     if (labelEl && info.label) {
-      const lCls = {all:'', kr:'kr', us:'us', co:'co'}[m] || '';
-      labelEl.className = 'fb-label ' + lCls;
+      const lCls = {'all':'','kr':'kr','us':'us','co':'co'}[m] || '';
+      labelEl.className = (labelEl.classList.contains('featured-label') ? 'featured-label' : 'fb-label') + ' ' + lCls;
       labelEl.textContent = info.label;
     }
 
-    // trio
-    const trioEl = card.querySelector('.ft-trio, .ct-trio');
+    // 지표 trio (.thumb-metrics 또는 .ft-trio / .ct-trio)
+    const trioEl = card.querySelector('.thumb-metrics, .ft-trio, .ct-trio, .ct-pair');
     if (trioEl && info.trio) trioEl.innerHTML = info.trio;
   });
 }
