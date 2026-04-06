@@ -190,9 +190,7 @@ body {
   font-size: 9px; font-weight: 700; letter-spacing: .1em;
   text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 6px;
 }
-.num { font-size: 26px; font-weight: 800; line-height: 1; letter-spacing: -.03em; display: block; margin-bottom: 8px; }
-.num.up { color: #6ee7b7; } .num.dn { color: #fca5a5; }
-.thumb-headline { margin-bottom: 4px; }
+ .thumb-headline { margin-bottom: 4px; }
 .thumb-metrics { display: flex; gap: 10px; flex-wrap: wrap; }
 .thumb-metric { font-size: 10px; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 3px; }
 .thumb-metric .val { font-weight: 700; }
@@ -414,18 +412,6 @@ body {
   color: rgba(255,255,255,.45);
   margin-bottom: 6px;
 }
-.num {
-  font-size: 24px;
-  font-weight: 800;
-  line-height: 1;
-  letter-spacing: -.03em;
-  display: block;
-  margin-bottom: 8px;
-  color: rgba(255,255,255,.95);
-}
-.num.up { color: #6ee7b7; }
-.num.dn { color: #fca5a5; }
-.num.nt { color: rgba(255,255,255,.6); }
 .val { font-weight: 700; color: rgba(255,255,255,.8); }
 .val.up { color: #6ee7b7; }
 .val.dn { color: #fca5a5; }
@@ -439,6 +425,17 @@ body {
   gap: 8px;
   flex-wrap: wrap;
 }
+
+
+/* ── 썸네일 수치 색상 ── */
+.num { font-size: 24px; font-weight: 800; line-height: 1; letter-spacing: -.03em; display: block; margin-bottom: 8px; color: rgba(255,255,255,.9); }
+.num.up { color: #6ee7b7 !important; }
+.num.dn { color: #fca5a5 !important; }
+.num.nt { color: rgba(255,255,255,.5) !important; }
+.val { font-weight: 700; color: rgba(255,255,255,.75); }
+.val.up { color: #6ee7b7 !important; }
+.val.dn { color: #fca5a5 !important; }
+.val.nt { color: rgba(255,255,255,.4) !important; }
 
 </style>
 </head>
