@@ -79,13 +79,13 @@ def parse_report_meta(filepath):
     # 등락률 파싱 — <tr> 단위로 종목명과 chg 수치 매핑
     def get_market_chg(names):
         for name in names:
-            # tr 단위 파싱 (신버전/구버전 모두 대응)
-            tr_pattern = rf'<tr[^>]*>(?:(?!<tr).)*?{re.escape(name)}(?:(?!<tr).)*?class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%'
+            # tr 단위 파싱 — class에 chg 포함된 td에서 수치 추출 (style 속성 무시)
+            tr_pattern = rf'<tr[^>]*>(?:(?!<tr).)*?{re.escape(name)}(?:(?!<tr).)*?class="[^"]*chg[^"]*"[^>]*>([\+\-]\d+\.?\d*)%'
             v = _extract(html, tr_pattern)
             if v and ('+' in v or '-' in v):
                 return v + '%'
             # 역방향 (chg가 먼저 나오는 경우)
-            tr_pattern2 = rf'<tr[^>]*>(?:(?!<tr).)*?class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%(?:(?!<tr).)*?{re.escape(name)}'
+            tr_pattern2 = rf'<tr[^>]*>(?:(?!<tr).)*?class="[^"]*chg[^"]*"[^>]*>([\+\-]\d+\.?\d*)%(?:(?!<tr).)*?{re.escape(name)}'
             v = _extract(html, tr_pattern2)
             if v and ('+' in v or '-' in v):
                 return v + '%'
