@@ -463,7 +463,7 @@ body {
 
   <!-- 최신 지표 스트립 -->
   <div class="market-strip">
-    <div class="strip-label">최신 종가<br><!-- UPDATE_DATE -->2026.04.10 기준<!-- /UPDATE_DATE --></div>
+    <div class="strip-label">최신 종가<br><!-- UPDATE_DATE -->2026.04.13 기준<!-- /UPDATE_DATE --></div>
     <div class="strip-item">
       <div class="strip-name"><span class="flag">🇺🇸</span> S&P 500</div>
       <div class="strip-val" style="color:var(--gold);">휴장</div>
@@ -507,23 +507,23 @@ body {
   </div>
 
   <!-- FEATURED_START -->
-  <a href="daily_market_20260410.html" class="featured-card" data-type="daily">
-    <div class="featured-thumb up-bg">
-      <div class="thumb-type">일일 시황 · 2026.04.10</div>
+  <a href="daily_market_20260413.html" class="featured-card" data-type="daily">
+    <div class="featured-thumb dn-bg">
+      <div class="thumb-type">일일 시황 · 2026.04.13</div>
       <div class="thumb-headline">
-        <span class="num dn">WTI -2.10%</span>
+        <span class="num up">WTI +1.32%</span>
       </div>
       <div class="thumb-metrics">
-        <div class="thumb-metric">🇰🇷 KOSPI <span class="val up">+1.80%</span></div>
-        <div class="thumb-metric">🇺🇸 나스닥 <span class="val up">+0.35%</span></div>
-        <div class="thumb-metric">🛢️ WTI <span class="val dn">-2.10%</span></div>
+        <div class="thumb-metric">🇰🇷 KOSPI <span class="val dn">-0.86%</span></div>
+        <div class="thumb-metric">🇺🇸 나스닥 <span class="val up">+1.23%</span></div>
+        <div class="thumb-metric">🛢️ WTI <span class="val up">+1.32%</span></div>
       </div>
     </div>
     <div class="featured-body">
-      <div class="featured-label">📅 일일 시황 · 2026년 04월 10일 금요일</div>
-      <div class="featured-title">3월 CPI +0.9% 쇼크 · 코어CPI 예상 하회 · 주말 이란-미국 협상 · KOSPI 2주 연속 상승</div>
-      <div class="featured-summary">KOSPI +1.80%(5,879) · KOSDAQ +1.14% — 미국·이란 휴전 유지 기대 + 반도체 강세. 은행·음식료·보험 동반 상승. </div>
-      <div class="kw-row"><span class="fb-tag">CPI +3.3% 에너지 쇼크</span><span class="fb-tag">코어CPI +0.2% 예상 하회</span><span class="fb-tag">주말 이란협상</span><span class="fb-tag">S&P 주간 +3.5%</span><span class="fb-tag">KOSPI 2주 연속 상승</span></div>
+      <div class="featured-label">📅 일일 시황 · 2026년 04월 13일 월요일</div>
+      <div class="featured-title">협상 결렬 + 봉쇄 선언 → 트럼프 "이란이 연락" → S&P 전쟁 이전 수준 회복</div>
+      <div class="featured-summary">KOSPI -0.86%(5,808) — 개장 -2.08%(5,737) 급락 후 개인 7,500억 순매수로 낙폭 축소. 5,800선 사수. KOS</div>
+      <div class="kw-row"><span class="fb-tag">호르무즈 봉쇄 선언</span><span class="fb-tag">협상 결렬→재개 기대</span><span class="fb-tag">S&P 전쟁 이전 회복</span><span class="fb-tag">소프트웨어 ETF +5.4%</span><span class="fb-tag">Goldman Q1 $5.63B</span></div>
     </div>
   </a>
   <!-- FEATURED_END -->
@@ -536,6 +536,25 @@ body {
 
   <div class="card-grid">
   <!-- GRID_START -->
+
+    <a href="daily_market_20260410.html" class="report-card" data-type="daily">
+      <div class="card-thumb up-bg">
+        <div class="thumb-type">일일 시황 · 2026.04.10</div>
+        <div class="thumb-headline">
+          <span class="num dn">WTI -2.10%</span>
+        </div>
+        <div class="thumb-metrics">
+          <div class="thumb-metric">🇰🇷 <span class="val up">+1.80%</span></div>
+          <div class="thumb-metric">🇺🇸 <span class="val up">+0.35%</span></div>
+          <div class="thumb-metric">🛢️ <span class="val dn">-2.10%</span></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-date">2026년 04월 10일 금요일</div>
+        <div class="card-title">KOSPI +1.80%(5,879) · KOSDAQ +1.14% — 미국·이란 휴</div>
+        <div class="kw-row"><span class="cb-tag">CPI +3.3% 에너지 쇼크</span><span class="cb-tag">코어CPI +0.2% 예상 하회</span><span class="cb-tag">주말 이란협상</span><span class="cb-tag">S&P 주간 +3.5%</span><span class="cb-tag">KOSPI 2주 연속 상승</span></div>
+      </div>
+    </a>
 
     <a href="daily_market_20260407.html" class="report-card" data-type="daily">
       <div class="card-thumb up-bg">
@@ -696,6 +715,32 @@ body {
 // 카드별 시장 데이터 — upload.py가 rebuild_index() 시 자동 주입
 // <!-- CARD_DATA_START -->
 const CARD_DATA = {
+  "daily_market_20260413.html": {
+    "all": {
+      "thumb": "dn-bg",
+      "big": "WTI +1.32%",
+      "label": "📅 일일 시황 · 2026년 04월 13일 월요일",
+      "trio": "🇰🇷 <span class=\"dn\">-0.86%</span> &nbsp;🇺🇸 <span class=\"up\">+1.23%</span> &nbsp;🛢️ <span class=\"up\">+1.32%</span>"
+    },
+    "kr": {
+      "thumb": "dn-bg",
+      "big": "KOSPI -0.86%",
+      "label": "🇰🇷 한국 시황 · 2026년 04월 13일 월요일",
+      "trio": "🇰🇷 <span class=\"dn\">-0.86%</span> &nbsp;🇺🇸 <span class=\"up\">+1.23%</span> &nbsp;🛢️ <span class=\"up\">+1.02%</span>"
+    },
+    "us": {
+      "thumb": "up-bg",
+      "big": "나스닥 +1.23%",
+      "label": "🇺🇸 미국 시황 · 2026년 04월 13일 월요일",
+      "trio": "🇰🇷 <span class=\"up\">+1.23%</span> &nbsp;🇺🇸 <span class=\"up\">+1.02%</span> &nbsp;🛢️ <span class=\"up\">+0.32%</span>"
+    },
+    "co": {
+      "thumb": "up-bg",
+      "big": "WTI +1.32%",
+      "label": "🪨 원자재 시황 · 2026년 04월 13일 월요일",
+      "trio": "🇰🇷 <span class=\"up\">+1.32%</span> &nbsp;🇺🇸 <span class=\"up\">+0.32%</span> &nbsp;🛢️ <span class=\"up\">+2.20%</span>"
+    }
+  },
   "daily_market_20260410.html": {
     "all": {
       "thumb": "up-bg",
