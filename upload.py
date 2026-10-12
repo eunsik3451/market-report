@@ -79,6 +79,10 @@ def parse_report_meta(filepath):
     # 등락률 파싱 — <tr> 단위로 종목명과 chg 수치 매핑
     def get_market_chg(names):
         for name in names:
+            # 신형 리포트: 상단 지수 보드의 data-* 속성
+            v = _extract(html, rf'data-name="{re.escape(name)}" data-close="[^"]*" data-chg="([\+\-]\d+\.?\d*)%"')
+            if v:
+                return v + '%'
             # tr 단위 파싱 — class에 chg 포함된 td에서 수치 추출 (style 속성 무시)
             tr_pattern = rf'<tr[^>]*>(?:(?!<tr).)*?{re.escape(name)}(?:(?!<tr).)*?class="[^"]*chg[^"]*"[^>]*>([\+\-]\d+\.?\d*)%'
             v = _extract(html, tr_pattern)
@@ -272,17 +276,18 @@ STRIP_ITEMS = [  # (리포트 테이블 라벨 패턴, 표시명, 접두)
     (r"나스닥",               '<span class="flag">🇺🇸</span> 나스닥',  ""),
     (r"KOSPI",               '<span class="flag">🇰🇷</span> KOSPI',   ""),
     (r"KOSDAQ",              '<span class="flag">🇰🇷</span> KOSDAQ',  ""),
-    (r"🛢️ WTI[^<]*",         '🛢️ WTI', "$"),
-    (r"🥇 금[^<]*",           '🥇 금',   "$"),
-    (r"💵 원/달러[^<]*",      '💵 원/달러', ""),
+    (r"WTI 원유|🛢️ WTI[^<\"]*",         '🛢️ WTI', "$"),
+    (r"금|🥇 금[^<\"]*",           '🥇 금',   "$"),
+    (r"원/달러|💵 원/달러[^<\"]*",      '💵 원/달러', ""),
 ]
 
 def build_strip(filepath):
     html = Path(filepath).read_text(encoding="utf-8")
     out = []
     for pat, label, prefix in STRIP_ITEMS:
-        m = re.search(rf'<tr><td>(?:{pat})</td><td><strong[^>]*>([^<]+)</strong></td>'
-                      rf'<td class="prev">[^<]*</td><td class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%', html)
+        m = (re.search(rf'data-name="(?:{pat})" data-close="([^"]+)" data-chg="([\+\-]\d+\.?\d*)%"', html) or
+             re.search(rf'<tr><td>(?:{pat})</td><td><strong[^>]*>([^<]+)</strong></td>'
+                       rf'<td class="prev">[^<]*</td><td class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%', html))
         if not m:
             continue
         close, chg = m.group(1), m.group(2) + "%"
