@@ -7,7 +7,7 @@ import sys, shutil, subprocess, re, json
 from datetime import datetime
 from pathlib import Path
 
-REPO_DIR   = Path(r"C:\Users\john\Desktop\market-report")
+REPO_DIR   = Path(__file__).resolve().parent
 INDEX_FILE = REPO_DIR / "index.html"
 SITE_URL   = "https://eunsik3451.github.io/market-report"
 
@@ -265,6 +265,42 @@ def build_card_data(meta):
     }
 
 
+
+# ── 최신 종가 스트립 ───────────────────────────────────────
+STRIP_ITEMS = [  # (리포트 테이블 라벨 패턴, 표시명, 접두)
+    (r"S&amp;P 500|S&P 500", '<span class="flag">🇺🇸</span> S&P 500', ""),
+    (r"나스닥",               '<span class="flag">🇺🇸</span> 나스닥',  ""),
+    (r"KOSPI",               '<span class="flag">🇰🇷</span> KOSPI',   ""),
+    (r"KOSDAQ",              '<span class="flag">🇰🇷</span> KOSDAQ',  ""),
+    (r"🛢️ WTI[^<]*",         '🛢️ WTI', "$"),
+    (r"🥇 금[^<]*",           '🥇 금',   "$"),
+    (r"💵 원/달러[^<]*",      '💵 원/달러', ""),
+]
+
+def build_strip(filepath):
+    html = Path(filepath).read_text(encoding="utf-8")
+    out = []
+    for pat, label, prefix in STRIP_ITEMS:
+        m = re.search(rf'<tr><td>(?:{pat})</td><td><strong[^>]*>([^<]+)</strong></td>'
+                      rf'<td class="prev">[^<]*</td><td class="[^"]*chg[^"]*">([\+\-]\d+\.?\d*)%', html)
+        if not m:
+            continue
+        close, chg = m.group(1), m.group(2) + "%"
+        try:
+            v = float(close.replace(",", ""))
+            close = f"{v:,.0f}" if v >= 1000 else (f"{v:,.1f}" if v >= 100 else f"{v:,.2f}")
+        except ValueError:
+            pass
+        c = _cls(chg)
+        if "원/달러" in label:   # 원화 약세(상승)=빨강
+            c = "dn" if chg.startswith("+") else "up"
+        out.append(f'''    <div class="strip-item">
+      <div class="strip-name">{label}</div>
+      <div class="strip-val {c}">{prefix}{close}</div>
+      <div class="strip-chg {c}">{chg}</div>
+    </div>''')
+    return "\n".join(out)
+
 # ── index.html 재구성 ──────────────────────────────────────
 def rebuild_index():
     def extract_date(f):
@@ -301,6 +337,9 @@ def rebuild_index():
                  idx)
     idx = re.sub(r'<!-- GRID_START -->[\s\S]*?<!-- GRID_END -->',
                  f'<!-- GRID_START -->\n{grid_html}\n  <!-- GRID_END -->',
+                 idx)
+    idx = re.sub(r'<!-- STRIP_START -->[\s\S]*?<!-- STRIP_END -->',
+                 lambda _: f'<!-- STRIP_START -->\n{build_strip(reports[0])}\n    <!-- STRIP_END -->',
                  idx)
     idx = re.sub(r'<!-- UPDATE_DATE -->[\s\S]*?<!-- /UPDATE_DATE -->',
                  f'<!-- UPDATE_DATE -->{fm["date_str"]} 기준<!-- /UPDATE_DATE -->',
