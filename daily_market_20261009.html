@@ -633,6 +633,185 @@ table.dt td.chg{font-weight:800;font-size:14.5px;} table.dt td.rng{font-size:12p
         </tbody></table>
     </div>
     <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">🧩</span><span class="mch-title">나스닥 관련 ETF · 지수</span></div></div>
+      <table class="dt"><thead><tr><th>티커</th><th style="text-align:left">구분</th><th>종가</th><th>등락률</th></tr></thead><tbody>
+<tr><td>QQQ</td><td style="text-align:left;color:var(--sub)">나스닥 100</td><td><strong class="up">751.27</strong></td><td class="up chg">+0.49%</td></tr>
+<tr><td>QQQE</td><td style="text-align:left;color:var(--sub)">나스닥 100 동일가중</td><td><strong class="up">121.92</strong></td><td class="up chg">+0.74%</td></tr>
+<tr><td>QTEC</td><td style="text-align:left;color:var(--sub)">나스닥 100 기술주</td><td><strong class="up">331.55</strong></td><td class="up chg">+0.71%</td></tr>
+<tr><td>QQXT</td><td style="text-align:left;color:var(--sub)">나스닥 100 비기술주</td><td><strong class="up">98.15</strong></td><td class="up chg">+0.88%</td></tr>
+<tr><td>SOX</td><td style="text-align:left;color:var(--sub)">필라델피아 반도체지수</td><td><strong class="dn">12,572.42</strong></td><td class="dn chg">-0.41%</td></tr>
+<tr><td>SMH</td><td style="text-align:left;color:var(--sub)">반도체 ETF</td><td><strong class="dn">603.33</strong></td><td class="dn chg">-0.65%</td></tr>
+<tr><td>IGV</td><td style="text-align:left;color:var(--sub)">소프트웨어 ETF</td><td><strong class="up">112.67</strong></td><td class="up chg">+2.81%</td></tr>
+<tr><td>IBB</td><td style="text-align:left;color:var(--sub)">바이오 ETF</td><td><strong class="up">206.49</strong></td><td class="up chg">+3.00%</td></tr>
+<tr><td>IWM</td><td style="text-align:left;color:var(--sub)">러셀 2000(중소형)</td><td><strong class="up">278.94</strong></td><td class="up chg">+0.49%</td></tr>
+        </tbody></table>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📊</span><span class="mch-title">나스닥 100 섹터별 등락률</span></div></div>
+      <div style="font-size:12px;color:var(--sub);padding:0 4px 10px">타일 = 나스닥 100 101종목을 섹터별로 묶은 시총가중 등락률 · 옆 숫자 = 지수 내 비중 · 합산 추정치 +0.65%</div><div class="sector-wrap">
+        <div class="sector-grid-2">
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-0')"><div class="sector-tile-name">헬스케어·바이오 2%</div><div class="sector-tile-chg up">+3.01%</div><div class="sector-tile-bar" style="width:100%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-1')"><div class="sector-tile-name">소프트웨어 13%</div><div class="sector-tile-chg up">+2.79%</div><div class="sector-tile-bar" style="width:92%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-2')"><div class="sector-tile-name">경기소비재 11%</div><div class="sector-tile-chg up">+2.54%</div><div class="sector-tile-bar" style="width:84%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-3')"><div class="sector-tile-name">유틸리티·에너지 1%</div><div class="sector-tile-chg up">+1.58%</div><div class="sector-tile-bar" style="width:52%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-4')"><div class="sector-tile-name">산업재 6%</div><div class="sector-tile-chg up">+1.06%</div><div class="sector-tile-bar" style="width:35%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-5')"><div class="sector-tile-name">금융·소재·기타 1%</div><div class="sector-tile-chg up">+0.51%</div><div class="sector-tile-bar" style="width:16%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-6')"><div class="sector-tile-name">인터넷·미디어 23%</div><div class="sector-tile-chg up">+0.41%</div><div class="sector-tile-bar" style="width:13%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'nq-detail-7')"><div class="sector-tile-name">필수소비재 4%</div><div class="sector-tile-chg up">+0.18%</div><div class="sector-tile-bar" style="width:5%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'nq-detail-8')"><div class="sector-tile-name">하드웨어·IT기기 13%</div><div class="sector-tile-chg dn">-0.59%</div><div class="sector-tile-bar" style="width:19%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'nq-detail-9')"><div class="sector-tile-name">반도체 27%</div><div class="sector-tile-chg dn">-0.59%</div><div class="sector-tile-bar" style="width:19%"></div></div>
+        </div>
+        <div id="nq-detail-0" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 헬스케어·바이오 2% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-0','nq-top-0')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-0','nq-mkt-0')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-0">
+            <div class="sector-stock-row"><span class="sector-stock-name">AMGN</span><span class="sector-stock-chg up">+1.82%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GILD</span><span class="sector-stock-chg up">+2.77%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ISRG</span><span class="sector-stock-chg up">+2.06%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">VRTX</span><span class="sector-stock-chg up">+1.36%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MRNA</span><span class="sector-stock-chg up">+14.21%</span></div></div>
+          <div class="sector-stocks" id="nq-top-0" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">MRNA</span><span class="sector-stock-chg up">+14.21%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ALNY</span><span class="sector-stock-chg up">+3.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GILD</span><span class="sector-stock-chg up">+2.77%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GEHC</span><span class="sector-stock-chg up">+2.37%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ISRG</span><span class="sector-stock-chg up">+2.06%</span></div></div>
+        </div>
+        <div id="nq-detail-1" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 소프트웨어 13% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-1','nq-top-1')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-1','nq-mkt-1')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-1">
+            <div class="sector-stock-row"><span class="sector-stock-name">MSFT</span><span class="sector-stock-chg up">+2.38%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PLTR</span><span class="sector-stock-chg up">+5.17%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PANW</span><span class="sector-stock-chg up">+5.09%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CRWD</span><span class="sector-stock-chg up">+4.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SHOP</span><span class="sector-stock-chg up">+3.82%</span></div></div>
+          <div class="sector-stocks" id="nq-top-1" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">DDOG</span><span class="sector-stock-chg up">+7.11%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PLTR</span><span class="sector-stock-chg up">+5.17%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PANW</span><span class="sector-stock-chg up">+5.09%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CRWD</span><span class="sector-stock-chg up">+4.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SHOP</span><span class="sector-stock-chg up">+3.82%</span></div></div>
+        </div>
+        <div id="nq-detail-2" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 경기소비재 11% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-2','nq-top-2')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-2','nq-mkt-2')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-2">
+            <div class="sector-stock-row"><span class="sector-stock-name">AMZN</span><span class="sector-stock-chg up">+3.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TSLA</span><span class="sector-stock-chg up">+2.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BKNG</span><span class="sector-stock-chg up">+0.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PDD</span><span class="sector-stock-chg up">+3.95%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SBUX</span><span class="sector-stock-chg dn">-2.64%</span></div></div>
+          <div class="sector-stocks" id="nq-top-2" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">PDD</span><span class="sector-stock-chg up">+3.95%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AMZN</span><span class="sector-stock-chg up">+3.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DASH</span><span class="sector-stock-chg up">+2.50%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TSLA</span><span class="sector-stock-chg up">+2.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MELI</span><span class="sector-stock-chg up">+1.79%</span></div></div>
+        </div>
+        <div id="nq-detail-3" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 유틸리티·에너지 1% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-3','nq-top-3')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-3','nq-mkt-3')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-3">
+            <div class="sector-stock-row"><span class="sector-stock-name">CEG</span><span class="sector-stock-chg up">+4.56%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AEP</span><span class="sector-stock-chg up">+0.40%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BKR</span><span class="sector-stock-chg up">+0.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">FANG</span><span class="sector-stock-chg up">+0.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">XEL</span><span class="sector-stock-chg up">+0.57%</span></div></div>
+          <div class="sector-stocks" id="nq-top-3" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">CEG</span><span class="sector-stock-chg up">+4.56%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BKR</span><span class="sector-stock-chg up">+0.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">XEL</span><span class="sector-stock-chg up">+0.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AEP</span><span class="sector-stock-chg up">+0.40%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">FANG</span><span class="sector-stock-chg up">+0.23%</span></div></div>
+        </div>
+        <div id="nq-detail-4" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 산업재 6% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-4','nq-top-4')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-4','nq-mkt-4')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-4">
+            <div class="sector-stock-row"><span class="sector-stock-name">SPCX</span><span class="sector-stock-chg up">+1.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CSX</span><span class="sector-stock-chg dn">-0.17%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CTAS</span><span class="sector-stock-chg up">+0.64%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HON</span><span class="sector-stock-chg up">+0.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PCAR</span><span class="sector-stock-chg dn">-1.48%</span></div></div>
+          <div class="sector-stocks" id="nq-top-4" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">HONA</span><span class="sector-stock-chg up">+2.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TRI</span><span class="sector-stock-chg up">+1.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AXON</span><span class="sector-stock-chg up">+1.34%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SPCX</span><span class="sector-stock-chg up">+1.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CTAS</span><span class="sector-stock-chg up">+0.64%</span></div></div>
+        </div>
+        <div id="nq-detail-5" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 금융·소재·기타 1% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-5','nq-top-5')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-5','nq-mkt-5')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-5">
+            <div class="sector-stock-row"><span class="sector-stock-name">LIN</span><span class="sector-stock-chg up">+0.42%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PYPL</span><span class="sector-stock-chg up">+0.93%</span></div></div>
+          <div class="sector-stocks" id="nq-top-5" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">PYPL</span><span class="sector-stock-chg up">+0.93%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LIN</span><span class="sector-stock-chg up">+0.42%</span></div></div>
+        </div>
+        <div id="nq-detail-6" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 인터넷·미디어 23% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-6','nq-top-6')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-6','nq-mkt-6')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-6">
+            <div class="sector-stock-row"><span class="sector-stock-name">GOOGL</span><span class="sector-stock-chg up">+0.97%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GOOG</span><span class="sector-stock-chg up">+0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">META</span><span class="sector-stock-chg dn">-0.31%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NFLX</span><span class="sector-stock-chg dn">-1.77%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TMUS</span><span class="sector-stock-chg dn">-13.27%</span></div></div>
+          <div class="sector-stocks" id="nq-top-6" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">TTWO</span><span class="sector-stock-chg up">+1.94%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GOOGL</span><span class="sector-stock-chg up">+0.97%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GOOG</span><span class="sector-stock-chg up">+0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NBIS</span><span class="sector-stock-chg up">+0.62%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">META</span><span class="sector-stock-chg dn">-0.31%</span></div></div>
+        </div>
+        <div id="nq-detail-7" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 필수소비재 4% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-7','nq-top-7')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-7','nq-mkt-7')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-7">
+            <div class="sector-stock-row"><span class="sector-stock-name">WMT</span><span class="sector-stock-chg up">+0.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">COST</span><span class="sector-stock-chg dn">-0.11%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PEP</span><span class="sector-stock-chg dn">-1.85%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MNST</span><span class="sector-stock-chg dn">-0.02%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MDLZ</span><span class="sector-stock-chg dn">-0.43%</span></div></div>
+          <div class="sector-stocks" id="nq-top-7" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">KDP</span><span class="sector-stock-chg up">+1.60%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">WMT</span><span class="sector-stock-chg up">+0.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CCEP</span><span class="sector-stock-chg up">+0.59%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MNST</span><span class="sector-stock-chg dn">-0.02%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">COST</span><span class="sector-stock-chg dn">-0.11%</span></div></div>
+        </div>
+        <div id="nq-detail-8" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 하드웨어·IT기기 13% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-8','nq-top-8')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-8','nq-mkt-8')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-8">
+            <div class="sector-stock-row"><span class="sector-stock-name">AAPL</span><span class="sector-stock-chg dn">-1.11%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CSCO</span><span class="sector-stock-chg up">+3.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SNDK</span><span class="sector-stock-chg dn">-1.72%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">STX</span><span class="sector-stock-chg up">+1.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">WDC</span><span class="sector-stock-chg up">+1.01%</span></div></div>
+          <div class="sector-stocks" id="nq-top-8" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">LITE</span><span class="sector-stock-chg up">+5.22%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CSCO</span><span class="sector-stock-chg up">+3.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">STX</span><span class="sector-stock-chg up">+1.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">WDC</span><span class="sector-stock-chg up">+1.01%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AAPL</span><span class="sector-stock-chg dn">-1.11%</span></div></div>
+        </div>
+        <div id="nq-detail-9" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 반도체 27% 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'nq-mkt-9','nq-top-9')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'nq-top-9','nq-mkt-9')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="nq-mkt-9">
+            <div class="sector-stock-row"><span class="sector-stock-name">NVDA</span><span class="sector-stock-chg dn">-0.52%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AVGO</span><span class="sector-stock-chg up">+0.39%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MU</span><span class="sector-stock-chg dn">-0.66%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AMD</span><span class="sector-stock-chg dn">-2.03%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ASML</span><span class="sector-stock-chg up">+0.60%</span></div></div>
+          <div class="sector-stocks" id="nq-top-9" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">MPWR</span><span class="sector-stock-chg up">+1.20%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TER</span><span class="sector-stock-chg up">+0.99%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ASML</span><span class="sector-stock-chg up">+0.60%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AVGO</span><span class="sector-stock-chg up">+0.39%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MRVL</span><span class="sector-stock-chg up">+0.25%</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">🎯</span><span class="mch-title">나스닥 100 지수 기여도 (1bp = 0.01%p)</span></div></div>
+      <div class="analysis-body" style="font-size:13.5px;line-height:2"><strong>끌어올린 종목</strong> MSFT <span class="up">+19.7bp</span><span style="color:var(--sub)">(+2.38%)</span> · AMZN <span class="up">+19.4bp</span><span style="color:var(--sub)">(+3.29%)</span> · GOOGL <span class="up">+8.7bp</span><span style="color:var(--sub)">(+0.97%)</span> · GOOG <span class="up">+7.7bp</span><span style="color:var(--sub)">(+0.87%)</span> · TSLA <span class="up">+6.4bp</span><span style="color:var(--sub)">(+2.05%)</span> · SPCX <span class="up">+5.7bp</span><span style="color:var(--sub)">(+1.25%)</span><br><strong>끌어내린 종목</strong> AAPL <span class="dn">-11.3bp</span><span style="color:var(--sub)">(-1.11%)</span> · NVDA <span class="dn">-6.0bp</span><span style="color:var(--sub)">(-0.52%)</span> · TMUS <span class="dn">-4.4bp</span><span style="color:var(--sub)">(-13.27%)</span> · AMD <span class="dn">-4.2bp</span><span style="color:var(--sub)">(-2.03%)</span> · INTC <span class="dn">-2.6bp</span><span style="color:var(--sub)">(-2.22%)</span> · ARM <span class="dn">-1.9bp</span><span style="color:var(--sub)">(-3.27%)</span></div>
+    </div>
+    <div class="market-card">
       <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📊</span><span class="mch-title">S&P 섹터 ETF 등락률</span></div></div>
       <div class="sector-wrap">
         <div class="sector-grid-2">
@@ -819,6 +998,7 @@ table.dt td.chg{font-weight:800;font-size:14.5px;} table.dt td.rng{font-size:12p
       <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
       <div class="analysis-body"><ul>
         <li>S&P 500 <strong class="up">7,811.54(+0.59%)</strong>, 나스닥 <strong class="up">27,366.17(+0.64%)</strong>, 다우 <strong class="up">51,654.95(+0.83%)</strong>. 장기금리 급등과 유가 상승으로 흔들린 한 주였지만 금요일 둘 다 진정되며 3대 지수가 주간 상승으로 마감했다. S&P는 10/6 사상 최고치에 근접, 나스닥은 4주 연속 주간 상승. 3분기 S&P 500 이익은 30% 이상 증가가 예상돼 어닝시즌 기대가 지수를 떠받쳤다. <span class="src">(Yahoo Finance, TheStreet, Business Recorder)</span></li>
+        <li>나스닥 100을 섹터별로 나눠 보면 <strong>소프트웨어가 끌고 반도체가 눌렀다</strong>. 소프트웨어 <strong class="up">+2.79%</strong>(DDOG +7.11%, PLTR +5.17%, PANW +5.09%, IGV ETF +2.81%)와 경기소비재 <strong class="up">+2.54%</strong>(AMZN +3.29%, TSLA +2.05%)가 지수를 각각 +37bp, +28bp 끌어올린 반면, 비중이 가장 큰 반도체(27%)는 <strong class="dn">-0.59%</strong>로 -16bp를 깎았다(NVDA -0.52%, AMD -2.03%, 필라델피아 반도체지수 -0.41%). 종목 기여도로는 MSFT(+20bp)·AMZN(+19bp)이 상승을 이끌었고 AAPL(-11bp)·NVDA(-6bp)가 가장 크게 끌어내렸다. 동일가중 QQQE(+0.74%)가 QQQ(+0.49%)보다 강해 대형주보다 나머지 종목의 상승 폭이 컸다. 바이오 ETF IBB도 <strong class="up">+3.00%</strong>(MRNA +14.21%)로 강세. <span class="src">(yfinance, Nasdaq.com)</span></li>
         <li>섹터는 부동산 <strong class="up">+1.86%</strong>(AMT +9.30%)·헬스케어 <strong class="up">+1.58%</strong>(MRK +2.26%, UNH +2.25%)·경기소비재 <strong class="up">+1.02%</strong>(AMZN +3.29%, TSLA +2.05%)·금융 +0.92%(V +2.76%, MA +2.66%) 순으로 강세. 유틸리티는 CEG +4.56%, VST +3.42% 등 AI 전력주가 주도. 기술 +0.51%는 ORCL <strong class="up">+4.59%</strong>(OpenAI 매출 우려 해소 반등, Mizuho 톱픽)·MSFT +2.38%가 끌었으나 NVDA -0.52%, AAPL -1.11%, AMD -2.03%는 약세. 산업재는 DE -4.85%가 발목. <span class="src">(yfinance, MarketBeat)</span></li>
         <li>통신 <strong class="dn">-1.51%</strong>는 SpaceX 주파수 인수 충격으로 TMUS -13.27%, T -9.81%, VZ -8.75% 동반 폭락(GOOGL +0.97%, META -0.31%가 섹터 낙폭을 줄임). 개별 종목에선 Palantir <strong class="up">+5.17%</strong>($209.05 신고가, 바클레이즈 Overweight·$265 개시, 전일 골드만 매수 상향), COIN +4.30%. 반도체 외곽은 TSM -1.02%, INTC -2.22%, ARM -3.27%, SMCI -2.13%로 차익실현. <span class="src">(CNBC, Motley Fool, 24/7 Wall St)</span></li>
       </ul></div>
