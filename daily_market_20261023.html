@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>글로벌 시장 일일 시황 | 2026년 10월 23일</title>
+<link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"/>
+<style>
+:root{--bg:#f5f6fa;--surface:#fff;--border:#e8eaf0;--text:#111827;--sub:#6b7280;--accent:#2563eb;--green:#16a34a;--red:#dc2626;--gold:#d97706;--orange:#ea580c;--radius:14px;--shadow:0 2px 12px rgba(0,0,0,.06);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:'Pretendard',-apple-system,sans-serif;font-size:15px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:900px;margin:0 auto;padding:28px 20px 80px;}
+.header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:18px;border-bottom:2px solid var(--text);}
+.header-left .date{font-size:12px;font-weight:500;color:var(--sub);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px;}
+.header-left h1{font-size:24px;font-weight:800;letter-spacing:-.02em;line-height:1.2;}
+.header-left h1 em{font-style:normal;color:var(--green);}
+.header-right{text-align:right;font-size:12px;color:var(--sub);line-height:1.8;}
+.back-btn{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--sub);text-decoration:none;margin-bottom:16px;padding:6px 12px;background:var(--surface);border:1px solid var(--border);border-radius:8px;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sub);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
+.summary-card{background:var(--text);color:#fff;border-radius:var(--radius);padding:22px 26px;margin-bottom:24px;}
+.summary-card .s-date{font-size:11px;font-weight:600;letter-spacing:.08em;color:rgba(255,255,255,.45);text-transform:uppercase;margin-bottom:12px;}
+.s-bullets{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.s-bullets li{font-size:13.5px;line-height:1.65;color:rgba(255,255,255,.85);padding-left:18px;position:relative;}
+.s-bullets li::before{content:'↘';position:absolute;left:0;font-size:11px;color:rgba(255,255,255,.35);}
+.s-bullets li.up::before{content:'↗';}
+.s-bullets li.nt::before{content:'→';}
+.t-up{color:#6ee7b7;font-weight:700;} .t-dn{color:#fca5a5;font-weight:700;}
+.point-card{background:var(--surface);border-radius:var(--radius);border-left:4px solid var(--accent);padding:16px 20px;margin-bottom:12px;box-shadow:var(--shadow);}
+.point-text{font-size:14px;line-height:1.8;color:var(--text);}
+.point-text strong{color:var(--text);font-weight:700;}
+.point-text .t-up{color:var(--green);font-weight:700;} .point-text .t-dn{color:var(--red);font-weight:700;}
+.event-card{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px;}
+.event-card-head{background:#f8fafc;border-bottom:1px solid var(--border);padding:11px 18px;font-size:13px;font-weight:700;color:var(--text);}
+.event-quote{background:#eff6ff;border-left:3px solid var(--accent);margin:14px 18px 0;padding:12px 14px;border-radius:6px;}
+.event-quote-text{font-size:13.5px;font-style:italic;color:var(--text);line-height:1.7;margin-bottom:6px;}
+.event-quote-src{font-size:11px;color:var(--sub);font-style:normal;}
+.event-bullets{list-style:none;padding:12px 18px 16px;display:flex;flex-direction:column;gap:8px;}
+.event-bullets li{font-size:13.5px;line-height:1.65;color:#374151;padding-left:14px;position:relative;}
+.event-bullets li::before{content:'—';position:absolute;left:0;color:#d1d5db;}
+.event-bullets li strong{color:var(--text);font-weight:700;}
+.event-bullets li strong.up{color:var(--green);} .event-bullets li strong.dn{color:var(--red);}
+.event-bullets li .src{font-size:11px;color:#9ca3af;}
+.metrics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:24px;}
+.mc{background:var(--surface);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.mc-label{font-size:11px;font-weight:600;color:var(--sub);margin-bottom:5px;}
+.mc-value{font-size:21px;font-weight:800;letter-spacing:-.03em;line-height:1.1;}
+.mc-value.up{color:var(--green);} .mc-value.dn{color:var(--red);}
+.mc-sub{font-size:11px;color:var(--sub);margin-top:3px;}
+.mc.hero{background:linear-gradient(135deg,#052e16,#166534);border:none;}
+.mc.hero .mc-label{color:rgba(255,255,255,.55);} .mc.hero .mc-value{color:#6ee7b7;} .mc.hero .mc-sub{color:rgba(255,255,255,.5);}
+.mc.hero.dn-hero{background:linear-gradient(135deg,#450a0a,#991b1b);}
+.mc.hero.dn-hero .mc-value{color:#fca5a5;}
+.mc.hero.nt-hero{background:linear-gradient(135deg,#1f2937,#4b5563);}
+.mc.hero.nt-hero .mc-value{color:#e5e7eb;}
+
+.market-tabs{display:flex;gap:8px;margin-bottom:16px;}
+.mktab{flex:1;padding:12px 0;text-align:center;font-size:13.5px;font-weight:700;border-radius:10px;cursor:pointer;border:1.5px solid var(--border);background:var(--surface);color:var(--sub);transition:all .15s;}
+.mktab.kr.active{background:#fff1f2;border-color:var(--red);color:var(--red);}
+.mktab.us.active{background:#eff6ff;border-color:var(--accent);color:var(--accent);}
+.mktab.co.active{background:#fffbeb;border-color:var(--gold);color:var(--gold);}
+.market-panel{display:none;} .market-panel.active{display:block;}
+.market-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:12px;}
+.market-card-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.mch-left{display:flex;align-items:center;gap:8px;} .mch-title{font-size:13px;font-weight:700;}
+table.dt{width:100%;border-collapse:collapse;}
+table.dt thead tr{background:#f9fafb;border-bottom:1px solid var(--border);}
+table.dt th{padding:8px 16px;text-align:right;font-size:11px;font-weight:600;color:var(--sub);letter-spacing:.04em;white-space:nowrap;}
+table.dt th:first-child{text-align:left;}
+table.dt td{padding:12px 16px;text-align:right;border-bottom:1px solid #f3f4f6;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+table.dt td:first-child{text-align:left;font-weight:600;}
+table.dt tr:last-child td{border-bottom:none;}
+table.dt td.chg{font-weight:800;font-size:14.5px;} table.dt td.rng{font-size:12px;color:var(--sub);} table.dt td.prev{font-size:12px;color:var(--sub);}
+.up{color:var(--green);} .dn{color:var(--red);}
+.sector-wrap{padding:14px;}
+.sector-grid-2{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.sector-tile{border-radius:10px;padding:12px 14px;cursor:pointer;border:1.5px solid transparent;transition:all .15s;user-select:none;}
+.sector-tile.up-tile{background:#f0fdf4;border-color:#bbf7d0;}
+.sector-tile.dn-tile{background:#fff1f2;border-color:#fecdd3;}
+.sector-tile.nt-tile{background:#f9fafb;border-color:var(--border);}
+.sector-tile:hover{filter:brightness(.97);}
+.sector-tile.selected{box-shadow:0 0 0 2px var(--accent);}
+.sector-tile-name{font-size:12px;font-weight:600;color:var(--sub);margin-bottom:6px;}
+.sector-tile-chg{font-size:20px;font-weight:800;line-height:1;}
+.sector-tile-chg.up{color:var(--green);} .sector-tile-chg.dn{color:var(--red);}
+.sector-tile-bar{height:3px;border-radius:2px;margin-top:8px;}
+.sector-tile.up-tile .sector-tile-bar{background:var(--green);}
+.sector-tile.dn-tile .sector-tile-bar{background:var(--red);}
+.sector-tile.nt-tile .sector-tile-bar{background:#d1d5db;}
+.sector-detail-panel{display:none;margin-top:10px;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.sector-detail-panel.open{display:block;}
+.sector-detail-header{padding:10px 14px;background:#f8fafc;border-bottom:1px solid var(--border);font-size:12px;font-weight:700;color:var(--text);display:flex;justify-content:space-between;}
+.sector-detail-tabs{display:flex;}
+.sector-dtab{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;cursor:pointer;color:var(--sub);}
+.sector-dtab.active{background:var(--accent);color:#fff;}
+.sector-stocks{padding:8px 14px 12px;}
+.sector-stock-row{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid #f3f4f6;font-size:13px;}
+.sector-stock-row:last-child{border-bottom:none;}
+.sector-stock-name{color:#374151;}
+.sector-stock-chg{font-weight:700;}
+.analysis-body{padding:14px 18px;}
+.analysis-body ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.analysis-body ul li{font-size:13.5px;line-height:1.7;color:#374151;padding-left:14px;position:relative;}
+.analysis-body ul li::before{content:'—';position:absolute;left:0;color:#d1d5db;}
+.analysis-body ul li strong{color:var(--text);font-weight:700;}
+.analysis-body ul li strong.up{color:var(--green);} .analysis-body ul li strong.dn{color:var(--red);}
+.src{font-size:11px;color:#9ca3af;}
+.schedule-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid var(--border);overflow:hidden;margin-bottom:24px;}
+.sc-item{display:flex;align-items:flex-start;gap:14px;padding:13px 20px;border-bottom:1px solid #f3f4f6;}
+.sc-item:last-child{border-bottom:none;}
+.sc-dot{width:8px;height:8px;border-radius:50%;margin-top:7px;flex-shrink:0;}
+.sc-dot.h{background:var(--red);} .sc-dot.m{background:var(--gold);} .sc-dot.g{background:var(--green);}
+.sc-title{font-size:13.5px;font-weight:700;color:var(--text);margin-bottom:2px;}
+.sc-desc{font-size:12.5px;color:#6b7280;line-height:1.5;}
+.keywords{background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:16px 18px;margin-bottom:24px;}
+.kw-label{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;}
+.kw-tags{display:flex;flex-wrap:wrap;gap:7px;}
+.kw-tag{font-size:12px;font-weight:600;padding:5px 13px;border-radius:20px;border:1.5px solid var(--accent);color:var(--accent);background:#eff6ff;}
+.footer{font-size:11px;color:#9ca3af;text-align:center;line-height:1.9;padding-top:18px;border-top:1px solid var(--border);}
+@media(max-width:640px){.metrics-grid{grid-template-columns:repeat(2,1fr);}.sector-grid-2{grid-template-columns:repeat(2,1fr);}}
+.ixboard{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;margin-bottom:24px;}
+.ixgroup+.ixgroup{border-top:1px solid var(--border);margin-top:12px;padding-top:12px;}
+.ixgroup-label{font-size:11px;font-weight:700;color:var(--sub);letter-spacing:.08em;margin-bottom:6px;}
+.ixgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:4px 12px;}
+.ix{padding:6px 2px;}
+.ix-name{font-size:12px;color:var(--sub);font-weight:600;white-space:nowrap;}
+.ix-chg{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.35;}
+.ix-chg.up{color:var(--green);} .ix-chg.dn{color:var(--red);} .ix-chg.nt{color:var(--text);}
+.ix-close{font-size:12px;color:var(--sub);}
+.ix-tag{font-size:10px;font-weight:600;color:var(--gold);background:#fef3c7;border-radius:4px;padding:0 4px;margin-left:2px;}
+@media (min-width:760px){.ixboard .ixgrid{grid-template-columns:repeat(7,1fr);}}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a href="index.html" class="back-btn">← 목록으로</a>
+  <div class="header">
+    <div class="header-left">
+      <div class="date">2026.10.23 Fri · Daily Market Report</div>
+      <h1>글로벌 시장 <em>일일 시황</em></h1>
+    </div>
+    <div class="header-right">✅ 가격: Yahoo Finance · KRX<br>🔍 뉴스: CNBC · Yahoo Finance · 24/7 Wall St. · FXStreet · 뉴스1 · 뉴스핌 · 알파경제 · 이투데이 · 한국금융신문</div>
+  </div>
+
+  <div class="section-label">📊 주요 지수 수익률 <span style="font-weight:500;letter-spacing:0;text-transform:none">· 전일 종가 대비</span></div>
+  <div class="ixboard">
+    <div class="ixgroup"><div class="ixgroup-label">증시</div>
+    <div class="ixgrid">
+      <div class="ix" data-name="S&amp;P 500" data-close="7,623.68" data-chg="-0.52%"><div class="ix-name">🇺🇸 S&P 500</div><div class="ix-chg dn">-0.52%</div><div class="ix-close">7,623.68</div></div>
+      <div class="ix" data-name="나스닥" data-close="25,955.34" data-chg="-0.21%"><div class="ix-name">🇺🇸 나스닥</div><div class="ix-chg dn">-0.21%</div><div class="ix-close">25,955.34</div></div>
+      <div class="ix" data-name="다우존스" data-close="52,215.16" data-chg="-1.23%"><div class="ix-name">🇺🇸 다우</div><div class="ix-chg dn">-1.23%</div><div class="ix-close">52,215.16</div></div>
+      <div class="ix" data-name="러셀 2000" data-close="2,775.90" data-chg="-0.29%"><div class="ix-name">🇺🇸 러셀 2000</div><div class="ix-chg dn">-0.29%</div><div class="ix-close">2,775.90</div></div>
+      <div class="ix" data-name="반도체(SOX)" data-close="10,779.46" data-chg="+0.44%"><div class="ix-name">🇺🇸 반도체(SOX)</div><div class="ix-chg up">+0.44%</div><div class="ix-close">10,779.46</div></div>
+      <div class="ix" data-name="KOSPI" data-close="5,550.30" data-chg="+0.30%"><div class="ix-name">🇰🇷 KOSPI</div><div class="ix-chg up">+0.30%</div><div class="ix-close">5,550.30</div></div>
+      <div class="ix" data-name="KOSDAQ" data-close="751.69" data-chg="-1.62%"><div class="ix-name">🇰🇷 KOSDAQ</div><div class="ix-chg dn">-1.62%</div><div class="ix-close">751.69</div></div>
+    </div></div>
+    <div class="ixgroup"><div class="ixgroup-label">금리 · 환율 · 원자재</div>
+    <div class="ixgrid">
+      <div class="ix" data-name="미 10년물" data-close="4.99" data-chg="+0.71%"><div class="ix-name">📈 미 10년물</div><div class="ix-chg nt">4.99%</div><div class="ix-close">전일 대비 +3bp</div></div>
+      <div class="ix" data-name="원/달러" data-close="1,326.0" data-chg="+0.03%"><div class="ix-name">💵 원/달러</div><div class="ix-chg dn">+0.03%</div><div class="ix-close">1,326.0</div></div>
+      <div class="ix" data-name="달러인덱스" data-close="101.81" data-chg="+0.20%"><div class="ix-name">💵 달러인덱스</div><div class="ix-chg up">+0.20%</div><div class="ix-close">101.81</div></div>
+      <div class="ix" data-name="WTI 원유" data-close="103.27" data-chg="+3.82%"><div class="ix-name">🛢️ WTI</div><div class="ix-chg up">+3.82%</div><div class="ix-close">$103.27</div></div>
+      <div class="ix" data-name="금" data-close="4,007.90" data-chg="-1.29%"><div class="ix-name">🥇 금</div><div class="ix-chg dn">-1.29%</div><div class="ix-close">$4,007.90</div></div>
+      <div class="ix" data-name="VIX" data-close="19.45" data-chg="+2.21%"><div class="ix-name">📉 VIX</div><div class="ix-chg dn">+2.21%</div><div class="ix-close">19.45</div></div>
+    </div></div>
+  </div>
+
+  <div class="section-label">📋 오늘의 핵심 요약</div>
+  <div class="summary-card">
+    <div class="s-date">유가 $103 돌파에 다우 -1.2% · 통신주 SpaceX 악재 재차 급락 · KOSPI 장중 -4% 딛고 5,550 상승 마감</div>
+    <ul class="s-bullets">
+      <li class="dn"><strong>WTI +3.82%($103.27)</strong> — 후티 반군의 사우디 에너지 시설 공격으로 아람코가 다란 본사 인력을 대피시켰고, 브렌트는 <span class="t-dn">$116.72</span>로 4월 이후 최고치에 마감. 호르무즈 해협에서는 2주간 선박 18척 이상이 피격</li>
+      <li class="dn"><strong>다우 -1.23%(52,215)</strong>, S&P 500 <span class="t-dn">-0.52%(7,624)</span>, 나스닥 <span class="t-dn">-0.21%(25,955)</span>. 유가 급등에 필수소비재(-1.92%)·통신(-1.78%)·경기소비재(-1.66%)가 약했고 에너지만 <span class="t-up">+2.60%</span>. 주간으로 S&P·나스닥은 하락, 다우·러셀은 상승</li>
+      <li class="dn"><strong>통신주 SpaceX 악재 재발</strong> — SpaceX가 미국 전역 기지국 8만 곳 이상을 쓰려 한다는 보도에 AT&T <span class="t-dn">-7.96%</span>, T-Mobile <span class="t-dn">-7.71%</span>. 번스타인은 AT&T 투자의견을 '시장수익률'로 하향</li>
+      <li class="up"><strong>KOSPI +0.30%(5,550.30)</strong> — 장 초반 <span class="t-dn">-4.12%(5,306)</span>까지 밀렸다가 SK하이닉스 <span class="t-up">+4.42%</span>(솔리다임 미국 상장 중단)·삼성바이오로직스 <span class="t-up">+7.71%</span>를 앞세워 반등 마감. 외국인 <span class="t-dn">-9,789억</span>, 기관 <span class="t-up">+8,660억</span>. KOSDAQ은 -1.62%</li>
+      <li class="up"><strong>사이버보안주 급등</strong> — CrowdStrike <span class="t-up">+8.25%</span>, Palo Alto <span class="t-up">+7.22%</span>. 에버코어 채널 조사에서 보안 예산 확대가 확인됐고, PHP 취약점으로 유럽 정부 사이트가 마비되며 보안 수요 기대가 커짐</li>
+    </ul>
+  </div>
+
+  <div class="section-label">📌 오늘의 핵심 포인트</div>
+  <div class="point-card">
+    <p class="point-text">금요일 시장은 <strong>다시 치솟은 유가</strong>에 눌렸다. 후티 반군이 사우디 에너지 시설을 공격하자 WTI는 하루 만에 3.8% 올라 $103을 넘었고, 브렌트는 $116.72로 6개월 만의 최고치를 기록했다. 미국 중간선거(11/3) 이후 미국·이스라엘의 이란 공격 계획이 진행 중이라는 보도도 불안을 키웠다. 다우는 652포인트 빠졌고 유가 부담이 큰 필수소비재·경기소비재가 약했다. 다만 전날 메타·램리서치 실적 실망으로 급락했던 반도체는 SOX <span class="t-up">+0.44%</span>로 숨을 골랐고, 사이버보안주가 강하게 오르며 나스닥 낙폭은 -0.21%에 그쳤다. 한국 증시는 전날 미국 반도체 급락 여파로 장 초반 4% 넘게 빠졌지만, SK하이닉스가 솔리다임 미국 상장을 중단한다는 소식에 반등하면서 0.30% 오른 채 마감했다. 외국인은 1조원 가까이 팔았지만 기관이 8,660억원을 받아냈다. 이번 주에는 수요일 FOMC와 마이크로소프트·알파벳·아마존 실적, 목요일 3분기 GDP·PCE 물가가 한꺼번에 몰려 있다.</p>
+  </div>
+
+  <div class="event-card">
+    <div class="event-card-head">★ 유가 $103 돌파 — 후티의 사우디 공격, 브렌트 6개월 최고</div>
+    <ul class="event-bullets">
+      <li>WTI <strong class="up">$103.27(+3.82%)</strong>, 브렌트 <strong>$116.72(+3.1%)</strong>로 4월 29일 이후 최고 마감. 브렌트는 주간으로 약 6% 상승 <span class="src">(CNBC, FinanceFeeds)</span></li>
+      <li>이날 급등은 호르무즈 해협이 아니라 사우디 쪽에서 나왔다. 후티 반군이 사우디 전역의 에너지 시설을 공격했고 아람코는 다란 본사 인력을 대피시켰다. 호르무즈에서도 2주간 선박 18척 이상이 피격됐고 화요일엔 유조선 2척이 기뢰에 부딪혔다 <span class="src">(FXStreet, UPI)</span></li>
+      <li>이란 전쟁이 8개월째로 접어든 가운데, 중간선거(11/3) 이후 미국·이스라엘의 이란 공격 계획이 진행 중이라는 보도도 나왔다. 트럼프는 10월 초 '선거 전 공격은 없다'고 했지만 선거 이후는 열어둔 셈 <span class="src">(Sunday Guardian, Axios)</span></li>
+      <li>에너지 섹터 XLE <strong class="up">+2.60%</strong> — SLB <strong class="up">+7.08%</strong>, 코노코필립스 +3.55%, 셰브론 +2.88%, 엑슨모빌 +2.79%. 반면 유가 부담에 필수소비재 XLP <strong class="dn">-1.92%</strong>(코카콜라 -2.76%, 펩시 -2.20%)가 섹터 최하위 <span class="src">(yfinance)</span></li>
+    </ul>
+  </div>
+
+  <div class="event-card">
+    <div class="event-card-head">★ KOSPI 장중 -4% → +0.3% — SK하이닉스 솔리다임 상장 중단에 반등</div>
+    <ul class="event-bullets">
+      <li>KOSPI는 전날 미국 반도체 급락(SOX -6.7%)과 AI 투자 자금 조달 우려로 5,403에 출발해 장중 <strong class="dn">5,305.98(-4.12%)</strong>까지 밀렸다. 이후 낙폭을 모두 만회하고 <strong class="up">5,550.30(+0.30%)</strong>에 마감 <span class="src">(뉴스1, 알파경제)</span></li>
+      <li>반등을 이끈 건 SK하이닉스 <strong class="up">+4.42%</strong>. 자회사 솔리다임의 나스닥 상장 절차를 중단한다고 밝히자 '중복 상장으로 기업가치가 깎인다'는 주주 우려가 풀렸다. 상장 추진이 알려진 지 79일 만의 철회 <span class="src">(뉴스핌, SBS)</span></li>
+      <li>삼성바이오로직스 <strong class="up">+7.71%</strong>로 제약 업종 <strong class="up">+3.48%</strong> 1위. 삼성E&A +7.94%, 삼성전자 +0.47%. 반면 화학 <strong class="dn">-3.04%</strong>(S-Oil -5.29%, LG화학 -3.78%)·금속 <strong class="dn">-3.22%</strong>(고려아연 -4.15%, POSCO홀딩스 -3.67%)은 유가·원가 부담에 약세 <span class="src">(KRX)</span></li>
+      <li>수급: 외국인 <strong class="dn">-9,789억</strong>, 기관 <strong class="up">+8,660억</strong>, 개인 +422억. 10월 8일 6,625였던 KOSPI는 2주 만에 16% 낮아진 상태 <span class="src">(KRX)</span></li>
+    </ul>
+  </div>
+
+  <div class="event-card">
+    <div class="event-card-head">★ 통신주 또 SpaceX 악재 · 사이버보안주는 급등</div>
+    <ul class="event-bullets">
+      <li>SpaceX가 미국 전역 기지국 최소 8만 곳에 접근하려 한다는 보도에 AT&T <strong class="dn">-7.96%</strong>, T-Mobile <strong class="dn">-7.71%</strong>. 번스타인은 스타링크와의 경쟁, 요금 하락, 4분기 계절적 부담을 이유로 AT&T를 '시장수익률'로 낮추고 목표가를 $24로 하향. AT&T는 한 달간 -16.8% <span class="src">(24/7 Wall St., Trefis)</span></li>
+      <li>AT&T는 21일 3분기 실적이 예상을 넘고 연간 EPS 전망도 올렸지만, 후불 가입자 순증(37.9만)이 예상에 못 미쳐 이미 6% 넘게 빠진 상태였다. 버라이즌은 26일(오늘), T-Mobile은 28일 실적 발표 <span class="src">(Yahoo Finance, TIKR)</span></li>
+      <li>사이버보안주는 정반대로 CrowdStrike <strong class="up">+8.25%</strong>, Palo Alto <strong class="up">+7.22%</strong>. 에버코어 ISI 채널 조사에서 보안 예산 확대가 확인됐고, PHP 취약점으로 유럽 정부 사이트가 마비되면서 보안 지출 증가 기대가 커졌다. 웰스파고는 Palo Alto 목표가를 $475→$525로 상향 <span class="src">(24/7 Wall St., GuruFocus)</span></li>
+    </ul>
+  </div>
+
+  <div class="section-label">🌍 시장별 상세</div>
+  <div class="market-tabs">
+    <div class="mktab kr active" onclick="switchTab('kr')">🇰🇷 한국</div>
+    <div class="mktab us" onclick="switchTab('us')">🇺🇸 미국</div>
+    <div class="mktab co" onclick="switchTab('co')">🪨 원자재 · 환율</div>
+  </div>
+
+  <div id="panel-kr" class="market-panel active">
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📊</span><span class="mch-title">KOSPI 업종별 등락률</span></div></div>
+      <div class="sector-wrap">
+        <div class="sector-grid-2">
+          <div class="sector-tile up-tile" onclick="selectSector(this,'kr-detail-0')"><div class="sector-tile-name">제약</div><div class="sector-tile-chg up">+3.48%</div><div class="sector-tile-bar" style="width:100%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'kr-detail-1')"><div class="sector-tile-name">의료·정밀기기</div><div class="sector-tile-chg up">+2.45%</div><div class="sector-tile-bar" style="width:70%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'kr-detail-2')"><div class="sector-tile-name">전기전자</div><div class="sector-tile-chg up">+1.27%</div><div class="sector-tile-bar" style="width:36%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'kr-detail-3')"><div class="sector-tile-name">일반서비스</div><div class="sector-tile-chg up">+0.88%</div><div class="sector-tile-bar" style="width:25%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'kr-detail-4')"><div class="sector-tile-name">부동산</div><div class="sector-tile-chg up">+0.41%</div><div class="sector-tile-bar" style="width:11%"></div></div>
+          <div class="sector-tile nt-tile" onclick="selectSector(this,'kr-detail-5')"><div class="sector-tile-name">보험</div><div class="sector-tile-chg" style="color:var(--sub)">+0.09%</div><div class="sector-tile-bar"></div></div>
+          <div class="sector-tile nt-tile" onclick="selectSector(this,'kr-detail-6')"><div class="sector-tile-name">건설</div><div class="sector-tile-chg" style="color:var(--sub)">+0.08%</div><div class="sector-tile-bar"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-7')"><div class="sector-tile-name">오락·문화</div><div class="sector-tile-chg dn">-0.63%</div><div class="sector-tile-bar" style="width:18%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-8')"><div class="sector-tile-name">전기·가스</div><div class="sector-tile-chg dn">-0.67%</div><div class="sector-tile-bar" style="width:19%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-9')"><div class="sector-tile-name">금융</div><div class="sector-tile-chg dn">-0.84%</div><div class="sector-tile-bar" style="width:24%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-10')"><div class="sector-tile-name">IT 서비스</div><div class="sector-tile-chg dn">-0.98%</div><div class="sector-tile-bar" style="width:28%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-11')"><div class="sector-tile-name">운송·창고</div><div class="sector-tile-chg dn">-1.09%</div><div class="sector-tile-bar" style="width:31%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-12')"><div class="sector-tile-name">종이·목재</div><div class="sector-tile-chg dn">-1.14%</div><div class="sector-tile-bar" style="width:32%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-13')"><div class="sector-tile-name">음식료·담배</div><div class="sector-tile-chg dn">-1.21%</div><div class="sector-tile-bar" style="width:34%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-14')"><div class="sector-tile-name">증권</div><div class="sector-tile-chg dn">-1.23%</div><div class="sector-tile-bar" style="width:35%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-15')"><div class="sector-tile-name">유통</div><div class="sector-tile-chg dn">-1.24%</div><div class="sector-tile-bar" style="width:35%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-16')"><div class="sector-tile-name">비금속</div><div class="sector-tile-chg dn">-1.34%</div><div class="sector-tile-bar" style="width:38%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-17')"><div class="sector-tile-name">섬유·의류</div><div class="sector-tile-chg dn">-1.76%</div><div class="sector-tile-bar" style="width:50%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-18')"><div class="sector-tile-name">통신</div><div class="sector-tile-chg dn">-1.95%</div><div class="sector-tile-bar" style="width:56%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-19')"><div class="sector-tile-name">운송장비·부품</div><div class="sector-tile-chg dn">-2.22%</div><div class="sector-tile-bar" style="width:63%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-20')"><div class="sector-tile-name">기계·장비</div><div class="sector-tile-chg dn">-2.57%</div><div class="sector-tile-bar" style="width:73%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-21')"><div class="sector-tile-name">화학</div><div class="sector-tile-chg dn">-3.04%</div><div class="sector-tile-bar" style="width:87%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'kr-detail-22')"><div class="sector-tile-name">금속</div><div class="sector-tile-chg dn">-3.22%</div><div class="sector-tile-bar" style="width:92%"></div></div>
+        </div>
+        <div id="kr-detail-0" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 제약 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-0','kr-top-0')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-0','kr-mkt-0')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-0">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성바이오로직스</span><span class="sector-stock-chg up">+7.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">셀트리온</span><span class="sector-stock-chg up">+0.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">유한양행</span><span class="sector-stock-chg up">+0.83%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한미약품</span><span class="sector-stock-chg dn">-2.43%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK바이오사이언스</span><span class="sector-stock-chg dn">-4.19%</span></div></div>
+          <div class="sector-stocks" id="kr-top-0" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성바이오로직스</span><span class="sector-stock-chg up">+7.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">대원제약</span><span class="sector-stock-chg up">+3.12%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">동성제약</span><span class="sector-stock-chg up">+2.30%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">바이오노트</span><span class="sector-stock-chg up">+1.32%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼일제약</span><span class="sector-stock-chg up">+1.23%</span></div></div>
+        </div>
+        <div id="kr-detail-1" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 의료·정밀기기 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-1','kr-top-1')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-1','kr-mkt-1')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-1">
+            <div class="sector-stock-row"><span class="sector-stock-name">케이씨텍</span><span class="sector-stock-chg up">+3.28%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">디아이</span><span class="sector-stock-chg up">+4.04%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">에스디바이오센서</span><span class="sector-stock-chg up">+1.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">케이씨</span><span class="sector-stock-chg up">+0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">덴티움</span><span class="sector-stock-chg up">+3.04%</span></div></div>
+          <div class="sector-stocks" id="kr-top-1" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">디아이</span><span class="sector-stock-chg up">+4.04%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">케이씨텍</span><span class="sector-stock-chg up">+3.28%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">덴티움</span><span class="sector-stock-chg up">+3.04%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">미래산업</span><span class="sector-stock-chg up">+1.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">에스디바이오센서</span><span class="sector-stock-chg up">+1.48%</span></div></div>
+        </div>
+        <div id="kr-detail-2" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 전기전자 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-2','kr-top-2')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-2','kr-mkt-2')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-2">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성전자</span><span class="sector-stock-chg up">+0.47%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK하이닉스</span><span class="sector-stock-chg up">+4.42%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LG에너지솔루션</span><span class="sector-stock-chg dn">-1.79%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성전기</span><span class="sector-stock-chg dn">-2.01%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성SDI</span><span class="sector-stock-chg dn">-4.20%</span></div></div>
+          <div class="sector-stocks" id="kr-top-2" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK하이닉스</span><span class="sector-stock-chg up">+4.42%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">비에이치</span><span class="sector-stock-chg up">+3.45%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">케이아이이</span><span class="sector-stock-chg up">+1.97%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼화전기</span><span class="sector-stock-chg up">+1.01%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한국단자</span><span class="sector-stock-chg up">+0.95%</span></div></div>
+        </div>
+        <div id="kr-detail-3" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 일반서비스 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-3','kr-top-3')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-3','kr-mkt-3')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-3">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성E&amp;A</span><span class="sector-stock-chg up">+7.94%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HD현대마린솔루션</span><span class="sector-stock-chg dn">-2.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">코웨이</span><span class="sector-stock-chg dn">-0.09%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK바이오팜</span><span class="sector-stock-chg up">+2.67%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">에스원</span><span class="sector-stock-chg dn">-0.72%</span></div></div>
+          <div class="sector-stocks" id="kr-top-3" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성E&amp;A</span><span class="sector-stock-chg up">+7.94%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK바이오팜</span><span class="sector-stock-chg up">+2.67%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">롯데렌탈</span><span class="sector-stock-chg up">+1.91%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">쏘카</span><span class="sector-stock-chg up">+1.59%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AJ네트웍스</span><span class="sector-stock-chg up">+1.11%</span></div></div>
+        </div>
+        <div id="kr-detail-4" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 부동산 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-4','kr-top-4')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-4','kr-mkt-4')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-4">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK리츠</span><span class="sector-stock-chg up">+3.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">롯데리츠</span><span class="sector-stock-chg up">+0.12%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한화리츠</span><span class="sector-stock-chg up">+2.35%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ESR켄달스퀘어리츠</span><span class="sector-stock-chg up">+1.31%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">신한알파리츠</span><span class="sector-stock-chg up">+0.89%</span></div></div>
+          <div class="sector-stocks" id="kr-top-4" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK리츠</span><span class="sector-stock-chg up">+3.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한화리츠</span><span class="sector-stock-chg up">+2.35%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">신한서부티엔디리츠</span><span class="sector-stock-chg up">+2.32%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ESR켄달스퀘어리츠</span><span class="sector-stock-chg up">+1.31%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KB스타리츠</span><span class="sector-stock-chg up">+0.93%</span></div></div>
+        </div>
+        <div id="kr-detail-5" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 보험 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-5','kr-top-5')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-5','kr-mkt-5')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-5">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성생명</span><span class="sector-stock-chg up">+1.45%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성화재</span><span class="sector-stock-chg dn">-0.99%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DB손해보험</span><span class="sector-stock-chg dn">-1.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대해상</span><span class="sector-stock-chg dn">-1.74%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한화생명</span><span class="sector-stock-chg dn">-2.31%</span></div></div>
+          <div class="sector-stocks" id="kr-top-5" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">서울보증보험</span><span class="sector-stock-chg up">+3.01%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성생명</span><span class="sector-stock-chg up">+1.45%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">흥국화재</span><span class="sector-stock-chg up">+0.47%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">롯데손해보험</span><span class="sector-stock-chg nt">+0.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성화재</span><span class="sector-stock-chg dn">-0.99%</span></div></div>
+        </div>
+        <div id="kr-detail-6" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 건설 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-6','kr-top-6')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-6','kr-mkt-6')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-6">
+            <div class="sector-stock-row"><span class="sector-stock-name">현대건설</span><span class="sector-stock-chg dn">-0.54%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">대우건설</span><span class="sector-stock-chg up">+1.17%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GS건설</span><span class="sector-stock-chg up">+0.34%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DL이앤씨</span><span class="sector-stock-chg up">+2.39%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한전KPS</span><span class="sector-stock-chg dn">-0.85%</span></div></div>
+          <div class="sector-stocks" id="kr-top-6" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">IPARK현대산업개발</span><span class="sector-stock-chg up">+4.52%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한신공영</span><span class="sector-stock-chg up">+4.27%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DL이앤씨</span><span class="sector-stock-chg up">+2.39%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">진흥기업</span><span class="sector-stock-chg up">+2.33%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">에쓰씨엔지니어링</span><span class="sector-stock-chg up">+1.62%</span></div></div>
+        </div>
+        <div id="kr-detail-7" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 오락·문화 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-7','kr-top-7')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-7','kr-mkt-7')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-7">
+            <div class="sector-stock-row"><span class="sector-stock-name">하이브</span><span class="sector-stock-chg dn">-0.40%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">강원랜드</span><span class="sector-stock-chg dn">-0.70%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">파라다이스</span><span class="sector-stock-chg dn">-1.34%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CJ CGV</span><span class="sector-stock-chg dn">-1.19%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GKL</span><span class="sector-stock-chg dn">-1.41%</span></div></div>
+          <div class="sector-stocks" id="kr-top-7" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">아센디오</span><span class="sector-stock-chg up">+0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">비상교육</span><span class="sector-stock-chg up">+0.21%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">갤럭시아에스엠</span><span class="sector-stock-chg dn">-0.16%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성출판사</span><span class="sector-stock-chg dn">-0.34%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">하이브</span><span class="sector-stock-chg dn">-0.40%</span></div></div>
+        </div>
+        <div id="kr-detail-8" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 전기·가스 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-8','kr-top-8')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-8','kr-mkt-8')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-8">
+            <div class="sector-stock-row"><span class="sector-stock-name">한국전력</span><span class="sector-stock-chg dn">-0.52%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한국가스공사</span><span class="sector-stock-chg up">+0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">지역난방공사</span><span class="sector-stock-chg dn">-1.35%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SGC에너지</span><span class="sector-stock-chg dn">-8.85%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼천리</span><span class="sector-stock-chg dn">-1.39%</span></div></div>
+          <div class="sector-stocks" id="kr-top-8" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">한국가스공사</span><span class="sector-stock-chg up">+0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">서울가스</span><span class="sector-stock-chg nt">+0.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한국전력</span><span class="sector-stock-chg dn">-0.52%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">인천도시가스</span><span class="sector-stock-chg dn">-0.58%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">경동도시가스</span><span class="sector-stock-chg dn">-1.19%</span></div></div>
+        </div>
+        <div id="kr-detail-9" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 금융 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-9','kr-top-9')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-9','kr-mkt-9')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-9">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK스퀘어</span><span class="sector-stock-chg up">+3.20%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KB금융</span><span class="sector-stock-chg dn">-3.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성생명</span><span class="sector-stock-chg up">+1.45%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">신한지주</span><span class="sector-stock-chg dn">-2.44%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK</span><span class="sector-stock-chg up">+0.87%</span></div></div>
+          <div class="sector-stocks" id="kr-top-9" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK증권</span><span class="sector-stock-chg up">+5.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK스퀘어</span><span class="sector-stock-chg up">+3.20%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">서울보증보험</span><span class="sector-stock-chg up">+3.01%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">하이트진로홀딩스</span><span class="sector-stock-chg up">+1.58%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">상상인증권</span><span class="sector-stock-chg up">+1.57%</span></div></div>
+        </div>
+        <div id="kr-detail-10" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 IT 서비스 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-10','kr-top-10')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-10','kr-mkt-10')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-10">
+            <div class="sector-stock-row"><span class="sector-stock-name">NAVER</span><span class="sector-stock-chg dn">-1.59%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성에스디에스</span><span class="sector-stock-chg up">+3.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">카카오</span><span class="sector-stock-chg dn">-1.32%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대오토에버</span><span class="sector-stock-chg dn">-1.37%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">크래프톤</span><span class="sector-stock-chg dn">-3.23%</span></div></div>
+          <div class="sector-stocks" id="kr-top-10" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">미래아이앤지</span><span class="sector-stock-chg up">+14.21%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DB</span><span class="sector-stock-chg up">+6.37%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성에스디에스</span><span class="sector-stock-chg up">+3.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">유엔젤</span><span class="sector-stock-chg up">+1.43%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">롯데이노베이트</span><span class="sector-stock-chg up">+0.84%</span></div></div>
+        </div>
+        <div id="kr-detail-11" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 운송·창고 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-11','kr-top-11')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-11','kr-mkt-11')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-11">
+            <div class="sector-stock-row"><span class="sector-stock-name">HMM</span><span class="sector-stock-chg nt">+0.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대글로비스</span><span class="sector-stock-chg dn">-1.24%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">대한항공</span><span class="sector-stock-chg dn">-2.46%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">팬오션</span><span class="sector-stock-chg dn">-1.90%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CJ대한통운</span><span class="sector-stock-chg dn">-2.26%</span></div></div>
+          <div class="sector-stocks" id="kr-top-11" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">천일고속</span><span class="sector-stock-chg up">+3.45%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">동양고속</span><span class="sector-stock-chg up">+1.11%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한익스프레스</span><span class="sector-stock-chg up">+0.90%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한국공항</span><span class="sector-stock-chg up">+0.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HMM</span><span class="sector-stock-chg nt">+0.00%</span></div></div>
+        </div>
+        <div id="kr-detail-12" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 종이·목재 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-12','kr-top-12')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-12','kr-mkt-12')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-12">
+            <div class="sector-stock-row"><span class="sector-stock-name">신대양제지</span><span class="sector-stock-chg dn">-0.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">아세아제지</span><span class="sector-stock-chg dn">-0.28%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한솔제지</span><span class="sector-stock-chg dn">-0.58%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">무림P&amp;P</span><span class="sector-stock-chg dn">-0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한국수출포장</span><span class="sector-stock-chg dn">-1.87%</span></div></div>
+          <div class="sector-stocks" id="kr-top-12" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">깨끗한나라</span><span class="sector-stock-chg up">+1.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">블루산업개발</span><span class="sector-stock-chg up">+0.30%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한창제지</span><span class="sector-stock-chg nt">+0.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">무림페이퍼</span><span class="sector-stock-chg dn">-0.07%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">태림포장</span><span class="sector-stock-chg dn">-0.17%</span></div></div>
+        </div>
+        <div id="kr-detail-13" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 음식료·담배 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-13','kr-top-13')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-13','kr-mkt-13')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-13">
+            <div class="sector-stock-row"><span class="sector-stock-name">KT&amp;G</span><span class="sector-stock-chg dn">-2.27%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼양식품</span><span class="sector-stock-chg dn">-0.08%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">오리온</span><span class="sector-stock-chg dn">-1.15%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CJ제일제당</span><span class="sector-stock-chg up">+1.28%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">농심</span><span class="sector-stock-chg up">+0.75%</span></div></div>
+          <div class="sector-stocks" id="kr-top-13" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">MH에탄올</span><span class="sector-stock-chg up">+12.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CJ제일제당</span><span class="sector-stock-chg up">+1.28%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">대한제당</span><span class="sector-stock-chg up">+1.11%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">롯데웰푸드</span><span class="sector-stock-chg up">+0.98%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">농심</span><span class="sector-stock-chg up">+0.75%</span></div></div>
+        </div>
+        <div id="kr-detail-14" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 증권 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-14','kr-top-14')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-14','kr-mkt-14')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-14">
+            <div class="sector-stock-row"><span class="sector-stock-name">미래에셋증권</span><span class="sector-stock-chg dn">-2.01%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NH투자증권</span><span class="sector-stock-chg dn">-1.27%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성증권</span><span class="sector-stock-chg up">+0.13%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">키움증권</span><span class="sector-stock-chg dn">-0.92%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">신영증권</span><span class="sector-stock-chg dn">-1.07%</span></div></div>
+          <div class="sector-stocks" id="kr-top-14" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK증권</span><span class="sector-stock-chg up">+5.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">상상인증권</span><span class="sector-stock-chg up">+1.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대차증권</span><span class="sector-stock-chg up">+1.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DB증권</span><span class="sector-stock-chg up">+1.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한양증권</span><span class="sector-stock-chg up">+0.16%</span></div></div>
+        </div>
+        <div id="kr-detail-15" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 유통 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-15','kr-top-15')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-15','kr-mkt-15')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-15">
+            <div class="sector-stock-row"><span class="sector-stock-name">삼성물산</span><span class="sector-stock-chg dn">-0.17%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">포스코인터내셔널</span><span class="sector-stock-chg dn">-2.83%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">영원무역</span><span class="sector-stock-chg dn">-3.50%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">동서</span><span class="sector-stock-chg dn">-0.18%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">신세계</span><span class="sector-stock-chg dn">-2.67%</span></div></div>
+          <div class="sector-stocks" id="kr-top-15" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">일신석재</span><span class="sector-stock-chg up">+6.12%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">메타케어</span><span class="sector-stock-chg up">+4.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SJM홀딩스</span><span class="sector-stock-chg up">+1.42%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">이화산업</span><span class="sector-stock-chg up">+0.98%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HLB글로벌</span><span class="sector-stock-chg up">+0.89%</span></div></div>
+        </div>
+        <div id="kr-detail-16" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 비금속 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-16','kr-top-16')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-16','kr-mkt-16')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-16">
+            <div class="sector-stock-row"><span class="sector-stock-name">한일시멘트</span><span class="sector-stock-chg dn">-0.94%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한일홀딩스</span><span class="sector-stock-chg dn">-0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">아이에스동서</span><span class="sector-stock-chg dn">-1.04%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KCC글라스</span><span class="sector-stock-chg dn">-2.46%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">아세아시멘트</span><span class="sector-stock-chg dn">-1.07%</span></div></div>
+          <div class="sector-stocks" id="kr-top-16" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">유니온머티리얼</span><span class="sector-stock-chg up">+2.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">티웨이홀딩스</span><span class="sector-stock-chg up">+1.35%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">유니온</span><span class="sector-stock-chg nt">+0.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">동양</span><span class="sector-stock-chg dn">-0.69%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한일홀딩스</span><span class="sector-stock-chg dn">-0.87%</span></div></div>
+        </div>
+        <div id="kr-detail-17" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 섬유·의류 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-17','kr-top-17')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-17','kr-mkt-17')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-17">
+            <div class="sector-stock-row"><span class="sector-stock-name">F&amp;F</span><span class="sector-stock-chg dn">-2.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LF</span><span class="sector-stock-chg dn">-2.04%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">조광피혁</span><span class="sector-stock-chg dn">-0.60%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한섬</span><span class="sector-stock-chg dn">-2.52%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한세실업</span><span class="sector-stock-chg dn">-1.29%</span></div></div>
+          <div class="sector-stocks" id="kr-top-17" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">우성머티리얼스</span><span class="sector-stock-chg up">+13.37%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">호전실업</span><span class="sector-stock-chg up">+0.32%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">원림</span><span class="sector-stock-chg up">+0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">신영와코루</span><span class="sector-stock-chg up">+0.08%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">방림</span><span class="sector-stock-chg nt">+0.00%</span></div></div>
+        </div>
+        <div id="kr-detail-18" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 통신 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-18','kr-top-18')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-18','kr-mkt-18')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-18">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK텔레콤</span><span class="sector-stock-chg dn">-2.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KT</span><span class="sector-stock-chg dn">-1.58%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LG유플러스</span><span class="sector-stock-chg dn">-1.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대퓨처넷</span><span class="sector-stock-chg dn">-2.60%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">프리티</span><span class="sector-stock-chg dn">-0.60%</span></div></div>
+          <div class="sector-stocks" id="kr-top-18" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">프리티</span><span class="sector-stock-chg dn">-0.60%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KT</span><span class="sector-stock-chg dn">-1.58%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LG유플러스</span><span class="sector-stock-chg dn">-1.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SK텔레콤</span><span class="sector-stock-chg dn">-2.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대퓨처넷</span><span class="sector-stock-chg dn">-2.60%</span></div></div>
+        </div>
+        <div id="kr-detail-19" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 운송장비·부품 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-19','kr-top-19')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-19','kr-mkt-19')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-19">
+            <div class="sector-stock-row"><span class="sector-stock-name">현대차</span><span class="sector-stock-chg dn">-1.99%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">기아</span><span class="sector-stock-chg dn">-1.75%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한화에어로스페이스</span><span class="sector-stock-chg dn">-2.34%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HD현대중공업</span><span class="sector-stock-chg dn">-1.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대모비스</span><span class="sector-stock-chg dn">-2.52%</span></div></div>
+          <div class="sector-stocks" id="kr-top-19" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">디와이덕양</span><span class="sector-stock-chg up">+2.89%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">체시스</span><span class="sector-stock-chg up">+2.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">두올</span><span class="sector-stock-chg up">+1.99%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">평화산업</span><span class="sector-stock-chg up">+1.08%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">새론오토모티브</span><span class="sector-stock-chg up">+0.70%</span></div></div>
+        </div>
+        <div id="kr-detail-20" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 기계·장비 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-20','kr-top-20')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-20','kr-mkt-20')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-20">
+            <div class="sector-stock-row"><span class="sector-stock-name">두산에너빌리티</span><span class="sector-stock-chg dn">-3.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한미반도체</span><span class="sector-stock-chg dn">-0.10%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">두산밥캣</span><span class="sector-stock-chg dn">-1.20%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HD건설기계</span><span class="sector-stock-chg dn">-5.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">한온시스템</span><span class="sector-stock-chg dn">-1.21%</span></div></div>
+          <div class="sector-stocks" id="kr-top-20" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">전진건설로봇</span><span class="sector-stock-chg up">+0.78%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">우진플라임</span><span class="sector-stock-chg up">+0.44%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">대동</span><span class="sector-stock-chg up">+0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KC코트렐</span><span class="sector-stock-chg nt">+0.00%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">화천기계</span><span class="sector-stock-chg nt">+0.00%</span></div></div>
+        </div>
+        <div id="kr-detail-21" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 화학 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-21','kr-top-21')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-21','kr-mkt-21')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-21">
+            <div class="sector-stock-row"><span class="sector-stock-name">SK이노베이션</span><span class="sector-stock-chg dn">-2.54%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LG화학</span><span class="sector-stock-chg dn">-3.78%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">S-Oil</span><span class="sector-stock-chg dn">-5.29%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">에이피알</span><span class="sector-stock-chg dn">-2.23%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">아모레퍼시픽</span><span class="sector-stock-chg dn">-3.52%</span></div></div>
+          <div class="sector-stocks" id="kr-top-21" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">진양화학</span><span class="sector-stock-chg up">+29.81%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">진양산업</span><span class="sector-stock-chg up">+29.79%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">진양폴리</span><span class="sector-stock-chg up">+27.40%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">진양홀딩스</span><span class="sector-stock-chg up">+3.64%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">이수화학</span><span class="sector-stock-chg up">+0.74%</span></div></div>
+        </div>
+        <div id="kr-detail-22" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 금속 주요 종목</span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'kr-mkt-22','kr-top-22')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'kr-top-22','kr-mkt-22')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="kr-mkt-22">
+            <div class="sector-stock-row"><span class="sector-stock-name">POSCO홀딩스</span><span class="sector-stock-chg dn">-3.67%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">고려아연</span><span class="sector-stock-chg dn">-4.15%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LIG디펜스앤에어로스페이스</span><span class="sector-stock-chg dn">-1.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">현대제철</span><span class="sector-stock-chg dn">-1.47%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">씨에스윈드</span><span class="sector-stock-chg dn">-2.13%</span></div></div>
+          <div class="sector-stocks" id="kr-top-22" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">한일철강</span><span class="sector-stock-chg up">+0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">삼화왕관</span><span class="sector-stock-chg up">+0.37%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NI스틸</span><span class="sector-stock-chg up">+0.33%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">부국철강</span><span class="sector-stock-chg up">+0.05%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">서원</span><span class="sector-stock-chg nt">+0.00%</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">💰</span><span class="mch-title">투자자별 순매수</span></div></div>
+      <div class="analysis-body" style="font-size:13.5px"><strong>KOSPI</strong> 개인 <span class="up">+422억</span> · 외국인 <span class="dn">-9,789억</span> · 기관 <span class="up">+8,660억</span><br><strong>KOSDAQ</strong> 개인 <span class="up">+659억</span> · 외국인 <span class="dn">-401억</span> · 기관 <span class="dn">-292억</span></div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
+      <div class="analysis-body"><ul>
+        <li>KOSPI가 장중 4% 넘게 빠졌다가 <strong class="up">5,550.30(+0.30%)</strong>으로 올라서 마감했다. 전날 미국에서 램리서치의 공급 차질 경고와 메타의 투자비 증가 부담으로 반도체지수가 6.7% 급락한 여파가 개장 직후 그대로 반영됐다. 하지만 SK하이닉스가 솔리다임 미국 상장을 접는다고 밝히면서 분위기가 바뀌었다. 외국인은 9,789억원을 팔았지만 기관이 8,660억원을 사들이며 지수를 받쳤다. <span class="src">(KRX, 뉴스1, 뉴스핌)</span></li>
+        <li>업종은 엇갈렸다. 제약 <strong class="up">+3.48%</strong>(삼성바이오로직스 +7.71%), 의료·정밀기기 +2.45%, 전기전자 <strong class="up">+1.27%</strong>(SK하이닉스 +4.42%)가 올랐다. 반면 금속 <strong class="dn">-3.22%</strong>, 화학 <strong class="dn">-3.04%</strong>, 기계·장비 -2.57%(두산에너빌리티 -3.57%), 운송장비·부품 -2.22%(현대차 -1.99%, 기아 -1.75%)는 약했다. 한화시스템은 -10.28%로 시총 5천억원 이상 종목 중 낙폭이 가장 컸다. 오세훈 서울시장 항소심 무죄 판결에 진양화학·진양산업·진양폴리는 상한가. <span class="src">(KRX, 한국금융신문)</span></li>
+        <li>KOSDAQ은 <strong class="dn">-1.62%(751.69)</strong>로 KOSPI보다 약했다. 이번 주는 삼성전자·SK하이닉스 확정 실적이 나오는 주로, 증권가는 KOSPI 예상 범위를 5,300~5,800으로 제시했다. 반도체 실적이 AI 투자 우려를 얼마나 덜어주느냐가 관건. <span class="src">(KRX, 이투데이)</span></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div id="panel-us" class="market-panel">
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">🔎</span><span class="mch-title">나스닥 체크</span></div></div>
+      <div class="ixgrid" style="padding:4px 20px 8px"><div class="ix"><div class="ix-name">QQQ · 나스닥 100</div><div class="ix-chg dn" style="font-size:17px">-0.01%</div></div><div class="ix"><div class="ix-name">QQQE · 동일가중</div><div class="ix-chg dn" style="font-size:17px">-0.39%</div></div><div class="ix"><div class="ix-name">SMH · 반도체</div><div class="ix-chg up" style="font-size:17px">+0.74%</div></div><div class="ix"><div class="ix-name">IGV · 소프트웨어</div><div class="ix-chg up" style="font-size:17px">+1.72%</div></div><div class="ix"><div class="ix-name">IBB · 바이오</div><div class="ix-chg dn" style="font-size:17px">-0.86%</div></div></div><div class="analysis-body" style="font-size:13.5px;line-height:2;padding-top:4px">⬆️ <strong>지수를 끌어올린 종목</strong> <strong>SPCX</strong> <span class="up">+1.89%</span> · <strong>MSFT</strong> <span class="up">+0.66%</span> · <strong>MU</strong> <span class="up">+2.46%</span> · <strong>PANW</strong> <span class="up">+7.22%</span><br>⬇️ <strong>지수를 끌어내린 종목</strong> <strong>GOOGL</strong> <span class="dn">-1.24%</span> · <strong>GOOG</strong> <span class="dn">-1.08%</span> · <strong>NVDA</strong> <span class="dn">-0.59%</span> · <strong>AMZN</strong> <span class="dn">-0.95%</span></div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📊</span><span class="mch-title">S&P 섹터 ETF 등락률</span></div></div>
+      <div class="sector-wrap">
+        <div class="sector-grid-2">
+          <div class="sector-tile up-tile" onclick="selectSector(this,'us-detail-0')"><div class="sector-tile-name">에너지</div><div class="sector-tile-chg up">+2.60%</div><div class="sector-tile-bar" style="width:100%"></div></div>
+          <div class="sector-tile up-tile" onclick="selectSector(this,'us-detail-1')"><div class="sector-tile-name">기술</div><div class="sector-tile-chg up">+0.49%</div><div class="sector-tile-bar" style="width:18%"></div></div>
+          <div class="sector-tile nt-tile" onclick="selectSector(this,'us-detail-2')"><div class="sector-tile-name">부동산</div><div class="sector-tile-chg" style="color:var(--sub)">+0.12%</div><div class="sector-tile-bar"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-3')"><div class="sector-tile-name">유틸리티</div><div class="sector-tile-chg dn">-0.72%</div><div class="sector-tile-bar" style="width:27%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-4')"><div class="sector-tile-name">소재</div><div class="sector-tile-chg dn">-0.74%</div><div class="sector-tile-bar" style="width:28%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-5')"><div class="sector-tile-name">헬스케어</div><div class="sector-tile-chg dn">-1.11%</div><div class="sector-tile-bar" style="width:42%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-6')"><div class="sector-tile-name">산업재</div><div class="sector-tile-chg dn">-1.27%</div><div class="sector-tile-bar" style="width:48%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-7')"><div class="sector-tile-name">금융</div><div class="sector-tile-chg dn">-1.32%</div><div class="sector-tile-bar" style="width:50%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-8')"><div class="sector-tile-name">경기소비재</div><div class="sector-tile-chg dn">-1.66%</div><div class="sector-tile-bar" style="width:63%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-9')"><div class="sector-tile-name">통신·미디어</div><div class="sector-tile-chg dn">-1.78%</div><div class="sector-tile-bar" style="width:68%"></div></div>
+          <div class="sector-tile dn-tile" onclick="selectSector(this,'us-detail-10')"><div class="sector-tile-name">필수소비재</div><div class="sector-tile-chg dn">-1.92%</div><div class="sector-tile-bar" style="width:73%"></div></div>
+        </div>
+        <div id="us-detail-0" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 에너지 주요 종목 <span style="color:var(--sub);font-weight:500">(XLE)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-0','us-top-0')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-0','us-mkt-0')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-0">
+            <div class="sector-stock-row"><span class="sector-stock-name">XOM</span><span class="sector-stock-chg up">+2.79%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CVX</span><span class="sector-stock-chg up">+2.88%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">COP</span><span class="sector-stock-chg up">+3.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">EOG</span><span class="sector-stock-chg up">+3.21%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SLB</span><span class="sector-stock-chg up">+7.08%</span></div></div>
+          <div class="sector-stocks" id="us-top-0" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">SLB</span><span class="sector-stock-chg up">+7.08%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">COP</span><span class="sector-stock-chg up">+3.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">EOG</span><span class="sector-stock-chg up">+3.21%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CVX</span><span class="sector-stock-chg up">+2.88%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">XOM</span><span class="sector-stock-chg up">+2.79%</span></div></div>
+        </div>
+        <div id="us-detail-1" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 기술 주요 종목 <span style="color:var(--sub);font-weight:500">(XLK)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-1','us-top-1')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-1','us-mkt-1')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-1">
+            <div class="sector-stock-row"><span class="sector-stock-name">NVDA</span><span class="sector-stock-chg dn">-0.59%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AAPL</span><span class="sector-stock-chg dn">-0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MSFT</span><span class="sector-stock-chg up">+0.66%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AVGO</span><span class="sector-stock-chg dn">-0.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ORCL</span><span class="sector-stock-chg up">+0.49%</span></div></div>
+          <div class="sector-stocks" id="us-top-1" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">AMD</span><span class="sector-stock-chg up">+1.74%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MSFT</span><span class="sector-stock-chg up">+0.66%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ORCL</span><span class="sector-stock-chg up">+0.49%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AAPL</span><span class="sector-stock-chg dn">-0.14%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AVGO</span><span class="sector-stock-chg dn">-0.48%</span></div></div>
+        </div>
+        <div id="us-detail-2" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 부동산 주요 종목 <span style="color:var(--sub);font-weight:500">(XLRE)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-2','us-top-2')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-2','us-mkt-2')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-2">
+            <div class="sector-stock-row"><span class="sector-stock-name">PLD</span><span class="sector-stock-chg dn">-0.17%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AMT</span><span class="sector-stock-chg up">+4.08%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">WELL</span><span class="sector-stock-chg dn">-0.03%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">EQIX</span><span class="sector-stock-chg up">+0.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DLR</span><span class="sector-stock-chg up">+0.84%</span></div></div>
+          <div class="sector-stocks" id="us-top-2" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">AMT</span><span class="sector-stock-chg up">+4.08%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DLR</span><span class="sector-stock-chg up">+0.84%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">EQIX</span><span class="sector-stock-chg up">+0.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PSA</span><span class="sector-stock-chg up">+0.25%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">WELL</span><span class="sector-stock-chg dn">-0.03%</span></div></div>
+        </div>
+        <div id="us-detail-3" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 유틸리티 주요 종목 <span style="color:var(--sub);font-weight:500">(XLU)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-3','us-top-3')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-3','us-mkt-3')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-3">
+            <div class="sector-stock-row"><span class="sector-stock-name">NEE</span><span class="sector-stock-chg up">+0.24%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SO</span><span class="sector-stock-chg dn">-0.99%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DUK</span><span class="sector-stock-chg dn">-0.33%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CEG</span><span class="sector-stock-chg dn">-0.69%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">VST</span><span class="sector-stock-chg dn">-0.48%</span></div></div>
+          <div class="sector-stocks" id="us-top-3" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">NEE</span><span class="sector-stock-chg up">+0.24%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">D</span><span class="sector-stock-chg dn">-0.31%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DUK</span><span class="sector-stock-chg dn">-0.33%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">VST</span><span class="sector-stock-chg dn">-0.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CEG</span><span class="sector-stock-chg dn">-0.69%</span></div></div>
+        </div>
+        <div id="us-detail-4" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 소재 주요 종목 <span style="color:var(--sub);font-weight:500">(XLB)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-4','us-top-4')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-4','us-mkt-4')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-4">
+            <div class="sector-stock-row"><span class="sector-stock-name">LIN</span><span class="sector-stock-chg dn">-0.30%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">SHW</span><span class="sector-stock-chg dn">-2.48%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">FCX</span><span class="sector-stock-chg up">+0.91%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NEM</span><span class="sector-stock-chg dn">-4.59%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">APD</span><span class="sector-stock-chg dn">-0.35%</span></div></div>
+          <div class="sector-stocks" id="us-top-4" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">DOW</span><span class="sector-stock-chg up">+2.51%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">FCX</span><span class="sector-stock-chg up">+0.91%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NUE</span><span class="sector-stock-chg up">+0.02%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">LIN</span><span class="sector-stock-chg dn">-0.30%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">APD</span><span class="sector-stock-chg dn">-0.35%</span></div></div>
+        </div>
+        <div id="us-detail-5" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 헬스케어 주요 종목 <span style="color:var(--sub);font-weight:500">(XLV)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-5','us-top-5')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-5','us-mkt-5')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-5">
+            <div class="sector-stock-row"><span class="sector-stock-name">LLY</span><span class="sector-stock-chg dn">-2.54%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">UNH</span><span class="sector-stock-chg dn">-1.62%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">JNJ</span><span class="sector-stock-chg dn">-1.42%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ABBV</span><span class="sector-stock-chg up">+0.16%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MRK</span><span class="sector-stock-chg dn">-1.34%</span></div></div>
+          <div class="sector-stocks" id="us-top-5" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">ISRG</span><span class="sector-stock-chg up">+1.90%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ABT</span><span class="sector-stock-chg up">+1.16%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">ABBV</span><span class="sector-stock-chg up">+0.16%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TMO</span><span class="sector-stock-chg dn">-0.40%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MRK</span><span class="sector-stock-chg dn">-1.34%</span></div></div>
+        </div>
+        <div id="us-detail-6" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 산업재 주요 종목 <span style="color:var(--sub);font-weight:500">(XLI)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-6','us-top-6')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-6','us-mkt-6')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-6">
+            <div class="sector-stock-row"><span class="sector-stock-name">GE</span><span class="sector-stock-chg dn">-2.69%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CAT</span><span class="sector-stock-chg dn">-2.42%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">RTX</span><span class="sector-stock-chg dn">-1.90%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">UBER</span><span class="sector-stock-chg dn">-3.43%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HON</span><span class="sector-stock-chg up">+1.30%</span></div></div>
+          <div class="sector-stocks" id="us-top-6" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">HON</span><span class="sector-stock-chg up">+1.30%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BA</span><span class="sector-stock-chg up">+0.43%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DE</span><span class="sector-stock-chg up">+0.39%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">UNP</span><span class="sector-stock-chg dn">-1.75%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">RTX</span><span class="sector-stock-chg dn">-1.90%</span></div></div>
+        </div>
+        <div id="us-detail-7" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 금융 주요 종목 <span style="color:var(--sub);font-weight:500">(XLF)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-7','us-top-7')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-7','us-mkt-7')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-7">
+            <div class="sector-stock-row"><span class="sector-stock-name">BRK-B</span><span class="sector-stock-chg dn">-0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">JPM</span><span class="sector-stock-chg dn">-1.47%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">V</span><span class="sector-stock-chg dn">-1.55%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MA</span><span class="sector-stock-chg dn">-1.52%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BAC</span><span class="sector-stock-chg dn">-1.02%</span></div></div>
+          <div class="sector-stocks" id="us-top-7" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">WFC</span><span class="sector-stock-chg dn">-0.75%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BRK-B</span><span class="sector-stock-chg dn">-0.87%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BAC</span><span class="sector-stock-chg dn">-1.02%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">JPM</span><span class="sector-stock-chg dn">-1.47%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MA</span><span class="sector-stock-chg dn">-1.52%</span></div></div>
+        </div>
+        <div id="us-detail-8" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 경기소비재 주요 종목 <span style="color:var(--sub);font-weight:500">(XLY)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-8','us-top-8')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-8','us-mkt-8')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-8">
+            <div class="sector-stock-row"><span class="sector-stock-name">AMZN</span><span class="sector-stock-chg dn">-0.95%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TSLA</span><span class="sector-stock-chg dn">-0.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HD</span><span class="sector-stock-chg dn">-2.41%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MCD</span><span class="sector-stock-chg dn">-1.65%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">BKNG</span><span class="sector-stock-chg dn">-3.27%</span></div></div>
+          <div class="sector-stocks" id="us-top-8" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">TSLA</span><span class="sector-stock-chg dn">-0.63%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">AMZN</span><span class="sector-stock-chg dn">-0.95%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TJX</span><span class="sector-stock-chg dn">-1.57%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MCD</span><span class="sector-stock-chg dn">-1.65%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">HD</span><span class="sector-stock-chg dn">-2.41%</span></div></div>
+        </div>
+        <div id="us-detail-9" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 통신·미디어 주요 종목 <span style="color:var(--sub);font-weight:500">(XLC)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-9','us-top-9')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-9','us-mkt-9')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-9">
+            <div class="sector-stock-row"><span class="sector-stock-name">GOOGL</span><span class="sector-stock-chg dn">-1.24%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">META</span><span class="sector-stock-chg dn">-0.96%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">NFLX</span><span class="sector-stock-chg dn">-1.79%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">TMUS</span><span class="sector-stock-chg dn">-7.71%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">DIS</span><span class="sector-stock-chg dn">-0.54%</span></div></div>
+          <div class="sector-stocks" id="us-top-9" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">DIS</span><span class="sector-stock-chg dn">-0.54%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">CMCSA</span><span class="sector-stock-chg dn">-0.66%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">META</span><span class="sector-stock-chg dn">-0.96%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">VZ</span><span class="sector-stock-chg dn">-1.19%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">GOOGL</span><span class="sector-stock-chg dn">-1.24%</span></div></div>
+        </div>
+        <div id="us-detail-10" class="sector-detail-panel">
+          <div class="sector-detail-header"><span>🔸 필수소비재 주요 종목 <span style="color:var(--sub);font-weight:500">(XLP)</span></span><div class="sector-detail-tabs"><span class="sector-dtab active" onclick="switchStockTab(this,'us-mkt-10','us-top-10')">시총 상위</span><span class="sector-dtab" onclick="switchStockTab(this,'us-top-10','us-mkt-10')">등락률 상위</span></div></div>
+          <div class="sector-stocks" id="us-mkt-10">
+            <div class="sector-stock-row"><span class="sector-stock-name">WMT</span><span class="sector-stock-chg dn">-1.02%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">COST</span><span class="sector-stock-chg dn">-1.46%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PG</span><span class="sector-stock-chg dn">-2.12%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">KO</span><span class="sector-stock-chg dn">-2.76%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PEP</span><span class="sector-stock-chg dn">-2.20%</span></div></div>
+          <div class="sector-stocks" id="us-top-10" style="display:none">
+            <div class="sector-stock-row"><span class="sector-stock-name">WMT</span><span class="sector-stock-chg dn">-1.02%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PM</span><span class="sector-stock-chg dn">-1.13%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">COST</span><span class="sector-stock-chg dn">-1.46%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">PG</span><span class="sector-stock-chg dn">-2.12%</span></div>
+            <div class="sector-stock-row"><span class="sector-stock-name">MDLZ</span><span class="sector-stock-chg dn">-2.13%</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
+      <div class="analysis-body"><ul>
+        <li>다우 <strong class="dn">52,215.16(-1.23%)</strong>, S&P 500 <strong class="dn">7,623.68(-0.52%)</strong>, 나스닥 <strong class="dn">25,955.34(-0.21%)</strong>. 전날 메타·램리서치 실적 실망으로 시작된 기술주 매도가 이어진 데다 유가까지 급등하면서 지수가 밀렸다. 주간으로 S&P 500과 나스닥은 하락, 다우와 러셀 2000은 상승해 대형 기술주에서 다른 업종으로 돈이 옮겨가는 모습. VIX는 19.45로 올랐다. <span class="src">(CNBC, Yahoo Finance)</span></li>
+        <li>나스닥은 <strong>보안 소프트웨어가 받치고 인터넷·플랫폼이 눌렀다</strong>. 소프트웨어 ETF(IGV)가 <strong class="up">+1.72%</strong> 올랐고 CrowdStrike·Palo Alto·Datadog(+4.62%)이 강했다. 반도체도 SMH <strong class="up">+0.74%</strong>로 전날 급락 후 소폭 반등(마이크론 +2.46%, 마벨 +2.26%). 반면 알파벳(-1.24%)·아마존(-0.95%)·메타(-0.96%)·엔비디아(-0.59%)가 지수를 끌어내렸다. QQQ는 보합(-0.01%)이지만 동일가중 QQQE는 -0.39%로, 오른 종목보다 내린 종목이 더 많았다. <span class="src">(yfinance, Nasdaq.com)</span></li>
+        <li>섹터는 에너지 <strong class="up">+2.60%</strong>만 확실히 올랐고 기술 +0.49%, 부동산 +0.12%(American Tower +4.08%)가 보합권. 필수소비재 <strong class="dn">-1.92%</strong>, 통신 <strong class="dn">-1.78%</strong>(AT&T -7.96%, T-Mobile -7.71%), 경기소비재 -1.66%(부킹 -3.27%), 금융 -1.32%(모건스탠리 -2.44%), 헬스케어 -1.11%(일라이릴리 -2.54%)가 약했다. 금 하락에 뉴몬트 -4.59%. <span class="src">(yfinance)</span></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div id="panel-co" class="market-panel">
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">🪨</span><span class="mch-title">원자재 · 환율 · 금리 종가</span></div></div>
+      <table class="dt"><thead><tr><th>종목</th><th>종가</th><th>전일종가</th><th>등락률</th><th>변동폭</th></tr></thead><tbody>
+<tr><td>🥇 금 (USD/oz)</td><td><strong class="dn">4,007.90</strong></td><td class="prev">4,060.40</td><td class="dn chg">-1.29%</td><td class="rng">1.53%</td></tr>
+<tr><td>🟤 구리 (USD/lb)</td><td><strong class="up">6.476</strong></td><td class="prev">6.363</td><td class="up chg">+1.78%</td><td class="rng">0.19%</td></tr>
+<tr><td>🛢️ WTI 원유 (USD/bbl)</td><td><strong class="up">103.27</strong></td><td class="prev">99.47</td><td class="up chg">+3.82%</td><td class="rng">5.14%</td></tr>
+<tr><td>💵 원/달러 (KRW)</td><td><strong class="up">1,326.0</strong></td><td class="prev">1,325.6</td><td class="up chg">+0.03%</td><td class="rng">0.45%</td></tr>
+<tr><td>💵 달러인덱스</td><td><strong class="up">101.81</strong></td><td class="prev">101.61</td><td class="up chg">+0.20%</td><td class="rng">0.35%</td></tr>
+<tr><td>📈 미 10년물 (%)</td><td><strong class="up">4.99</strong></td><td class="prev">4.95</td><td class="up chg">+0.71%</td><td class="rng">0.97%</td></tr>
+<tr><td>📉 VIX</td><td><strong class="up">19.45</strong></td><td class="prev">19.03</td><td class="up chg">+2.21%</td><td class="rng">9.49%</td></tr>
+        </tbody></table>
+    </div>
+    <div class="market-card">
+      <div class="market-card-head"><div class="mch-left"><span style="font-size:16px;">📝</span><span class="mch-title">오늘의 분석</span></div></div>
+      <div class="analysis-body"><ul>
+        <li>WTI <strong class="up">$103.27(+3.82%)</strong>, 브렌트 $116.72. 후티의 사우디 에너지 시설 공격과 호르무즈 해협 선박 피격이 겹치며 공급 불안이 다시 커졌다. 장중 $98.84에서 $103.92까지 오르며 변동폭이 5%를 넘었다. 시장에서는 브렌트 $120 돌파 가능성도 거론된다. <span class="src">(FinanceFeeds, FXStreet)</span></li>
+        <li>금은 <strong class="dn">$4,007.90(-1.29%)</strong>로 장중 $3,989까지 내려가 $4,000선을 잠시 내줬다. 달러인덱스가 101.81(+0.20%)로 오르고 10년물 금리가 4.99%(+3bp)로 오른 영향. 구리는 <strong class="up">+1.78%($6.48)</strong>로 강세. <span class="src">(yfinance)</span></li>
+        <li>원/달러는 서울 외환시장 주간 종가 <strong>1,324.6원(+0.4원)</strong>으로 보합. 장중 1,321원대까지 내려갔다가 외국인 주식 매도에 소폭 반등했다. 미 10년물은 4.99%로 10월 초 5.35%보다 크게 낮아진 수준이 유지되고 있다. <span class="src">(EBN, 철강금속신문, yfinance)</span></li>
+      </ul></div>
+    </div>
+  </div>
+
+  <div class="section-label" style="margin-top:28px;">📅 내일 주요 포인트</div>
+  <div class="schedule-card">
+    <div class="sc-item">
+      <div class="sc-dot h"></div>
+      <div><div class="sc-title">🔴 FOMC 금리 결정 (수 10/28) — 워시 의장 기자회견</div><div class="sc-desc">9월 인상 이후 첫 회의. 시장은 이번 동결에 무게를 두지만 12월 추가 인상 가능성은 열려 있다. 유가가 다시 $100을 넘은 상황에서 워시 의장이 인플레이션을 어떻게 평가할지가 관건.</div></div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-dot h"></div>
+      <div><div class="sc-title">🔴 빅테크 실적 — 마이크로소프트·알파벳(수 장 마감 후), 아마존(목)</div><div class="sc-desc">메타가 투자비 증가와 현금흐름 악화로 급락한 직후라, AI 투자 규모와 그 성과를 보여줄 수 있는지가 핵심. 클라우드 성장률과 설비투자 전망에 따라 나스닥 방향이 갈릴 전망.</div></div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-dot m"></div>
+      <div><div class="sc-title">⚠️ 3분기 GDP·PCE 물가 (목 10/29)</div><div class="sc-desc">GDP 성장률 약 3.0%, PCE 물가 약 3.1% 예상. 유가 급등이 물가에 반영되는 속도가 FOMC 이후 금리 전망을 좌우.</div></div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-dot m"></div>
+      <div><div class="sc-title">⚠️ 삼성전자·SK하이닉스 확정 실적 (이번 주)</div><div class="sc-desc">증권가 KOSPI 예상 범위 5,300~5,800. 미국 반도체 급락으로 흔들린 AI 투자 기대를 국내 반도체 실적이 다시 받쳐줄 수 있을지 주목. 삼성전자 콘퍼런스콜은 29일.</div></div>
+    </div>
+    <div class="sc-item">
+      <div class="sc-dot g"></div>
+      <div><div class="sc-title">🟢 통신주 실적 — 버라이즌(월), T-Mobile(수)</div><div class="sc-desc">SpaceX 위협이 가입자 지표에 실제로 나타나는지 확인할 첫 기회. AT&T는 이미 한 달간 17% 가까이 빠져 기대치가 낮아진 상태.</div></div>
+    </div>
+  </div>
+
+  <div class="keywords">
+    <div class="kw-label">🔑 핵심 키워드</div>
+    <div class="kw-tags">
+      <span class="kw-tag">📌 WTI $103 · 브렌트 6개월 최고</span>
+      <span class="kw-tag">📌 후티 사우디 공격</span>
+      <span class="kw-tag">📌 KOSPI 장중 -4% → +0.3%</span>
+      <span class="kw-tag">📌 SK하이닉스 솔리다임 상장 중단</span>
+      <span class="kw-tag">📌 삼성바이오로직스 +7.71%</span>
+      <span class="kw-tag">📌 AT&amp;T·T-Mobile SpaceX 악재</span>
+      <span class="kw-tag">📌 CrowdStrike +8.25%</span>
+      <span class="kw-tag">📌 이번 주 FOMC·빅테크 실적</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    ✅ 가격: Yahoo Finance · KRX · 🔍 뉴스: CNBC · Yahoo Finance · 24/7 Wall St. · FXStreet · 뉴스1 · 뉴스핌 · 알파경제 · 이투데이 · 한국금융신문<br>
+    본 리포트는 AI가 공개된 금융 데이터·뉴스를 수집·분석하여 생성합니다. 투자 판단의 참고 자료로만 활용하세요.
+  </div>
+</div>
+
+<script>
+function switchTab(tab) {
+  document.querySelectorAll('.mktab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelectorAll('.market-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelector('.mktab.' + tab).classList.add('active');
+  document.getElementById('panel-' + tab).classList.add('active');
+}
+function selectSector(tile, detailId) {
+  var wrap = tile.closest('.sector-wrap');
+  wrap.querySelectorAll('.sector-tile').forEach(function(t) { t.classList.remove('selected'); });
+  wrap.querySelectorAll('.sector-detail-panel').forEach(function(p) { p.classList.remove('open'); });
+  var detail = document.getElementById(detailId);
+  if (!detail.classList.contains('open')) {
+    tile.classList.add('selected');
+    detail.classList.add('open');
+  }
+}
+function switchStockTab(btn, showId, hideId) {
+  event.stopPropagation();
+  btn.closest('.sector-detail-tabs').querySelectorAll('.sector-dtab').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById(showId).style.display = 'block';
+  document.getElementById(hideId).style.display = 'none';
+}
+
+</script>
+</body>
+</html>
