@@ -346,6 +346,9 @@ def rebuild_index():
     idx = re.sub(r'<!-- STRIP_START -->[\s\S]*?<!-- STRIP_END -->',
                  lambda _: f'<!-- STRIP_START -->\n{build_strip(reports[0])}\n    <!-- STRIP_END -->',
                  idx)
+    idx = re.sub(r'<!-- COUNT -->[\s\S]*?<!-- /COUNT -->',
+                 f'<!-- COUNT -->총 {len(metas) - 1}개<!-- /COUNT -->',
+                 idx)
     idx = re.sub(r'<!-- UPDATE_DATE -->[\s\S]*?<!-- /UPDATE_DATE -->',
                  f'<!-- UPDATE_DATE -->{fm["date_str"]} 기준<!-- /UPDATE_DATE -->',
                  idx)
