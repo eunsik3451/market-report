@@ -129,6 +129,18 @@ table.dt td.chg{font-weight:800;font-size:14.5px;} table.dt td.rng{font-size:12p
 .ix-close{font-size:12px;color:var(--sub);}
 .ix-tag{font-size:10px;font-weight:600;color:var(--gold);background:#fef3c7;border-radius:4px;padding:0 4px;margin-left:2px;}
 @media (min-width:760px){.ixboard .ixgrid{grid-template-columns:repeat(7,1fr);}}
+.war-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);border-left:4px solid #b91c1c;padding:16px 20px;margin-bottom:12px;}
+.war-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:6px;}
+.war-title{font-size:15px;font-weight:800;}
+.war-day{font-size:11px;font-weight:700;color:#b91c1c;background:#fee2e2;border-radius:999px;padding:2px 8px;margin-left:4px;vertical-align:middle;}
+.war-status{font-size:12px;font-weight:700;color:#92400e;background:#fef3c7;border-radius:6px;padding:3px 8px;}
+.war-timeline{font-size:12px;color:var(--sub);margin-bottom:10px;}
+.war-row{display:grid;grid-template-columns:84px 1fr;gap:10px;padding:8px 0;border-top:1px solid var(--border);font-size:13.5px;line-height:1.7;}
+.war-label{font-size:12px;font-weight:700;color:var(--sub);padding-top:2px;}
+.war-row ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.war-row li{padding-left:12px;position:relative;}
+.war-row li::before{content:'·';position:absolute;left:2px;color:var(--sub);font-weight:800;}
+@media (max-width:560px){.war-row{grid-template-columns:1fr;gap:2px;}}
 
 </style>
 </head>
@@ -183,13 +195,23 @@ table.dt td.chg{font-weight:800;font-size:14.5px;} table.dt td.rng{font-size:12p
     <p class="point-text">금요일 시장은 <strong>다시 치솟은 유가</strong>에 눌렸다. 후티 반군이 사우디 에너지 시설을 공격하자 WTI는 하루 만에 3.8% 올라 $103을 넘었고, 브렌트는 $116.72로 6개월 만의 최고치를 기록했다. 미국 중간선거(11/3) 이후 미국·이스라엘의 이란 공격 계획이 진행 중이라는 보도도 불안을 키웠다. 다우는 652포인트 빠졌고 유가 부담이 큰 필수소비재·경기소비재가 약했다. 다만 전날 메타·램리서치 실적 실망으로 급락했던 반도체는 SOX <span class="t-up">+0.44%</span>로 숨을 골랐고, 사이버보안주가 강하게 오르며 나스닥 낙폭은 -0.21%에 그쳤다. 한국 증시는 전날 미국 반도체 급락 여파로 장 초반 4% 넘게 빠졌지만, SK하이닉스가 솔리다임 미국 상장을 중단한다는 소식에 반등하면서 0.30% 오른 채 마감했다. 외국인은 1조원 가까이 팔았지만 기관이 8,660억원을 받아냈다. 이번 주에는 수요일 FOMC와 마이크로소프트·알파벳·아마존 실적, 목요일 3분기 GDP·PCE 물가가 한꺼번에 몰려 있다.</p>
   </div>
 
+  <div class="war-card">
+    <div class="war-head">
+      <div class="war-title">⚔️ 이란 전쟁 브리핑 <span class="war-day">개전 238일째</span></div>
+      <div class="war-status">휴전 협상 교착 · 국지 교전 지속</div>
+    </div>
+    <div class="war-timeline">2/28 개전 → 4월 휴전 → 6월 이슬라마바드 양해각서 → 8월 만료 → 9월부터 국지 교전 재개</div>
+    <div class="war-row"><div class="war-label">무슨 일이</div><ul><li>후티 반군(예멘의 친이란 무장세력)이 사우디 에너지 시설을 잇달아 공격했다. 아람코는 다란 본사 직원을 대피시키고 재택근무로 돌렸고, 후티는 48시간 동안 사우디에서 6차례 작전을 벌였다고 주장했다. <span class="src">(Reuters 인용 Times Live, CBS)</span></li><li>호르무즈 해협에서는 2주간 선박 18척 이상이 공격받았고, 초대형 유조선 2척이 기뢰에 부딪혔다. 혁명수비대는 미국이 이란 기반시설을 치면 해협의 해저 인터넷 케이블을 공격하겠다고 위협했다. <span class="src">(FXStreet, Gulf News, CBS)</span></li><li>휴전 협상은 제자리다. 이란은 중재국을 통한 간접 협상이 이어지고 있다고 밝혔지만, 미국 해상봉쇄 해제·원유 제재 해제를 담은 7일 휴전안은 트럼프가 거부하고 수정을 요구한 상태. <span class="src">(Yahoo/AP, CBS)</span></li></ul></div>
+    <div class="war-row"><div class="war-label">시장 영향</div><div class="war-text">브렌트 <strong class="up">$116.72</strong>(6개월 최고), WTI <strong class="up">$103.27(+3.82%)</strong>. 미국은 에너지주만 오르고(XLE +2.60%) 유가 부담이 큰 필수소비재·경기소비재가 빠졌다. 한국은 원가 부담에 화학(-3.04%)·금속(-3.22%)이 업종 하락률 1·2위. 유가가 물가를 다시 밀어 올리면 이번 주 FOMC의 금리 판단에도 부담이 된다.</div></div>
+    <div class="war-row"><div class="war-label">앞으로 볼 것</div><ul><li><strong>11/3 미국 중간선거 이후 공습 재개 여부</strong> — 트럼프는 '선거 전 공격은 없다'고 했지만, 카타르 외교부는 미국이 다음 달 대규모 공습을 재개할 수 있다고 밝혔다. <span class="src">(Al Jazeera, Yahoo/AP)</span></li><li><strong>호르무즈 재개방 조건</strong> — 이란은 미국이 해상봉쇄를 풀면 해협을 다시 열겠다는 입장. 영국·프랑스·독일·사우디 등 8개국 외무장관은 이스탄불에서 호르무즈 자유 통항을 촉구했다. <span class="src">(CBS)</span></li></ul></div>
+  </div>
+
   <div class="event-card">
     <div class="event-card-head">★ 유가 $103 돌파 — 후티의 사우디 공격, 브렌트 6개월 최고</div>
     <ul class="event-bullets">
       <li>WTI <strong class="up">$103.27(+3.82%)</strong>, 브렌트 <strong>$116.72(+3.1%)</strong>로 4월 29일 이후 최고 마감. 브렌트는 주간으로 약 6% 상승 <span class="src">(CNBC, FinanceFeeds)</span></li>
-      <li>이날 급등은 호르무즈 해협이 아니라 사우디 쪽에서 나왔다. 후티 반군이 사우디 전역의 에너지 시설을 공격했고 아람코는 다란 본사 인력을 대피시켰다. 호르무즈에서도 2주간 선박 18척 이상이 피격됐고 화요일엔 유조선 2척이 기뢰에 부딪혔다 <span class="src">(FXStreet, UPI)</span></li>
-      <li>이란 전쟁이 8개월째로 접어든 가운데, 중간선거(11/3) 이후 미국·이스라엘의 이란 공격 계획이 진행 중이라는 보도도 나왔다. 트럼프는 10월 초 '선거 전 공격은 없다'고 했지만 선거 이후는 열어둔 셈 <span class="src">(Sunday Guardian, Axios)</span></li>
       <li>에너지 섹터 XLE <strong class="up">+2.60%</strong> — SLB <strong class="up">+7.08%</strong>, 코노코필립스 +3.55%, 셰브론 +2.88%, 엑슨모빌 +2.79%. 반면 유가 부담에 필수소비재 XLP <strong class="dn">-1.92%</strong>(코카콜라 -2.76%, 펩시 -2.20%)가 섹터 최하위 <span class="src">(yfinance)</span></li>
+      <li>한국에서는 원가 부담이 큰 업종이 직격탄을 맞았다. 화학 <strong class="dn">-3.04%</strong>(S-Oil -5.29%, LG화학 -3.78%, SK이노베이션 -2.54%), 금속 <strong class="dn">-3.22%</strong>(고려아연 -4.15%, POSCO홀딩스 -3.67%) <span class="src">(KRX)</span></li>
     </ul>
   </div>
 
